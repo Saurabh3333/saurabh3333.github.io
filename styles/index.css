@@ -22,3 +22,18 @@
    height: 100px;
    background-color: cyan;
 }
+.box{
+	height: 300px;
+	width: 800px;
+	font-size: 60px;
+	vertical-align: center;
+	text-align: center;
+	padding-top: 160px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-family: 'Roboto', sans-serif;
+	border-radius: 50px;
+}
+.box-sub{
+	font-size: 22px;
+	padding-top: 15px;
+}
