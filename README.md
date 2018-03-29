@@ -1,2 +1,4 @@
 Personal site
-https://tinyurl.com/saurabh0612
+
+Resume in PDF Format:
+`https://tinyurl.com/saurabh0612`
