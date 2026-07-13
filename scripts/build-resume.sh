@@ -8,10 +8,27 @@ export TZ=UTC
 export FORCE_SOURCE_DATE=1
 
 cd resume
-pdflatex -interaction=nonstopmode -halt-on-error saurabh-shubham-data-engineer.tex
-pdflatex -interaction=nonstopmode -halt-on-error saurabh-shubham-data-engineer.tex
 
-pdftotext saurabh-shubham-data-engineer.pdf saurabh-shubham-data-engineer.txt
+if [ ! -f "/tmp/tectonic" ]; then
+    echo "Downloading tectonic..."
+    curl -sL "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@0.15.0/tectonic-0.15.0-x86_64-unknown-linux-musl.tar.gz" | tar xz -C /tmp
+fi
+
+/tmp/tectonic saurabh-shubham-data-engineer.tex
+
+if [ ! -d "/tmp/pdfvenv" ]; then
+    python3 -m venv /tmp/pdfvenv
+    /tmp/pdfvenv/bin/pip install pypdf
+fi
+
+/tmp/pdfvenv/bin/python3 -c "
+import sys, pypdf
+reader = pypdf.PdfReader('saurabh-shubham-data-engineer.pdf')
+text = '\n'.join(page.extract_text() for page in reader.pages)
+with open('saurabh-shubham-data-engineer.txt', 'w') as f:
+    f.write(text)
+"
+
 
 cd ..
 
