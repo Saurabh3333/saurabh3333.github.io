@@ -1,37 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
-export SOURCE_DATE_EPOCH=0
-export TZ=UTC
+# Deterministic build
+export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
+export TZ="${TZ:-UTC}"
 
-# Ensure deterministic output
-export FORCE_SOURCE_DATE=1
+cd "$(dirname "$0")/.."
+mkdir -p resume
 
-cd resume
+TEX_FILE="resume/saurabh-shubham-data-engineer.tex"
+PDF_FILE="resume/saurabh-shubham-data-engineer.pdf"
+TXT_FILE="resume/saurabh-shubham-data-engineer.txt"
 
-if [ ! -f "/tmp/tectonic" ]; then
-    echo "Downloading tectonic..."
-    curl -sL "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@0.15.0/tectonic-0.15.0-x86_64-unknown-linux-musl.tar.gz" | tar xz -C /tmp
+# Ensure reproducibility parameters for pdflatex (though pdflatex usually uses SOURCE_DATE_EPOCH automatically)
+
+# Compile LaTeX
+if command -v pdflatex >/dev/null 2>&1; then
+    pdflatex -halt-on-error -output-directory=resume "$TEX_FILE" > /dev/null
+    pdflatex -halt-on-error -output-directory=resume "$TEX_FILE" > /dev/null
+else
+    echo "Warning: pdflatex not found. Skipping compilation." >&2
 fi
 
-/tmp/tectonic saurabh-shubham-data-engineer.tex
-
-if [ ! -d "/tmp/pdfvenv" ]; then
-    python3 -m venv /tmp/pdfvenv
-    /tmp/pdfvenv/bin/pip install pypdf
+# Extract text
+if command -v pdftotext >/dev/null 2>&1; then
+    pdftotext "$PDF_FILE" "$TXT_FILE"
+else
+    echo "Warning: pdftotext not found. Skipping text extraction." >&2
 fi
 
-/tmp/pdfvenv/bin/python3 -c "
-import sys, pypdf
-reader = pypdf.PdfReader('saurabh-shubham-data-engineer.pdf')
-text = '\n'.join(page.extract_text() for page in reader.pages)
-with open('saurabh-shubham-data-engineer.txt', 'w') as f:
-    f.write(text)
-"
+echo "Build successful."
 
-
-cd ..
-
-if [[ "${1:-}" == "--check" ]]; then
-    echo "Build completed and checked."
+if [ "${1:-}" == "--check" ]; then
+    echo "Running checks..."
+    if [ ! -f "$PDF_FILE" ]; then
+        echo "Error: PDF file not generated." >&2
+        exit 1
+    fi
+    if [ ! -f "$TXT_FILE" ]; then
+        echo "Error: TXT file not generated." >&2
+        exit 1
+    fi
 fi

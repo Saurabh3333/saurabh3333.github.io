@@ -1,3 +1,8 @@
+%-------------------------
+% One Page Resume in Latex (Data Engineering focus)
+% Author : Saurabh Shubham
+%-------------------------
+
 \documentclass[a4paper,10pt]{article}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -10,14 +15,6 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-
-% Metadata for deterministic PDF and ATS
-\hypersetup{
-    pdftitle={Saurabh Shubham Resume},
-    pdfauthor={Saurabh Shubham},
-    pdfcreator={pdfTeX},
-    pdfproducer={pdfTeX},
-}
 
 % Margins
 \addtolength{\oddsidemargin}{-0.5in}
@@ -36,32 +33,39 @@
 % Custom commands
 \newcommand{\resumeItem}[1]{\item\small{#1}}
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item[]
-  \textbf{#1} \hfill #2 \\
-  \textit{\small#3} \hfill \textit{\small #4}\vspace{-5pt}
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
 }
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand{\labelitemii}{$\circ$}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 \centerline{\huge \bf Saurabh Shubham}
-\vspace{4pt}
 \centerline{\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ +49-1705452439}
-\vspace{2pt}
 \centerline{\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ \href{https://github.com/Saurabh3333}{GitHub} $|$ \href{https://saurabh3333.github.io}{Portfolio}}
 
+%-----------SUMMARY-----------
 \vspace{-4pt}
 \section{Summary}
-Senior Data Engineer with 5+ years of experience designing, building, and optimizing data pipelines, ETL workflows, and platform infrastructure. Expertise in orchestration, modeling, and platform operations for manufacturing and commercial-scale applications. Based in Berlin, with strong proficiency in Python, SQL, Dagster, Airflow, dbt, PySpark, and cloud platforms. Proven track record of improving data reliability, scalability, and performance.
+Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL workflows, and backend services. Skilled in Python, cloud platforms, and modern data stack tools. Proven track record of improving data reliability, scalability, and performance.
 
+%-----------TECH SKILLS-----------
 \section{Technical Skills}
 \textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
-\textbf{Data Tools:} Airflow, Dagster, dbt, DLT, PySpark, Pandas \\
-\textbf{Cloud:} Azure, AWS, Google Cloud (GCP) \\
-\textbf{Databases \& Infrastructure:} PostgreSQL, MySQL, MongoDB, Terraform \\
-\textbf{Other:} REST/SOAP APIs, Git, Unix
+\textbf{Data Tools:} Airflow, Dagster, DBT, DLT, PySpark, Pandas \\
+\textbf{Cloud:} Azure, AWS, Google Cloud \\
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB \\
+\textbf{Other:} Terraform, REST APIs, Git, Unix
 
+%-----------EXPERIENCE-----------
 \section{Experience}
 \begin{itemize}[leftmargin=*]
 
@@ -70,37 +74,25 @@ Senior Data Engineer with 5+ years of experience designing, building, and optimi
 {Data Engineer}{Aug 2022 -- Present}
 \resumeItem{Designed and optimized data pipelines for KUKA robots enabling real-time production insights.}
 \resumeItem{Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.}
-\resumeItem{\textbf{Tech:} Dagster, Airflow, dbt, DLT, Azure, Python}
+\resumeItem{Tech: Dagster, Airflow, DBT, DLT, Azure, Python}
 
 \resumeSubheading
 {Sigmoid}{Bengaluru, India}
 {Software Development Engineer}{Jun 2021 -- Jul 2022}
 \resumeItem{Built and maintained ETL pipelines for processing large-scale sales data from Colgate-Walmart.}
 \resumeItem{Automated reporting and analytics for EVR, CBR, and Net Sales data.}
-\resumeItem{\textbf{Tech:} Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow}
+\resumeItem{Tech: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow}
 
 \resumeSubheading
 {Amdocs}{Pune, India}
 {Software Engineer}{Jun 2019 -- Jun 2021}
 \resumeItem{Developed features for Comcast CRM, including business needs tracking and process automation.}
 \resumeItem{Led design, wireframing, and implementation of new modules.}
-\resumeItem{\textbf{Tech:} Java, Spring, REST/SOAP APIs}
+\resumeItem{Tech: Java, Spring, REST/SOAP APIs}
 
 \end{itemize}
 
-\section{Internships \& Fellowships}
-\begin{itemize}[leftmargin=*]
-\resumeSubheading
-{Hasura Technologies}{India}
-{Product Development Fellow}{}
-\vspace{-8pt}
-
-\resumeSubheading
-{Google}{Gurgaon, India}
-{Tech Intern Connect Program}{}
-\vspace{-8pt}
-\end{itemize}
-
+%-----------PROJECTS-----------
 \section{Selected Projects}
 \begin{itemize}[leftmargin=*]
 \resumeItem{\textbf{Apparel Recommendation System:} Machine learning-based product recommender using TensorFlow and Keras.}
@@ -108,6 +100,7 @@ Senior Data Engineer with 5+ years of experience designing, building, and optimi
 \resumeItem{\textbf{Quality Assessment Chrome Extension:} Content authenticity checker using Google Inception V3.}
 \end{itemize}
 
+%-----------AWARDS-----------
 \section{Achievements}
 \begin{itemize}[leftmargin=*]
 \resumeItem{Facebook PyTorch Challenge Scholarship, 2018.}
