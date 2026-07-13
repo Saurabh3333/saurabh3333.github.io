@@ -1,0 +1,98 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{
+  pdftitle={Saurabh Shubham - Data Engineer Resume},
+  pdfauthor={Saurabh Shubham},
+  pdfsubject={Data Engineering, Data Platform},
+  pdfcreator={pdfTeX},
+  pdfproducer={pdfTeX}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{\vspace{-2pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\begin{document}
+
+\begin{center}
+{\huge \bf Saurabh Shubham} \\ \vspace{4pt}
+\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ 
+\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ 
+\href{https://github.com/Saurabh3333}{GitHub} $|$ 
+\href{https://saurabh3333.github.io}{Portfolio}
+\end{center}
+
+\vspace{-4pt}
+\section{Summary}
+Senior Data Engineer with 5+ years of professional software and data experience. Specializing in data pipelines, ETL/ELT workflows, orchestration, modeling, reliability, and platform operations. Proven track record in building large-scale commercial data pipelines and robust cloud infrastructure in Berlin and beyond.
+
+\section{Technical Skills}
+\textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
+\textbf{Data \& Orchestration:} Dagster, Airflow, dbt, DLT, PySpark, Pandas \\
+\textbf{Cloud \& Infrastructure:} Terraform, Supabase, Azure, AWS, Google Cloud \\
+\textbf{Emerging Tech:} LLM architecture, agent frameworks (CrewAI, LangGraph, OpenClaw, n8n) \\
+\textbf{Other:} Network and privacy hardening, PostgreSQL, MongoDB, REST APIs, Git
+
+\section{Experience}
+\begin{itemize}[leftmargin=*]
+
+\resumeSubheading
+{GROPYUS}{Berlin, Germany}
+{Data Engineer}{Aug 2022 -- Present}
+\resumeItem{Designed and optimized data pipelines for KUKA robots, enabling real-time production insights and robotics data work.}
+\resumeItem{Streamlined manufacturing data flows between robotic systems and enterprise platforms, improving automation efficiency.}
+\resumeItem{Operated platform infrastructure utilizing Dagster, Airflow, dbt, DLT, Azure, and Python.}
+
+\resumeSubheading
+{Sigmoid}{Bengaluru, India}
+{Software Development Engineer}{Jun 2021 -- Jul 2022}
+\resumeItem{Built and maintained ETL pipelines for processing large-scale commercial sales data from Colgate-Walmart.}
+\resumeItem{Automated reporting and analytics pipelines using Python, PySpark, GCP, AWS, Pandas, Terraform, and Airflow.}
+
+\resumeSubheading
+{Amdocs}{Pune, India}
+{Software Engineer}{Jun 2019 -- Jun 2021}
+\resumeItem{Developed backend features and integrations for Comcast CRM, tracking business needs and process automation.}
+\resumeItem{Led design, wireframing, and backend implementation of new modules using Java, Spring, and REST/SOAP APIs.}
+
+\end{itemize}
+
+\section{Selected Projects \& Interests}
+\begin{itemize}[leftmargin=*]
+\resumeItem{\textbf{SampadAI:} Built a privacy-conscious personal-finance platform, integrating secure data pipelines and user data protection.}
+\resumeItem{\textbf{Quantitative Financial Systems:} Explored financial asset-management models and quantitative data workflows.}
+\resumeItem{\textbf{LLM \& Agentic Workflows:} Developed experimental projects using LLM architecture, CrewAI, LangGraph, OpenClaw, and n8n to automate complex data tasks.}
+\resumeItem{\textbf{Cloud Architecture:} Designed systems leveraging Supabase, network hardening, and cloud-database architectures.}
+\end{itemize}
+
+\end{document}
