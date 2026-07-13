@@ -1,3 +1,8 @@
+%-------------------------
+% One Page Resume in Latex (Data Engineering focus)
+% Author : Saurabh Shubham
+%-------------------------
+
 \documentclass[a4paper,10pt]{article}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -5,6 +10,15 @@
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
+
+% deterministic PDF generation
+\pdfinfo{
+  /CreationDate (D:19700101000000Z)
+  /ModDate (D:19700101000000Z)
+  /Creator (pdflatex)
+}
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -38,69 +52,69 @@
 
 \renewcommand{\labelitemii}{$\circ$}
 
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \centerline{\huge \bf Saurabh Shubham}
-\vspace{2pt}
 \centerline{\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ +49-1705452439}
-\centerline{\href{https://www.linkedin.com/in/saurabh-shubham/}{linkedin.com/in/saurabh-shubham} $|$ \href{https://github.com/Saurabh3333}{github.com/Saurabh3333} $|$ \href{https://saurabh3333.github.io}{saurabh3333.github.io}}
+\centerline{\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ \href{https://github.com/Saurabh3333}{GitHub} $|$ \href{https://saurabh3333.github.io}{Portfolio}}
 
+%-----------SUMMARY-----------
 \vspace{-4pt}
 \section{Summary}
-Data Engineer with 5+ years of experience designing, building, and optimizing data pipelines, ETL workflows, and backend services. Skilled in Python, modern data stack tools, and cloud platforms. Proven track record of improving data reliability, scalability, and performance in fast-paced engineering environments.
+Senior Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL/ELT workflows, and data platforms. Skilled in Python, SQL, cloud infrastructure, and modern data stack tools. Proven track record of improving data reliability, scalability, and orchestrating complex data operations.
 
+%-----------TECH SKILLS-----------
+\section{Technical Skills}
+\textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
+\textbf{Data Tools:} Airflow, Dagster, dbt, DLT, PySpark, Pandas \\
+\textbf{Cloud \& DBs:} Azure, AWS, Google Cloud, PostgreSQL, MongoDB, Supabase \\
+\textbf{Other:} Terraform, REST APIs, Git, Unix, CrewAI, LangGraph, LLM Architecture
+
+%-----------EXPERIENCE-----------
 \section{Experience}
 \begin{itemize}[leftmargin=*]
 
 \resumeSubheading
 {GROPYUS}{Berlin, Germany}
 {Data Engineer}{Aug 2022 -- Present}
-\resumeItem{Designed and optimized data pipelines for KUKA robots enabling real-time production insights.}
+\resumeItem{Designed and optimized data pipelines for manufacturing robots, enabling real-time production insights.}
 \resumeItem{Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.}
-\resumeItem{Technologies: Dagster, Airflow, dbt, DLT, Azure, Python}
+\resumeItem{Engineered ELT pipelines and data models for analytics, ensuring data reliability and quality.}
+\resumeItem{Tech: Dagster, Airflow, dbt, DLT, Azure, Python}
 
 \resumeSubheading
 {Sigmoid}{Bengaluru, India}
 {Software Development Engineer}{Jun 2021 -- Jul 2022}
-\resumeItem{Built and maintained ETL pipelines for processing large-scale sales data for Colgate-Walmart.}
-\resumeItem{Automated reporting and analytics for EVR, CBR, and Net Sales data, ensuring accurate and reliable insights.}
-\resumeItem{Technologies: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow}
+\resumeItem{Built and maintained large-scale commercial ETL pipelines for processing sales data from Colgate-Walmart.}
+\resumeItem{Automated reporting and analytics for EVR, CBR, and Net Sales data workflows.}
+\resumeItem{Tech: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow}
 
 \resumeSubheading
 {Amdocs}{Pune, India}
 {Software Engineer}{Jun 2019 -- Jun 2021}
-\resumeItem{Developed features for Comcast CRM, including business needs tracking and process automation.}
-\resumeItem{Led design, wireframing, and implementation of new backend modules.}
-\resumeItem{Technologies: Java, Spring, REST/SOAP APIs}
+\resumeItem{Developed backend integration features for Comcast CRM, including business needs tracking and process automation.}
+\resumeItem{Led backend design and implementation of new modules.}
+\resumeItem{Tech: Java, Spring, REST/SOAP APIs, SQL}
 
 \end{itemize}
 
-\section{Technical Skills}
-\textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
-\textbf{Data Tools:} Airflow, Dagster, dbt, DLT, PySpark, Pandas \\
-\textbf{Cloud:} Azure, AWS, GCP \\
-\textbf{Databases:} PostgreSQL, MySQL, MongoDB \\
-\textbf{Other:} Terraform, REST APIs, Git, Unix
-
+%-----------PROJECTS-----------
 \section{Selected Projects}
 \begin{itemize}[leftmargin=*]
-\resumeItem{\textbf{Apparel Recommendation System:} Built a machine learning-based product recommender using TensorFlow and Keras.}
-\resumeItem{\textbf{Alexa IPL Skill:} Developed a voice app answering IPL queries using Node.js and PostgreSQL.}
-\resumeItem{\textbf{Quality Assessment Chrome Extension:} Created a content authenticity checker using Google Inception V3.}
+\resumeItem{\textbf{SampadAI:} Privacy-conscious personal-finance platform integrating LLM architecture and agentic workflows (CrewAI, LangGraph, OpenClaw, n8n) with Supabase.}
+\resumeItem{\textbf{Quantitative Financial Data Platform:} Data pipeline and architecture for financial asset-management.}
+\resumeItem{\textbf{Apparel Recommendation System:} Machine learning-based product recommender using TensorFlow and Keras.}
 \end{itemize}
 
-\section{Education}
-\begin{itemize}[leftmargin=*]
-\resumeSubheading
-{Dr. A.P.J. Abdul Kalam Technical University}{Lucknow, India}
-{Bachelor of Technology in Computer Science and Engineering}{Aug 2015 -- Jun 2019}
-\end{itemize}
-
+%-----------AWARDS-----------
 \section{Achievements}
 \begin{itemize}[leftmargin=*]
-\resumeItem{Facebook PyTorch Challenge Scholarship (2018).}
+\resumeItem{Facebook PyTorch Challenge Scholarship, 2018.}
 \resumeItem{Top 200 in Infosys HackWithInfy coding competition.}
-\resumeItem{Google Tech Intern Connect invitee (2018).}
+\resumeItem{Google Tech Intern Connect invitee, 2018.}
 \end{itemize}
 
 \end{document}

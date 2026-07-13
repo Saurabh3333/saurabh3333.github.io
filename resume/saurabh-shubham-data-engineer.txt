@@ -1,60 +1,42 @@
-                                        Saurabh Shubham
-                                        saurabh.friday@gmail.com | +49-1705452439
-                    linkedin.com/in/saurabh-shubham | github.com/Saurabh3333 | saurabh3333.github.io
+Saurabh Shubham
+saurabh.friday@gmail.com | +49-1705452439
+LinkedIn | GitHub | Portfolio
 
 Summary
-Data Engineer with 5+ years of experience designing, building, and optimizing data pipelines, ETL workflows, and
-backend services. Skilled in Python, modern data stack tools, and cloud platforms. Proven track record of improving
-data reliability, scalability, and performance in fast-paced engineering environments.
-
-Experience
-    GROPYUS                                                                                                   Berlin, Germany
-•
-    Data Engineer                                                                                         Aug 2022 – Present
-• Designed and optimized data pipelines for KUKA robots enabling real-time production insights.
-• Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.
-
-• Technologies: Dagster, Airflow, dbt, DLT, Azure, Python
-    Sigmoid                                                                                                 Bengaluru, India
-•
-    Software Development Engineer                                                                        Jun 2021 – Jul 2022
-• Built and maintained ETL pipelines for processing large-scale sales data for Colgate-Walmart.
-
-• Automated reporting and analytics for EVR, CBR, and Net Sales data, ensuring accurate and reliable insights.
-
-• Technologies: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow
-    Amdocs                                                                                                       Pune, India
-•
-    Software Engineer                                                                                   Jun 2019 – Jun 2021
-• Developed features for Comcast CRM, including business needs tracking and process automation.
-
-• Led design, wireframing, and implementation of new backend modules.
-
-• Technologies: Java, Spring, REST/SOAP APIs
-
+Senior Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL/ELT workflows, and data platforms. Skilled in Python, SQL, cloud infrastructure, and modern data stack tools. Proven track record of improving data reliability, scalability, and orchestrating complex data operations.
 
 Technical Skills
 Languages: Python, SQL, Java, JavaScript, C++
 Data Tools: Airflow, Dagster, dbt, DLT, PySpark, Pandas
-Cloud: Azure, AWS, GCP
-Databases: PostgreSQL, MySQL, MongoDB
-Other: Terraform, REST APIs, Git, Unix
+Cloud & DBs: Azure, AWS, Google Cloud, PostgreSQL, MongoDB, Supabase
+Other: Terraform, REST APIs, Git, Unix, CrewAI, LangGraph, LLM Architecture
+
+Experience
+GROPYUS Berlin, Germany
+Data Engineer Aug 2022 – Present
+• Designed and optimized data pipelines for manufacturing robots, enabling real-time production insights.
+• Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.
+• Engineered ELT pipelines and data models for analytics, ensuring data reliability and quality.
+• Tech: Dagster, Airflow, dbt, DLT, Azure, Python
+
+Sigmoid Bengaluru, India
+Software Development Engineer Jun 2021 – Jul 2022
+• Built and maintained large-scale commercial ETL pipelines for processing sales data from Colgate-Walmart.
+• Automated reporting and analytics for EVR, CBR, and Net Sales data workflows.
+• Tech: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow
+
+Amdocs Pune, India
+Software Engineer Jun 2019 – Jun 2021
+• Developed backend integration features for Comcast CRM, including business needs tracking and process automation.
+• Led backend design and implementation of new modules.
+• Tech: Java, Spring, REST/SOAP APIs, SQL
 
 Selected Projects
-• Apparel Recommendation System: Built a machine learning-based product recommender using TensorFlow and Keras.
-• Alexa IPL Skill: Developed a voice app answering IPL queries using Node.js and PostgreSQL.
-
-• Quality Assessment Chrome Extension: Created a content authenticity checker using Google Inception V3.
-
-
-Education
-    Dr. A.P.J. Abdul Kalam Technical University                                                                Lucknow, India
-•
-    Bachelor of Technology in Computer Science and Engineering                                          Aug 2015 – Jun 2019
+• SampadAI: Privacy-conscious personal-finance platform integrating LLM architecture and agentic workflows (CrewAI, LangGraph, OpenClaw, n8n) with Supabase.
+• Quantitative Financial Data Platform: Data pipeline and architecture for financial asset-management.
+• Apparel Recommendation System: Machine learning-based product recommender using TensorFlow and Keras.
 
 Achievements
-• Facebook PyTorch Challenge Scholarship (2018).
+• Facebook PyTorch Challenge Scholarship, 2018.
 • Top 200 in Infosys HackWithInfy coding competition.
-
-• Google Tech Intern Connect invitee (2018).
-
+• Google Tech Intern Connect invitee, 2018.
