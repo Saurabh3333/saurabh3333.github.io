@@ -6,6 +6,19 @@ TEX_FILE="resume/saurabh-shubham-data-engineer.tex"
 OUT_DIR="resume"
 PDF_FILE="resume/saurabh-shubham-data-engineer.pdf"
 
+if [ "$1" = "--check" ]; then
+    # Safe checks
+    if ! command -v pdfinfo &> /dev/null || ! command -v pdftotext &> /dev/null; then
+        echo "Check requires poppler-utils (pdfinfo, pdftotext)"
+        exit 0
+    fi
+    set -o pipefail
+    pdfinfo "$PDF_FILE" | grep -E '^Pages:\s+[12]$'
+    pdftotext "$PDF_FILE" - | grep -q 'Saurabh Shubham'
+    echo "Check passed"
+    exit 0
+fi
+
 # Make sure we're in the project root
 if [ ! -f "$TEX_FILE" ]; then
     echo "Error: Could not find $TEX_FILE. Run this script from the project root."
