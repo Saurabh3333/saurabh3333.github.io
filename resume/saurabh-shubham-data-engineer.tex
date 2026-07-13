@@ -5,13 +5,14 @@
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
 
 \hypersetup{
-  pdftitle={Saurabh Shubham - Data Engineer Resume},
+  pdftitle={Resume - Saurabh Shubham},
   pdfauthor={Saurabh Shubham},
-  pdfsubject={Data Engineering, Data Platform},
-  pdfcreator={pdfTeX},
-  pdfproducer={pdfTeX}
+  pdfsubject={Data Engineer},
+  pdfkeywords={Data Engineering, Pipeline, Python, SQL}
 }
 
 \pagestyle{fancy}
@@ -19,6 +20,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% Margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
@@ -29,8 +31,10 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+% Sections formatting
 \titleformat{\section}{\vspace{-2pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
 
+% Custom commands
 \newcommand{\resumeItem}[1]{\item\small{#1}}
 \newcommand{\resumeSubheading}[4]{
   \vspace{-1pt}\item
@@ -44,24 +48,20 @@
 
 \begin{document}
 
-\begin{center}
-{\huge \bf Saurabh Shubham} \\ \vspace{4pt}
-\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ 
-\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ 
-\href{https://github.com/Saurabh3333}{GitHub} $|$ 
-\href{https://saurabh3333.github.io}{Portfolio}
-\end{center}
+\centerline{\huge \bf Saurabh Shubham}
+\centerline{\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ +49-1705452439}
+\centerline{\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ \href{https://github.com/Saurabh3333}{GitHub} $|$ \href{https://saurabh3333.github.io}{Portfolio}}
 
 \vspace{-4pt}
 \section{Summary}
-Senior Data Engineer with 5+ years of professional software and data experience. Specializing in data pipelines, ETL/ELT workflows, orchestration, modeling, reliability, and platform operations. Proven track record in building large-scale commercial data pipelines and robust cloud infrastructure in Berlin and beyond.
+Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL workflows, and backend services. Skilled in Python, cloud platforms, and modern data stack tools. Proven track record of improving data reliability, scalability, and performance in manufacturing and e-commerce domains.
 
 \section{Technical Skills}
 \textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
-\textbf{Data \& Orchestration:} Dagster, Airflow, dbt, DLT, PySpark, Pandas \\
-\textbf{Cloud \& Infrastructure:} Terraform, Supabase, Azure, AWS, Google Cloud \\
-\textbf{Emerging Tech:} LLM architecture, agent frameworks (CrewAI, LangGraph, OpenClaw, n8n) \\
-\textbf{Other:} Network and privacy hardening, PostgreSQL, MongoDB, REST APIs, Git
+\textbf{Data Tools:} Airflow, Dagster, DBT, DLT, PySpark, Pandas \\
+\textbf{Cloud:} Azure, AWS, Google Cloud \\
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB \\
+\textbf{Other:} Terraform, REST APIs, Git, Unix
 
 \section{Experience}
 \begin{itemize}[leftmargin=*]
@@ -69,30 +69,46 @@ Senior Data Engineer with 5+ years of professional software and data experience.
 \resumeSubheading
 {GROPYUS}{Berlin, Germany}
 {Data Engineer}{Aug 2022 -- Present}
-\resumeItem{Designed and optimized data pipelines for KUKA robots, enabling real-time production insights and robotics data work.}
-\resumeItem{Streamlined manufacturing data flows between robotic systems and enterprise platforms, improving automation efficiency.}
-\resumeItem{Operated platform infrastructure utilizing Dagster, Airflow, dbt, DLT, Azure, and Python.}
+\resumeItem{Designed and optimized data pipelines for KUKA robots enabling real-time production insights.}
+\resumeItem{Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.}
 
 \resumeSubheading
 {Sigmoid}{Bengaluru, India}
 {Software Development Engineer}{Jun 2021 -- Jul 2022}
-\resumeItem{Built and maintained ETL pipelines for processing large-scale commercial sales data from Colgate-Walmart.}
-\resumeItem{Automated reporting and analytics pipelines using Python, PySpark, GCP, AWS, Pandas, Terraform, and Airflow.}
+\resumeItem{Built and maintained ETL pipelines for processing large-scale sales data from Colgate-Walmart.}
+\resumeItem{Automated reporting and analytics for EVR, CBR, and Net Sales data.}
 
 \resumeSubheading
 {Amdocs}{Pune, India}
 {Software Engineer}{Jun 2019 -- Jun 2021}
-\resumeItem{Developed backend features and integrations for Comcast CRM, tracking business needs and process automation.}
-\resumeItem{Led design, wireframing, and backend implementation of new modules using Java, Spring, and REST/SOAP APIs.}
+\resumeItem{Developed features for Comcast CRM, including business needs tracking and process automation.}
+\resumeItem{Led design, wireframing, and implementation of new modules.}
 
 \end{itemize}
 
-\section{Selected Projects \& Interests}
+\section{Internships}
 \begin{itemize}[leftmargin=*]
-\resumeItem{\textbf{SampadAI:} Built a privacy-conscious personal-finance platform, integrating secure data pipelines and user data protection.}
-\resumeItem{\textbf{Quantitative Financial Systems:} Explored financial asset-management models and quantitative data workflows.}
-\resumeItem{\textbf{LLM \& Agentic Workflows:} Developed experimental projects using LLM architecture, CrewAI, LangGraph, OpenClaw, and n8n to automate complex data tasks.}
-\resumeItem{\textbf{Cloud Architecture:} Designed systems leveraging Supabase, network hardening, and cloud-database architectures.}
+\resumeSubheading
+{Hasura Technologies}{India}
+{Product Development Fellow}{2018}
+\resumeItem{Contributed to product development initiatives.}
+\resumeSubheading
+{Google}{Gurgaon, India}
+{Tech Intern Connect Program Invitee}{2018}
+\resumeItem{Selected to participate in the Tech Intern Connect Program.}
+\end{itemize}
+
+\section{Selected Projects}
+\begin{itemize}[leftmargin=*]
+\resumeItem{\textbf{Apparel Recommendation System:} Machine learning-based product recommender using TensorFlow and Keras.}
+\resumeItem{\textbf{Alexa IPL Skill:} Voice app answering IPL queries using Node.js and PostgreSQL.}
+\resumeItem{\textbf{Quality Assessment Chrome Extension:} Content authenticity checker using Google Inception V3.}
+\end{itemize}
+
+\section{Achievements}
+\begin{itemize}[leftmargin=*]
+\resumeItem{Facebook PyTorch Challenge Scholarship, 2018.}
+\resumeItem{Top 200 in Infosys HackWithInfy coding competition.}
 \end{itemize}
 
 \end{document}

@@ -12,3 +12,5 @@ You can build the resume deterministically by running:
 ```bash
 SOURCE_DATE_EPOCH=0 TZ=UTC bash scripts/build-resume.sh
 ```
+## Resume Build
+Run scripts/build-resume.sh to build the resume.
