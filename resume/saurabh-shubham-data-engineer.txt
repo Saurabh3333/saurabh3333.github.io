@@ -8,8 +8,8 @@ Senior Data Engineer with 5+ years of experience in designing, building, and opt
 Technical Skills
 Languages: Python, SQL, Java, JavaScript, C++
 Data Tools: Airflow, Dagster, dbt, DLT, PySpark, Pandas
-Cloud & DBs: Azure, AWS, Google Cloud, PostgreSQL, MongoDB, Supabase
-Other: Terraform, REST APIs, Git, Unix, CrewAI, LangGraph, LLM Architecture
+Cloud & DBs: Azure, AWS, Google Cloud, PostgreSQL, MongoDB
+Other: Terraform, REST APIs, Git, Unix
 
 Experience
 GROPYUS Berlin, Germany
@@ -32,9 +32,9 @@ Software Engineer Jun 2019 – Jun 2021
 • Tech: Java, Spring, REST/SOAP APIs, SQL
 
 Selected Projects
-• SampadAI: Privacy-conscious personal-finance platform integrating LLM architecture and agentic workflows (CrewAI, LangGraph, OpenClaw, n8n) with Supabase.
-• Quantitative Financial Data Platform: Data pipeline and architecture for financial asset-management.
 • Apparel Recommendation System: Machine learning-based product recommender using TensorFlow and Keras.
+• Alexa IPL Skill: Voice app answering IPL queries using Node.js and PostgreSQL.
+• Quality Assessment Chrome Extension: Content authenticity checker using Google Inception V3.
 
 Achievements
 • Facebook PyTorch Challenge Scholarship, 2018.
