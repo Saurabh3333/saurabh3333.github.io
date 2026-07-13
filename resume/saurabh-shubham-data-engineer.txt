@@ -1,5 +1,8 @@
 Saurabh Shubham
-saurabh.friday@gmail.com | +49-1705452439 | LinkedIn | GitHub | Portfolio
+saurabh.friday@gmail.com | +49-1705452439
+LinkedIn: https://www.linkedin.com/in/saurabh-shubham/
+GitHub: https://github.com/Saurabh3333
+Portfolio: https://saurabh3333.github.io
 
 Summary
 Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL workflows, and backend services. Skilled in Python, cloud platforms, and modern data stack tools. Proven track record of improving data reliability, scalability, and performance.
@@ -12,20 +15,20 @@ Databases: PostgreSQL, MySQL, MongoDB
 Other: Terraform, REST APIs, Git, Unix
 
 Experience
-GROPYUS
-Data Engineer, Berlin, Germany (Aug 2022 -- Present)
+GROPYUS | Berlin, Germany
+Data Engineer | Aug 2022 - Present
 - Designed and optimized data pipelines for KUKA robots enabling real-time production insights.
 - Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.
 - Tech: Dagster, Airflow, DBT, DLT, Azure, Python
 
-Sigmoid
-Software Development Engineer, Bengaluru, India (Jun 2021 -- Jul 2022)
+Sigmoid | Bengaluru, India
+Software Development Engineer | Jun 2021 - Jul 2022
 - Built and maintained ETL pipelines for processing large-scale sales data from Colgate-Walmart.
 - Automated reporting and analytics for EVR, CBR, and Net Sales data.
 - Tech: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow
 
-Amdocs
-Software Engineer, Pune, India (Jun 2019 -- Jun 2021)
+Amdocs | Pune, India
+Software Engineer | Jun 2019 - Jun 2021
 - Developed features for Comcast CRM, including business needs tracking and process automation.
 - Led design, wireframing, and implementation of new modules.
 - Tech: Java, Spring, REST/SOAP APIs

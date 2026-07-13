@@ -1,44 +1,34 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/bash
+set -e
 
-# Deterministic build
-export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
-export TZ="${TZ:-UTC}"
-
-cd "$(dirname "$0")/.."
-mkdir -p resume
-
+# Default variables
 TEX_FILE="resume/saurabh-shubham-data-engineer.tex"
+OUT_DIR="resume"
 PDF_FILE="resume/saurabh-shubham-data-engineer.pdf"
-TXT_FILE="resume/saurabh-shubham-data-engineer.txt"
 
-# Ensure reproducibility parameters for pdflatex (though pdflatex usually uses SOURCE_DATE_EPOCH automatically)
+# Make sure we're in the project root
+if [ ! -f "$TEX_FILE" ]; then
+    echo "Error: Could not find $TEX_FILE. Run this script from the project root."
+    exit 1
+fi
 
-# Compile LaTeX
-if command -v pdflatex >/dev/null 2>&1; then
-    pdflatex -halt-on-error -output-directory=resume "$TEX_FILE" > /dev/null
-    pdflatex -halt-on-error -output-directory=resume "$TEX_FILE" > /dev/null
+# Ensure output directory exists
+mkdir -p "$OUT_DIR"
+
+if command -v pdflatex &> /dev/null; then
+    echo "Using local pdflatex..."
+    pdflatex -halt-on-error -output-directory="$OUT_DIR" "$TEX_FILE"
+    pdflatex -halt-on-error -output-directory="$OUT_DIR" "$TEX_FILE" # Run twice for references
+elif command -v docker &> /dev/null; then
+    echo "Using Docker (texlive/texlive:latest)..."
+    docker run --rm -v "$PWD:/work" -w /work \
+        -e SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}" \
+        -e TZ="${TZ:-UTC}" \
+        texlive/texlive:latest \
+        bash -c "pdflatex -halt-on-error -output-directory=$OUT_DIR $TEX_FILE && pdflatex -halt-on-error -output-directory=$OUT_DIR $TEX_FILE"
 else
-    echo "Warning: pdflatex not found. Skipping compilation." >&2
+    echo "Error: Neither pdflatex nor docker is installed."
+    exit 1
 fi
 
-# Extract text
-if command -v pdftotext >/dev/null 2>&1; then
-    pdftotext "$PDF_FILE" "$TXT_FILE"
-else
-    echo "Warning: pdftotext not found. Skipping text extraction." >&2
-fi
-
-echo "Build successful."
-
-if [ "${1:-}" == "--check" ]; then
-    echo "Running checks..."
-    if [ ! -f "$PDF_FILE" ]; then
-        echo "Error: PDF file not generated." >&2
-        exit 1
-    fi
-    if [ ! -f "$TXT_FILE" ]; then
-        echo "Error: TXT file not generated." >&2
-        exit 1
-    fi
-fi
+echo "Build successful: $PDF_FILE"

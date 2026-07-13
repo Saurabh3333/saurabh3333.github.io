@@ -1,8 +1,3 @@
-%-------------------------
-% One Page Resume in Latex (Data Engineering focus)
-% Author : Saurabh Shubham
-%-------------------------
-
 \documentclass[a4paper,10pt]{article}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -10,13 +5,8 @@
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
-
-\hypersetup{
-    pdfauthor={Saurabh Shubham},
-    pdftitle={Saurabh Shubham - Data Engineer Resume},
-    pdfcreator={LaTeX},
-    pdfproducer={pdflatex}
-}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -49,6 +39,12 @@
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand{\labelitemii}{$\circ$}
+
+\pdfinfo{
+  /Title (Saurabh Shubham - Resume)
+  /Author (Saurabh Shubham)
+  /Subject (Data Engineer Resume)
+}
 
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,7 +103,7 @@ Data Engineer with 5+ years of experience in designing, building, and optimizing
 \resumeItem{\textbf{Quality Assessment Chrome Extension:} Content authenticity checker using Google Inception V3.}
 \end{itemize}
 
-%-----------AWARDS-----------
+%-----------ACHIEVEMENTS-----------
 \section{Achievements}
 \begin{itemize}[leftmargin=*]
 \resumeItem{Facebook PyTorch Challenge Scholarship, 2018.}
