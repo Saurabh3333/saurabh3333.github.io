@@ -8,30 +8,26 @@ data reliability, scalability, and performance.
 Technical Skills
 Languages: Python, SQL, Java, JavaScript, C++
 Data Tools: Airflow, Dagster, DBT, DLT, PySpark, Pandas
-Cloud: Azure, AWS, Google Cloud
-Databases: PostgreSQL, MySQL, MongoDB
-Other: Terraform, REST APIs, Git, Unix
+Cloud: Azure, AWS, GCP
+Databases: PostgreSQL, MongoDB
 Experience
 • GROPYUS
 Berlin, Germany
 Data Engineer
 Aug 2022 – Present
 • Designed and optimized data pipelines for KUKA robots enabling real-time production insights.
-• Streamlined data flows between robotic systems and enterprise platforms, improving automation eﬀiciency.
 • Tech: Dagster, Airflow, DBT, DLT, Azure, Python
 • Sigmoid
 Bengaluru, India
 Software Development Engineer
 Jun 2021 – Jul 2022
 • Built and maintained ETL pipelines for processing large-scale sales data from Colgate-Walmart.
-• Automated reporting and analytics for EVR, CBR, and Net Sales data.
-• Tech: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow
+• Tech: Python, PySpark, GCP, AWS, Airflow
 • Amdocs
 Pune, India
 Software Engineer
 Jun 2019 – Jun 2021
-• Developed features for Comcast CRM, including business needs tracking and process automation.
-• Led design, wireframing, and implementation of new modules.
+• Developed features for Comcast CRM.
 • Tech: Java, Spring, REST/SOAP APIs
 Selected Projects
 • Apparel Recommendation System: Machine learning-based product recommender using TensorFlow and Keras.
