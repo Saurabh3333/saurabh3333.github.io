@@ -27,10 +27,6 @@ Software Engineer
 Jun 2019 – Jun 2021
 • Comcast CRM.
 • Tech: Java, Spring, REST/SOAP APIs
-Selected Projects
-• Apparel Recommendation System: TensorFlow/Keras.
-• Alexa IPL Skill: Node.js/PostgreSQL.
-• Quality Assessment Chrome Ext: Inception V3.
 Achievements
 • Facebook PyTorch 2018.
 • HackWithInfy Top 200.

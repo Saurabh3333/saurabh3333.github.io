@@ -13,7 +13,7 @@ fi
 if python3 -c "import fitz" >/dev/null 2>&1; then
     python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
 else
-    ../.venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
+    ../venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
 fi
 cd ..
 

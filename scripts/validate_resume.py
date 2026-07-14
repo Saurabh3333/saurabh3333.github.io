@@ -21,7 +21,7 @@ def main():
     try:
         import fitz
     except ImportError:
-        venv_python = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".venv", "bin", "python3"))
+        venv_python = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "venv", "bin", "python3"))
         if os.path.exists(venv_python) and sys.executable != venv_python:
             os.execv(venv_python, [venv_python] + sys.argv)
         print("fitz not found and .venv python not available. Failing validation.")
