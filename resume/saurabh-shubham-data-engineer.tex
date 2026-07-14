@@ -1,116 +1,74 @@
-%-------------------------
-% One Page Resume in Latex (Data Engineering focus)
-% Author : Saurabh Shubham
-%-------------------------
-
-\documentclass[a4paper,10pt]{article}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{enumitem}
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=0.68in]{geometry}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{
-  pdfcreator={TeX},
-  pdfproducer={pdfTeX}
-}
-\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
 
-% Deterministic PDF output
-\ifx\pdfinfo\undefined
-\else
-\pdfinfo{
-  /CreationDate (D:19700101000000Z)
-  /ModDate (D:19700101000000Z)
-  /Creator (TeX)
-  /Producer (pdfTeX)
+\hypersetup{
+  pdftitle={Saurabh Shubham - Data Engineer Resume},
+  pdfauthor={Saurabh Shubham},
+  pdfcreator={TeX},
+  pdfproducer={TeX}
 }
+\ifdefined\pdfinfo
+  \pdfinfo{/CreationDate (D:19700101000000Z) /ModDate (D:19700101000000Z)}
 \fi
 
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-0.7in}
-\addtolength{\textheight}{1.4in}
-
-\urlstyle{same}
-\raggedright
-\setlength{\tabcolsep}{0in}
-
-% Sections formatting
-\titleformat{\section}{\vspace{-2pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
-
-% Custom commands
-\newcommand{\resumeItem}[1]{\item\small{#1}}
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
-  \begin{description}[leftmargin=0pt, labelindent=0pt, labelsep=0pt, itemsep=0pt, parsep=0pt]
-    \item[] \textbf{#1} \hfill #2
-    \item[] \textit{\small#3} \hfill \textit{\small #4}
-  \end{description}\vspace{-5pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand{\labelitemii}{$\circ$}
-
-%-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=1.5pt,topsep=2pt}
+\titleformat{\section}{\large\bfseries\color{black}}{}{0pt}{}[\vspace{-4pt}\titlerule]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+\newcommand{\role}[4]{\textbf{#1} \hfill #2\\\textit{#3} \hfill \textit{#4}}
 
 \begin{document}
+\begin{center}
+  {\LARGE\bfseries Saurabh Shubham}\\[2pt]
+  Berlin, Germany $\mid$
+  \href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $\mid$
+  \href{tel:+491705452439}{+49 170 5452439}\\
+  \href{https://www.linkedin.com/in/saurabh-shubham/}{linkedin.com/in/saurabh-shubham} $\mid$
+  \href{https://github.com/Saurabh3333}{github.com/Saurabh3333} $\mid$
+  \href{https://saurabh3333.github.io/}{saurabh3333.github.io}
+\end{center}
 
-\centerline{\huge \bf Saurabh Shubham}
-\centerline{\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ \href{tel:+491705452439}{+49-1705452439}}
-\centerline{\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ \href{https://github.com/Saurabh3333}{GitHub}}
-
-%-----------SUMMARY-----------
-\vspace{-4pt}
 \section{Summary}
-Data Engineer, 5+ years experience.
+Data Engineer with 7+ years across manufacturing data, commercial data pipelines,
+and backend integration. Builds Python-based ETL/ELT workflows with orchestration,
+cloud platforms, and production software practices.
 
-%-----------TECH SKILLS-----------
-\section{Technical Skills}
-\textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
-\textbf{Data Tools:} Airflow, Dagster, DBT, DLT, PySpark, Pandas \\
-\textbf{Cloud:} Azure, AWS, GCP \\
-\textbf{Databases:} PostgreSQL, MongoDB
-
-%-----------EXPERIENCE-----------
 \section{Experience}
-\begin{itemize}[leftmargin=*]
-
-\resumeSubheading
-{GROPYUS}{Berlin, Germany}
-{Data Engineer}{Aug 2022 -- Present}
-\resumeItem{KUKA robots, real-time insights, ELT.}
-\resumeItem{Tech: Dagster, Airflow, DBT, DLT, Azure, Python}
-
-\resumeSubheading
-{Sigmoid}{Bengaluru, India}
-{Software Development Engineer}{Jun 2021 -- Jul 2022}
-\resumeItem{ETL pipelines, Colgate-Walmart sales data.}
-\resumeItem{Tech: Python, PySpark, GCP, AWS, Airflow}
-
-\resumeSubheading
-{Amdocs}{Pune, India}
-{Software Engineer}{Jun 2019 -- Jun 2021}
-\resumeItem{Comcast CRM.}
-\resumeItem{Tech: Java, Spring, REST/SOAP APIs}
-
+\role{GROPYUS}{Berlin, Germany}{Data Engineer}{Aug 2022 -- Present}
+\begin{itemize}
+  \item Designed and optimised data pipelines connecting robotic systems with enterprise data flows for production insight.
+  \item Worked with Python, Dagster, Airflow, dbt, DLT, and Microsoft Azure.
 \end{itemize}
 
-
-%-----------AWARDS-----------
-\section{Achievements}
-\begin{itemize}[leftmargin=*]
-\resumeItem{Facebook PyTorch 2018.}
-\resumeItem{HackWithInfy Top 200.}
-\resumeItem{Google Tech Intern Connect.}
+\role{Sigmoid}{Bengaluru, India}{Software Development Engineer}{Jun 2021 -- Jul 2022}
+\begin{itemize}
+  \item Built and maintained ETL pipelines for commercial sales reporting.
+  \item Worked with Python, PySpark, Airflow, Pandas, Terraform, Google Cloud, and AWS.
 \end{itemize}
+
+\role{Amdocs}{Pune, India}{Software Engineer}{Jun 2019 -- Jun 2021}
+\begin{itemize}
+  \item Delivered CRM features from requirements and wireframes through implementation.
+  \item Built backend integrations with Java, Spring, REST APIs, and SOAP APIs.
+\end{itemize}
+
+\section{Technical Skills}
+\textbf{Languages:} Python, SQL, Java, JavaScript\\
+\textbf{Data:} Airflow, Dagster, dbt, DLT, PySpark, Pandas\\
+\textbf{Cloud and delivery:} Microsoft Azure, AWS, Google Cloud, Terraform, Git, Unix\\
+\textbf{Databases and interfaces:} PostgreSQL, MySQL, MongoDB, REST APIs, SOAP APIs
+
+\section{Education}
+\textbf{Birla Institute of Technology Mesra} \hfill India\\
+Bachelor of Engineering in Computer Science \hfill Aug 2015 -- Jun 2019
+
+\section{Recognition}
+Facebook PyTorch Challenge Scholarship, 2018 $\mid$ Top 200, Infosys HackWithInfy $\mid$
+Google Tech Intern Connect invitee, 2018
 
 \end{document}

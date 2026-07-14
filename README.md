@@ -1,20 +1,34 @@
-# Saurabh Shubham - Personal Portfolio and Resume
+# Saurabh Shubham — portfolio and resume
 
-This repository contains the source code for my personal portfolio website and my professional resume.
+Static GitHub Pages portfolio for a Berlin-based Data Engineer. Personal claims
+are governed by `brand/evidence-matrix.md`; unsupported themes are documented in
+`brand/open-questions.md` and omitted from published copy.
 
 ## Resume
 
-The integrated ATS-safe resume is available in the `resume` directory.
-- PDF: [resume/saurabh-shubham-data-engineer.pdf](resume/saurabh-shubham-data-engineer.pdf)
-- LaTeX Source: [resume/saurabh-shubham-data-engineer.tex](resume/saurabh-shubham-data-engineer.tex)
-- ATS Text: [resume/saurabh-shubham-data-engineer.txt](resume/saurabh-shubham-data-engineer.txt)
+Requires Tectonic and Poppler (`pdfinfo`, `pdftotext`). Set `TECTONIC_BIN` when
+Tectonic is not on `PATH`.
 
-You can build the resume deterministically by running:
 ```bash
-SOURCE_DATE_EPOCH=0 TZ=UTC bash scripts/build-resume.sh
+SOURCE_DATE_EPOCH=0 TZ=UTC bash scripts/build-resume.sh --check
+python3 scripts/validate_resume.py \
+  --tex resume/saurabh-shubham-data-engineer.tex \
+  --pdf resume/saurabh-shubham-data-engineer.pdf \
+  --text resume/saurabh-shubham-data-engineer.txt \
+  --evidence brand/evidence-matrix.md
 ```
 
-You can validate the resume using the provided python script:
+Run `bash scripts/build-resume.sh` without `--check` to update committed PDF and
+ATS text after editing LaTeX.
+
+## Portfolio
+
 ```bash
-python3 scripts/validate_resume.py --tex resume/saurabh-shubham-data-engineer.tex --pdf resume/saurabh-shubham-data-engineer.pdf --text resume/saurabh-shubham-data-engineer.txt --evidence brand/evidence-matrix.md
+npm ci --ignore-scripts
+python3 scripts/validate_brand.py --evidence brand/evidence-matrix.md --paths brand resume index.html
+python3 scripts/validate_site.py --root .
+npm run validate
 ```
+
+Site has no production build or runtime dependency. Serve repository root with
+any static HTTP server for local review.

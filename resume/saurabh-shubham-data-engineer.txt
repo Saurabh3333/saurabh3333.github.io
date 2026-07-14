@@ -1,33 +1,40 @@
 Saurabh Shubham
-saurabh.friday@gmail.com | +49-1705452439
-LinkedIn | GitHub
+Berlin, Germany | saurabh.friday@gmail.com | +49 170 5452439
+linkedin.com/in/saurabh-shubham | github.com/Saurabh3333 | saurabh3333.github.io
 Summary
-Data Engineer, 5+ years experience.
-Technical Skills
-Languages: Python, SQL, Java, JavaScript, C++
-Data Tools: Airflow, Dagster, DBT, DLT, PySpark, Pandas
-Cloud: Azure, AWS, GCP
-Databases: PostgreSQL, MongoDB
+Data Engineer with 7+ years across manufacturing data, commercial data pipelines, and backend inte-
+gration. Builds Python-based ETL/ELT workflows with orchestration, cloud platforms, and production
+software practices.
 Experience
-• GROPYUS
+GROPYUS
 Berlin, Germany
 Data Engineer
 Aug 2022 – Present
-• KUKA robots, real-time insights, ELT.
-• Tech: Dagster, Airflow, DBT, DLT, Azure, Python
-• Sigmoid
+• Designed and optimised data pipelines connecting robotic systems with enterprise data flows for pro-
+duction insight.
+• Worked with Python, Dagster, Airflow, dbt, DLT, and Microsoft Azure.
+Sigmoid
 Bengaluru, India
 Software Development Engineer
 Jun 2021 – Jul 2022
-• ETL pipelines, Colgate-Walmart sales data.
-• Tech: Python, PySpark, GCP, AWS, Airflow
-• Amdocs
+• Built and maintained ETL pipelines for commercial sales reporting.
+• Worked with Python, PySpark, Airflow, Pandas, Terraform, Google Cloud, and AWS.
+Amdocs
 Pune, India
 Software Engineer
 Jun 2019 – Jun 2021
-• Comcast CRM.
-• Tech: Java, Spring, REST/SOAP APIs
-Achievements
-• Facebook PyTorch 2018.
-• HackWithInfy Top 200.
-• Google Tech Intern Connect.
+• Delivered CRM features from requirements and wireframes through implementation.
+• Built backend integrations with Java, Spring, REST APIs, and SOAP APIs.
+Technical Skills
+Languages: Python, SQL, Java, JavaScript
+Data: Airflow, Dagster, dbt, DLT, PySpark, Pandas
+Cloud and delivery: Microsoft Azure, AWS, Google Cloud, Terraform, Git, Unix
+Databases and interfaces: PostgreSQL, MySQL, MongoDB, REST APIs, SOAP APIs
+Education
+Birla Institute of Technology Mesra
+India
+Bachelor of Engineering in Computer Science
+Aug 2015 – Jun 2019
+Recognition
+Facebook PyTorch Challenge Scholarship, 2018 | Top 200, Infosys HackWithInfy | Google Tech Intern
+Connect invitee, 2018

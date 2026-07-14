@@ -1,81 +1,56 @@
+#!/usr/bin/env python3
 import argparse
-import sys
-import os
-import subprocess
+from pathlib import Path
 import re
+import subprocess
 
-def main():
+
+def output(*command: str) -> str:
+    return subprocess.run(command, check=True, text=True, capture_output=True).stdout
+
+
+def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--tex", required=True)
-    parser.add_argument("--pdf", required=True)
-    parser.add_argument("--text", required=True)
-    parser.add_argument("--evidence", required=True)
+    for name in ("tex", "pdf", "text", "evidence"):
+        parser.add_argument(f"--{name}", type=Path, required=True)
     args = parser.parse_args()
 
-    for path in [args.tex, args.pdf, args.text, args.evidence]:
-        if not os.path.exists(path):
-            print(f"Missing {path}")
-            sys.exit(1)
+    for path in (args.tex, args.pdf, args.text, args.evidence):
+        if not path.is_file():
+            raise SystemExit(f"missing file: {path}")
 
-    # 1. Check page count and text securely using PyMuPDF (fitz)
-    try:
-        import fitz
-    except ImportError:
-        venv_python1 = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "venv", "bin", "python3"))
-        venv_python2 = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".venv", "bin", "python3"))
-        venv_python3 = "/tmp/pdfvenv/bin/python3"
-        
-        venv_python = None
-        if os.path.exists(venv_python1):
-            venv_python = venv_python1
-        elif os.path.exists(venv_python2):
-            venv_python = venv_python2
-        elif os.path.exists(venv_python3):
-            venv_python = venv_python3
-            
-        if venv_python and sys.executable != venv_python:
-            os.execv(venv_python, [venv_python] + sys.argv)
-            
-        print("fitz not found and venv python not available. Failing validation.")
-        sys.exit(1)
+    info = output("pdfinfo", str(args.pdf))
+    if not re.search(r"^Pages:\s+[12]$", info, re.MULTILINE):
+        raise SystemExit("resume must contain one or two pages")
 
-    doc = fitz.open(args.pdf)
-    pages = len(doc)
-    if pages not in [1, 2]:
-        print(f"Invalid page count: {pages}")
-        sys.exit(1)
-        
-    # 2. Check text extraction
-    pdf_text = "\n".join(page.get_text() for page in doc)
-    if "Saurabh Shubham" not in pdf_text:
-        print("Name not found in PDF text")
-        sys.exit(1)
-    
-    with open(args.text, "r", encoding="utf-8") as f:
-        text = f.read()
+    extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n") + "\n"
+    maintained = args.text.read_text()
+    if extracted != maintained:
+        raise SystemExit("ATS text does not match PDF extraction")
 
-    # Validate factual fields
-    checks = [
-        "Saurabh Shubham",
-        "saurabh.friday@gmail.com",
-        "GROPYUS",
-        "Data Engineer",
-        "Sigmoid",
-        "Software Development Engineer",
-        "Amdocs",
-        "Software Engineer"
-    ]
-    for check in checks:
-        if check not in text:
-            print(f"Missing field in extracted text: {check}")
-            sys.exit(1)
-    
-    # Check chronology
-    if not (text.find("GROPYUS") < text.find("Sigmoid") < text.find("Amdocs")):
-        print("Chronology is incorrect in extracted text")
-        sys.exit(1)
+    required = (
+        "Saurabh Shubham", "GROPYUS", "Data Engineer", "Sigmoid",
+        "Software Development Engineer", "Amdocs", "Software Engineer",
+        "Birla Institute of Technology Mesra", "Python", "SQL",
+    )
+    missing = [value for value in required if value not in extracted]
+    if missing:
+        raise SystemExit("missing required fields: " + ", ".join(missing))
+    if not (extracted.index("GROPYUS") < extracted.index("Sigmoid") < extracted.index("Amdocs")):
+        raise SystemExit("experience is not reverse chronological")
 
-    print("Validation passed")
+    forbidden = ("Machine Learning Engineer", "AI System Engineer", "Colgate", "Walmart", "Comcast")
+    found = [value for value in forbidden if value in extracted]
+    if found:
+        raise SystemExit("forbidden or private claims: " + ", ".join(found))
+
+    evidence = args.evidence.read_text()
+    for claim_id in ("C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31"):
+        if claim_id not in evidence:
+            raise SystemExit(f"missing evidence ID: {claim_id}")
+
+    print("resume validation passed")
+
 
 if __name__ == "__main__":
     main()

@@ -1,43 +1,34 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
-# Build resume deterministically
-cd resume
-if command -v pdflatex >/dev/null 2>&1; then
-    SOURCE_DATE_EPOCH=0 TZ=UTC pdflatex -interaction=nonstopmode -halt-on-error saurabh-shubham-data-engineer.tex
+root=$(cd "$(dirname "$0")/.." && pwd)
+name=saurabh-shubham-data-engineer
+source_file="$root/resume/$name.tex"
+output_pdf="$root/resume/$name.pdf"
+output_text="$root/resume/$name.txt"
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+
+cp "$source_file" "$tmp/$name.tex"
+if [[ -n ${TECTONIC_BIN:-} ]]; then
+  compiler=$TECTONIC_BIN
+elif command -v tectonic >/dev/null; then
+  compiler=$(command -v tectonic)
+elif [[ -x /tmp/tectonic ]]; then
+  compiler=/tmp/tectonic
 else
-    if [ ! -f "/tmp/tectonic" ]; then
-        wget -qO- https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.15.0/tectonic-0.15.0-x86_64-unknown-linux-musl.tar.gz | tar --no-same-owner -xz -C /tmp
-        chmod +x /tmp/tectonic
-    fi
-    SOURCE_DATE_EPOCH=0 TZ=UTC /tmp/tectonic -C saurabh-shubham-data-engineer.tex
+  echo "Install Tectonic or set TECTONIC_BIN" >&2
+  exit 1
 fi
 
-# Clean up LaTeX auxiliary files
-rm -f saurabh-shubham-data-engineer.aux saurabh-shubham-data-engineer.log saurabh-shubham-data-engineer.out
+SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-0} TZ=${TZ:-UTC} \
+  "$compiler" --outdir "$tmp" "$tmp/$name.tex" >/dev/null
+pdftotext "$tmp/$name.pdf" "$tmp/$name.txt"
 
-# Extract text using PyMuPDF
-if python3 -c "import fitz" >/dev/null 2>&1; then
-    python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
-elif [ -f "../venv/bin/python3" ]; then
-    ../venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
-elif [ -f "../.venv/bin/python3" ]; then
-    ../.venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
+if [[ ${1:-} == --check ]]; then
+  cmp "$tmp/$name.pdf" "$output_pdf"
+  cmp "$tmp/$name.txt" "$output_text"
 else
-    python3 -m venv /tmp/pdfvenv
-    /tmp/pdfvenv/bin/pip install --quiet PyMuPDF
-    /tmp/pdfvenv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
+  install -m 0644 "$tmp/$name.pdf" "$output_pdf"
+  install -m 0644 "$tmp/$name.txt" "$output_text"
 fi
-
-rm -f saurabh-shubham-data-engineer.aux saurabh-shubham-data-engineer.log saurabh-shubham-data-engineer.out
-cd ..
-
-rm -f tectonic tectonic.tar.gz xpdf-tools.tar.gz
-
-
-if [ "${1:-}" = "--check" ]; then
-    echo "Check passed"
-fi
-
-# Clean up downloaded tools and archives
-rm -f tectonic tectonic.tar.gz xpdf-tools.tar.gz

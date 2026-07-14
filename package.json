@@ -1,0 +1,12 @@
+{
+  "name": "saurabh-portfolio",
+  "private": true,
+  "scripts": {
+    "test:portfolio": "playwright test --grep-invert @performance",
+    "test:performance": "playwright test --grep @performance",
+    "validate": "npm run test:portfolio && npm run test:performance"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}
