@@ -1,10 +1,8 @@
 Saurabh Shubham
 saurabh.friday@gmail.com | +49-1705452439
-LinkedIn | GitHub | Portfolio
+LinkedIn | GitHub
 Summary
-Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL workflows, and
-backend services. Skilled in Python, cloud platforms, and modern data stack tools. Proven track record of improving
-data reliability, scalability, and performance.
+Data Engineer with 5+ years of experience.
 Technical Skills
 Languages: Python, SQL, Java, JavaScript, C++
 Data Tools: Airflow, Dagster, DBT, DLT, PySpark, Pandas
