@@ -17,31 +17,27 @@ def main():
             print(f"Missing {path}")
             sys.exit(1)
 
-    # 1. Check page count via pdfinfo (to replace the unsafe bash pipe)
+    # 1. Check page count and text securely using PyMuPDF (fitz)
     try:
-        out = subprocess.check_output(["pdfinfo", args.pdf], text=True)
-        match = re.search(r'^Pages:\s+(\d+)', out, re.MULTILINE)
-        if match:
-            pages = int(match.group(1))
-            if pages not in [1, 2]:
-                print(f"Invalid page count: {pages}")
-                sys.exit(1)
-        else:
-            print("Could not find page count in pdfinfo output")
-            sys.exit(1)
-    except FileNotFoundError:
-        # If pdfinfo is not installed during local testing, we skip or fallback
-        print("pdfinfo not found, skipping page count check")
+        import fitz
+    except ImportError:
+        venv_python = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".venv", "bin", "python3"))
+        if os.path.exists(venv_python) and sys.executable != venv_python:
+            os.execv(venv_python, [venv_python] + sys.argv)
+        print("fitz not found and .venv python not available. Failing validation.")
+        sys.exit(1)
 
+    doc = fitz.open(args.pdf)
+    pages = len(doc)
+    if pages not in [1, 2]:
+        print(f"Invalid page count: {pages}")
+        sys.exit(1)
+        
     # 2. Check text extraction
-    try:
-        # Also simulate the pdftotext check
-        out = subprocess.check_output(["pdftotext", args.pdf, "-"], text=True)
-        if "Saurabh Shubham" not in out:
-            print("Name not found in PDF text")
-            sys.exit(1)
-    except FileNotFoundError:
-        print("pdftotext not found, using provided text file for checks")
+    pdf_text = "\n".join(page.get_text() for page in doc)
+    if "Saurabh Shubham" not in pdf_text:
+        print("Name not found in PDF text")
+        sys.exit(1)
     
     with open(args.text, "r", encoding="utf-8") as f:
         text = f.read()
