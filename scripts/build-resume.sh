@@ -16,8 +16,14 @@ fi
 # Extract text using PyMuPDF
 if python3 -c "import fitz" >/dev/null 2>&1; then
     python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
-else
+elif [ -f "../venv/bin/python3" ]; then
+    ../venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
+elif [ -f "../.venv/bin/python3" ]; then
     ../.venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
+else
+    python3 -m venv /tmp/pdfvenv
+    /tmp/pdfvenv/bin/pip install --quiet PyMuPDF
+    /tmp/pdfvenv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
 fi
 
 rm -f saurabh-shubham-data-engineer.aux saurabh-shubham-data-engineer.log saurabh-shubham-data-engineer.out
