@@ -23,12 +23,15 @@ def main():
     except ImportError:
         venv_python1 = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "venv", "bin", "python3"))
         venv_python2 = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".venv", "bin", "python3"))
+        venv_python3 = "/tmp/pdfvenv/bin/python3"
         
         venv_python = None
         if os.path.exists(venv_python1):
             venv_python = venv_python1
         elif os.path.exists(venv_python2):
             venv_python = venv_python2
+        elif os.path.exists(venv_python3):
+            venv_python = venv_python3
             
         if venv_python and sys.executable != venv_python:
             os.execv(venv_python, [venv_python] + sys.argv)
