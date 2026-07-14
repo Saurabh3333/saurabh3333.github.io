@@ -1,120 +1,159 @@
-%-------------------------
-% One Page Resume in Latex (Data Engineering focus)
-% Author : Saurabh Shubham
-%-------------------------
-
-\documentclass[a4paper,10pt]{article}
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
+\usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
 
-% deterministic PDF generation
+% Deterministic build settings
 \pdfinfo{
   /CreationDate (D:19700101000000Z)
   /ModDate (D:19700101000000Z)
   /Creator (pdflatex)
+  /Producer (pdflatex)
 }
 \pdftrailerid{}
-\pdfsuppressptexinfo=-1
+\pdfsuppressptexinfo15
 
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Margins
+% Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-0.7in}
-\addtolength{\textheight}{1.4in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
 \urlstyle{same}
+
+\raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
 % Sections formatting
-\titleformat{\section}{\vspace{-2pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Custom commands
-\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-7pt}
 }
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand{\labelitemii}{$\circ$}
 
-%-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 \begin{document}
 
-\centerline{\huge \bf Saurabh Shubham}
-\centerline{\href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $|$ +49-1705452439}
-\centerline{\href{https://www.linkedin.com/in/saurabh-shubham/}{LinkedIn} $|$ \href{https://github.com/Saurabh3333}{GitHub} $|$ \href{https://saurabh3333.github.io}{Portfolio}}
+\begin{center}
+    \textbf{\Huge \scshape Saurabh Shubham} \\ \vspace{1pt}
+    \small +49-1705452439 $|$ \href{mailto:saurabh.friday@gmail.com}{\underline{saurabh.friday@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/saurabh-shubham/}{\underline{linkedin.com/in/saurabh-shubham}} $|$
+    \href{https://github.com/Saurabh3333}{\underline{github.com/Saurabh3333}} $|$
+    \href{https://saurabh3333.github.io}{\underline{saurabh3333.github.io}}
+\end{center}
 
-%-----------SUMMARY-----------
-\vspace{-4pt}
 \section{Summary}
-Senior Data Engineer with 5+ years of experience in designing, building, and optimizing data pipelines, ETL/ELT workflows, and data platforms. Skilled in Python, SQL, cloud infrastructure, and modern data stack tools. Proven track record of improving data reliability, scalability, and orchestrating complex data operations.
+Data Engineer with 5+ years of experience building and optimizing data pipelines, ETL/ELT workflows, and backend services. Skilled in modern data platforms including Dagster, Airflow, and dbt. Proven ability to streamline operations, improve reliability, and design scalable infrastructure for large-scale and real-time processing.
 
-%-----------TECH SKILLS-----------
-\section{Technical Skills}
-\textbf{Languages:} Python, SQL, Java, JavaScript, C++ \\
-\textbf{Data Tools:} Airflow, Dagster, dbt, DLT, PySpark, Pandas \\
-\textbf{Cloud \& DBs:} Azure, AWS, Google Cloud, PostgreSQL, MongoDB \\
-\textbf{Other:} Terraform, REST APIs, Git, Unix
-
-%-----------EXPERIENCE-----------
 \section{Experience}
-\begin{itemize}[leftmargin=*]
+  \resumeSubHeadingListStart
 
-\resumeSubheading
-{GROPYUS}{Berlin, Germany}
-{Data Engineer}{Aug 2022 -- Present}
-\resumeItem{Designed and optimized data pipelines for manufacturing robots, enabling real-time production insights.}
-\resumeItem{Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.}
-\resumeItem{Engineered ELT pipelines and data models for analytics, ensuring data reliability and quality.}
-\resumeItem{Tech: Dagster, Airflow, dbt, DLT, Azure, Python}
+    \resumeSubheading
+      {GROPYUS}{Berlin, Germany}
+      {Data Engineer}{Aug 2022 -- Present}
+      \resumeItemListStart
+        \resumeItem{Designed and optimized data pipelines for KUKA robots enabling real-time production insights.}
+        \resumeItem{Streamlined data flows between robotic systems and enterprise platforms, improving automation efficiency.}
+        \resumeItem{Orchestrated data operations and transformations leveraging Dagster, Airflow, dbt, and DLT on Azure.}
+      \resumeItemListEnd
 
-\resumeSubheading
-{Sigmoid}{Bengaluru, India}
-{Software Development Engineer}{Jun 2021 -- Jul 2022}
-\resumeItem{Built and maintained large-scale commercial ETL pipelines for processing sales data from Colgate-Walmart.}
-\resumeItem{Automated reporting and analytics for EVR, CBR, and Net Sales data workflows.}
-\resumeItem{Tech: Python, PySpark, GCP, AWS, Pandas, Terraform, Airflow}
+    \resumeSubheading
+      {Sigmoid}{Bengaluru, India}
+      {Software Development Engineer}{Jun 2021 -- Jul 2022}
+      \resumeItemListStart
+        \resumeItem{Built and maintained ETL pipelines for processing large-scale sales data from Colgate-Walmart.}
+        \resumeItem{Automated reporting and analytics for EVR, CBR, and Net Sales data, improving data availability.}
+        \resumeItem{Developed infrastructure and processing flows using Python, PySpark, Pandas, Terraform, and Airflow on GCP and AWS.}
+      \resumeItemListEnd
 
-\resumeSubheading
-{Amdocs}{Pune, India}
-{Software Engineer}{Jun 2019 -- Jun 2021}
-\resumeItem{Developed backend integration features for Comcast CRM, including business needs tracking and process automation.}
-\resumeItem{Led backend design and implementation of new modules.}
-\resumeItem{Tech: Java, Spring, REST/SOAP APIs, SQL}
+    \resumeSubheading
+      {Amdocs}{Pune, India}
+      {Software Engineer}{Jun 2019 -- Jun 2021}
+      \resumeItemListStart
+        \resumeItem{Developed and delivered core backend features for Comcast CRM using Java, Spring, and REST/SOAP APIs.}
+        \resumeItem{Automated internal process tracking and business needs workflows, enhancing operational tracking.}
+        \resumeItem{Led design, wireframing, and implementation of new integration modules.}
+      \resumeItemListEnd
 
-\end{itemize}
+  \resumeSubHeadingListEnd
 
-%-----------PROJECTS-----------
-\section{Selected Projects}
-\begin{itemize}[leftmargin=*]
-\resumeItem{\textbf{Apparel Recommendation System:} Machine learning-based product recommender using TensorFlow and Keras.}
-\resumeItem{\textbf{Alexa IPL Skill:} Voice app answering IPL queries using Node.js and PostgreSQL.}
-\resumeItem{\textbf{Quality Assessment Chrome Extension:} Content authenticity checker using Google Inception V3.}
-\end{itemize}
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Apparel Recommendation System}{TensorFlow, Keras}
+      {Machine Learning System}{}
+      \resumeItemListStart
+        \resumeItem{Developed a product recommender using machine learning techniques to personalize user experiences.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Alexa IPL Skill}{Node.js, PostgreSQL}
+      {Voice Application}{}
+      \resumeItemListStart
+        \resumeItem{Created a voice application capable of answering queries related to IPL match data.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Quality Assessment Chrome Extension}{Google Inception V3}
+      {Content Verification Tool}{}
+      \resumeItemListStart
+        \resumeItem{Built an extension for real-time content authenticity checking using an Inception V3 model.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
-%-----------AWARDS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, SQL, Java, JavaScript, C++} \\
+     \textbf{Data Tools}{: Airflow, Dagster, dbt, DLT, PySpark, Pandas} \\
+     \textbf{Cloud \& Infrastructure}{: Azure, AWS, Google Cloud (GCP), Terraform} \\
+     \textbf{Databases}{: PostgreSQL, MySQL, MongoDB} \\
+     \textbf{Other}{: REST APIs, Git, Unix/Linux}
+    }}
+ \end{itemize}
+
 \section{Achievements}
-\begin{itemize}[leftmargin=*]
-\resumeItem{Facebook PyTorch Challenge Scholarship, 2018.}
-\resumeItem{Top 200 in Infosys HackWithInfy coding competition.}
-\resumeItem{Google Tech Intern Connect invitee, 2018.}
-\end{itemize}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Awards \& Recognition}{2018}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Facebook PyTorch Challenge Scholarship.}
+        \resumeItem{Top 200 ranking in Infosys HackWithInfy coding competition.}
+        \resumeItem{Invitee to Google Tech Intern Connect.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
 \end{document}
