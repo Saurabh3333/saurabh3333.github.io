@@ -13,6 +13,9 @@ else
     SOURCE_DATE_EPOCH=0 TZ=UTC /tmp/tectonic -C saurabh-shubham-data-engineer.tex
 fi
 
+# Clean up LaTeX auxiliary files
+rm -f saurabh-shubham-data-engineer.aux saurabh-shubham-data-engineer.log saurabh-shubham-data-engineer.out
+
 # Extract text using PyMuPDF
 if python3 -c "import fitz" >/dev/null 2>&1; then
     python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
@@ -35,3 +38,6 @@ rm -f tectonic tectonic.tar.gz xpdf-tools.tar.gz
 if [ "${1:-}" = "--check" ]; then
     echo "Check passed"
 fi
+
+# Clean up downloaded tools and archives
+rm -f tectonic tectonic.tar.gz xpdf-tools.tar.gz
