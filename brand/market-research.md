@@ -1,7 +1,7 @@
 # Senior Data Engineering market research
 
-**Retrieval date:** 2026-07-13  
-**Market:** Berlin, Germany, and selected European remote/hybrid roles  
+**Retrieval date:** 2026-07-13
+**Market:** Berlin, Germany, and selected European remote/hybrid roles
 **Source classification:** External research only
 
 ## Scope and method
@@ -132,4 +132,3 @@ Market evidence may guide section order, vocabulary, and questions for later evi
 3. Prefer problem, contribution, validation, and outcome over keywords.
 4. Omit unsupported scale, ownership, production status, team size, reliability, or business impact.
 5. Keep Data Engineering and data platforms primary; present AI/agentic work only as supported system architecture.
-

@@ -31,22 +31,22 @@ backend integrations using Python, orchestration tools, and cloud platforms.
 
 ### Manufacturing data flows
 
-**Classification:** Professional experience · GROPYUS  
+**Classification:** Professional experience · GROPYUS
 **Problem:** Production insight depends on data moving reliably between robotic
-systems and enterprise platforms.  
+systems and enterprise platforms.
 **Contribution:** Designed and optimised pipelines and data flows using Python,
-Dagster, Airflow, dbt, DLT, and Azure.  
+Dagster, Airflow, dbt, DLT, and Azure.
 **Validation/outcome boundary:** Candidate evidence supports production-insight
 and automation context, but no public metric or internal architecture. Publish
 no throughput, latency, uptime, topology, or confidential data. <!-- C12–C13 -->
 
 ### Commercial reporting pipelines
 
-**Classification:** Professional experience · Sigmoid  
+**Classification:** Professional experience · Sigmoid
 **Problem:** Commercial reporting required repeatable ETL processing across
-sales datasets.  
+sales datasets.
 **Contribution:** Built and maintained pipelines using Python, PySpark, Airflow,
-Pandas, Terraform, Google Cloud, and AWS.  
+Pandas, Terraform, Google Cloud, and AWS.
 **Validation/outcome boundary:** Candidate evidence supports end-to-end reporting
 work, not public scale or business-impact metrics. Client names stay private.
 <!-- C17–C18 -->

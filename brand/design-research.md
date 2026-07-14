@@ -1,6 +1,6 @@
 # Portfolio, resume, and engineering-story design research
 
-**Retrieval date:** 2026-07-13  
+**Retrieval date:** 2026-07-13
 **Source classification:** External research and reference/inspiration only
 
 ## Boundary
