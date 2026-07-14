@@ -16,5 +16,5 @@ SOURCE_DATE_EPOCH=0 TZ=UTC bash scripts/build-resume.sh
 
 You can validate the resume using the provided python script:
 ```bash
-python3 scripts/validate_resume.py --tex resume/saurabh-shubham-data-engineer.tex --pdf resume/saurabh-shubham-data-engineer.pdf --text resume/saurabh-shubham-data-engineer.txt
+python3 scripts/validate_resume.py --tex resume/saurabh-shubham-data-engineer.tex --pdf resume/saurabh-shubham-data-engineer.pdf --text resume/saurabh-shubham-data-engineer.txt --evidence brand/evidence-matrix.md
 ```
