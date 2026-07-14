@@ -19,7 +19,12 @@ if python3 -c "import fitz" >/dev/null 2>&1; then
 else
     ../.venv/bin/python3 -c "import fitz; doc = fitz.open('saurabh-shubham-data-engineer.pdf'); open('saurabh-shubham-data-engineer.txt', 'w', encoding='utf-8').write('\n'.join(page.get_text() for page in doc))"
 fi
+
+rm -f saurabh-shubham-data-engineer.aux saurabh-shubham-data-engineer.log saurabh-shubham-data-engineer.out
 cd ..
+
+rm -f tectonic tectonic.tar.gz xpdf-tools.tar.gz
+
 
 if [ "${1:-}" = "--check" ]; then
     echo "Check passed"
