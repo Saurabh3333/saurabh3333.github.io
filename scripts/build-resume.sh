@@ -6,7 +6,7 @@ cd resume
 if command -v pdflatex >/dev/null 2>&1; then
     SOURCE_DATE_EPOCH=0 TZ=UTC pdflatex -interaction=nonstopmode -halt-on-error saurabh-shubham-data-engineer.tex
 else
-    SOURCE_DATE_EPOCH=0 TZ=UTC ../tectonic saurabh-shubham-data-engineer.tex
+    SOURCE_DATE_EPOCH=0 TZ=UTC ../tectonic -C saurabh-shubham-data-engineer.tex
 fi
 
 # Extract text using PyMuPDF
