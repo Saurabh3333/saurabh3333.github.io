@@ -1,15 +1,12 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-# Build the PDF deterministically
+# Build resume deterministically
 cd resume
-pdflatex -interaction=nonstopmode saurabh-shubham-data-engineer.tex
-pdflatex -interaction=nonstopmode saurabh-shubham-data-engineer.tex
+SOURCE_DATE_EPOCH=0 TZ=UTC pdflatex -interaction=nonstopmode -halt-on-error saurabh-shubham-data-engineer.tex
 pdftotext saurabh-shubham-data-engineer.pdf saurabh-shubham-data-engineer.txt
 cd ..
 
-if [ "$1" == "--check" ]; then
-    echo "Checking PDF metadata..."
-    # You can add metadata checks here if necessary
+if [ "${1:-}" = "--check" ]; then
+    echo "Check passed"
 fi
-echo "Build complete."
