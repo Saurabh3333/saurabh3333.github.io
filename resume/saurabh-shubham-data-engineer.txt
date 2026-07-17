@@ -1,33 +1,52 @@
 Saurabh Shubham
+DATA ENGINEER | AGENTIC AI & DATA PLATFORMS
 Berlin, Germany | saurabh.friday@gmail.com | +49 170 5452439
 linkedin.com/in/saurabh-shubham | github.com/Saurabh3333 | saurabh3333.github.io
 Summary
-Data Engineer with 7+ years across manufacturing data, commercial data pipelines, and backend inte-
-gration. Builds Python-based ETL/ELT workflows with orchestration, cloud platforms, and production
-software practices.
+Data Engineer with 7+ years building production data pipelines, orchestration, cloud workflows, and
+backend integrations. Builds agentic engineering workflows with Claude Code and Pasin, combining
+model-driven execution with scoped authority, deterministic validation, and human review. Strong in
+Python, SQL, ETL/ELT, Airflow, Dagster, dbt, cloud platforms, and infrastructure as code.
+Applied AI Engineering
+Pasin — Agentic Workflow Orchestration
+Independent project
+• Designed a workflow for planned task scope, provider routing, sandboxed execution, durable status, and
+budget-aware agent operations.
+• Established deterministic acceptance checks, Codex review gates, evidence records, and rollback-friendly
+Git milestones before completion.
+Claude Code Agent Workflows
+Current practice
+• Use Claude Code across repository discovery, implementation, testing, and review, with explicit
+acceptance criteria and human approval.
+• Build auditable agent workflows around context design, tool boundaries, validation gates, failure
+handling, and evidence-backed outcomes.
 Experience
 GROPYUS
 Berlin, Germany
 Data Engineer
 Aug 2022 – Present
-• Designed and optimised data pipelines connecting robotic systems with enterprise data flows for pro-
-duction insight.
-• Worked with Python, Dagster, Airflow, dbt, DLT, and Microsoft Azure.
+• Design and optimise Python data pipelines connecting robotic manufacturing systems with enterprise
+data flows for production insight.
+• Build and orchestrate maintainable workflows using Dagster, Airflow, dbt, DLT, and Microsoft Azure.
 Sigmoid
 Bengaluru, India
 Software Development Engineer
 Jun 2021 – Jul 2022
-• Built and maintained ETL pipelines for commercial sales reporting.
-• Worked with Python, PySpark, Airflow, Pandas, Terraform, Google Cloud, and AWS.
+• Built ETL pipelines that transformed commercial sales data into repeatable reporting datasets using
+Python, PySpark, and Pandas.
+• Orchestrated and deployed data workflows with Airflow, Terraform, Google Cloud, and AWS.
 Amdocs
 Pune, India
 Software Engineer
 Jun 2019 – Jun 2021
-• Delivered CRM features from requirements and wireframes through implementation.
-• Built backend integrations with Java, Spring, REST APIs, and SOAP APIs.
+• Delivered CRM backend capabilities from requirements and wireframes through implementation and
+integration.
+• Built enterprise integrations and service interfaces using Java, Spring, REST APIs, and SOAP APIs.
 Technical Skills
+AI and agents: Claude Code, agent orchestration, context design, tool use, validation gates,
+human-in-the-loop review
 Languages: Python, SQL, Java, JavaScript
-Data: Airflow, Dagster, dbt, DLT, PySpark, Pandas
+Data engineering: ETL/ELT, Airflow, Dagster, dbt, DLT, PySpark, Pandas, data pipelines
 Cloud and delivery: Microsoft Azure, AWS, Google Cloud, Terraform, Git, Unix
 Databases and interfaces: PostgreSQL, MySQL, MongoDB, REST APIs, SOAP APIs
 Education
@@ -36,5 +55,5 @@ India
 Bachelor of Engineering in Computer Science
 Aug 2015 – Jun 2019
 Recognition
-Facebook PyTorch Challenge Scholarship, 2018 | Top 200, Infosys HackWithInfy | Google Tech Intern
-Connect invitee, 2018
+Facebook PyTorch Challenge Scholar (2018) | Infosys HackWithInfy Top 200
+Google Tech Intern Connect invitee (2018)
