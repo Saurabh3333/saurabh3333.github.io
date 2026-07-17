@@ -1,12 +1,12 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage[margin=0.68in]{geometry}
+\usepackage[hmargin=0.58in,vmargin=0.49in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{xcolor}
 
 \hypersetup{
-  pdftitle={Saurabh Shubham - Data Engineer Resume},
+  pdftitle={Saurabh Shubham - Agentic AI and Data Engineering Resume},
   pdfauthor={Saurabh Shubham},
   pdfcreator={TeX},
   pdfproducer={TeX}
@@ -17,14 +17,19 @@
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlist[itemize]{leftmargin=1.15em,itemsep=1.5pt,topsep=2pt}
-\titleformat{\section}{\large\bfseries\color{black}}{}{0pt}{}[\vspace{-4pt}\titlerule]
-\titlespacing*{\section}{0pt}{7pt}{4pt}
-\newcommand{\role}[4]{\textbf{#1} \hfill #2\\\textit{#3} \hfill \textit{#4}}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlist[itemize]{leftmargin=1.2em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\titleformat{\section}{\normalsize\bfseries\color{black}}{}{0pt}{}[\vspace{-3pt}\titlerule]
+\titlespacing*{\section}{0pt}{5pt}{7pt}
+\newcommand{\role}[4]{\vspace{1.5pt}\textbf{#1} \hfill #2\\[0.5pt]\textit{#3} \hfill \textit{#4}}
+\newcommand{\project}[2]{\vspace{1.5pt}\textbf{#1} \hfill \textit{#2}}
 
 \begin{document}
+\raggedright
 \begin{center}
   {\LARGE\bfseries Saurabh Shubham}\\[2pt]
+  {\textbf{DATA ENGINEER $\mid$ AGENTIC AI \,\&\, DATA PLATFORMS}}\\[3pt]
   Berlin, Germany $\mid$
   \href{mailto:saurabh.friday@gmail.com}{saurabh.friday@gmail.com} $\mid$
   \href{tel:+491705452439}{+49 170 5452439}\\
@@ -34,33 +39,49 @@
 \end{center}
 
 \section{Summary}
-Data Engineer with 7+ years across manufacturing data, commercial data pipelines,
-and backend integration. Builds Python-based ETL/ELT workflows with orchestration,
-cloud platforms, and production software practices.
+Data Engineer with 7+ years building production data pipelines, orchestration,
+cloud workflows, and backend integrations. Builds agentic engineering workflows
+with Claude Code and Pasin, combining model-driven execution with scoped authority,
+deterministic validation, and human review. Strong in Python, SQL, ETL/ELT,
+Airflow, Dagster, dbt, cloud platforms, and infrastructure as code.
+
+\section{Applied AI Engineering}
+\project{Pasin --- Agentic Workflow Orchestration}{Independent project}
+\begin{itemize}
+  \item Designed a workflow for planned task scope, provider routing, sandboxed execution, durable status, and budget-aware agent operations.
+  \item Established deterministic acceptance checks, Codex review gates, evidence records, and rollback-friendly Git milestones before completion.
+\end{itemize}
+
+\project{Claude Code Agent Workflows}{Current practice}
+\begin{itemize}
+  \item Use Claude Code across repository discovery, implementation, testing, and review, with explicit acceptance criteria and human approval.
+  \item Build auditable agent workflows around context design, tool boundaries, validation gates, failure handling, and evidence-backed outcomes.
+\end{itemize}
 
 \section{Experience}
 \role{GROPYUS}{Berlin, Germany}{Data Engineer}{Aug 2022 -- Present}
 \begin{itemize}
-  \item Designed and optimised data pipelines connecting robotic systems with enterprise data flows for production insight.
-  \item Worked with Python, Dagster, Airflow, dbt, DLT, and Microsoft Azure.
+  \item Design and optimise Python data pipelines connecting robotic manufacturing systems with enterprise data flows for production insight.
+  \item Build and orchestrate maintainable workflows using Dagster, Airflow, dbt, DLT, and Microsoft Azure.
 \end{itemize}
 
 \role{Sigmoid}{Bengaluru, India}{Software Development Engineer}{Jun 2021 -- Jul 2022}
 \begin{itemize}
-  \item Built and maintained ETL pipelines for commercial sales reporting.
-  \item Worked with Python, PySpark, Airflow, Pandas, Terraform, Google Cloud, and AWS.
+  \item Built ETL pipelines that transformed commercial sales data into repeatable reporting datasets using Python, PySpark, and Pandas.
+  \item Orchestrated and deployed data workflows with Airflow, Terraform, Google Cloud, and AWS.
 \end{itemize}
 
 \role{Amdocs}{Pune, India}{Software Engineer}{Jun 2019 -- Jun 2021}
 \begin{itemize}
-  \item Delivered CRM features from requirements and wireframes through implementation.
-  \item Built backend integrations with Java, Spring, REST APIs, and SOAP APIs.
+  \item Delivered CRM backend capabilities from requirements and wireframes through implementation and integration.
+  \item Built enterprise integrations and service interfaces using Java, Spring, REST APIs, and SOAP APIs.
 \end{itemize}
 
 \section{Technical Skills}
-\textbf{Languages:} Python, SQL, Java, JavaScript\\
-\textbf{Data:} Airflow, Dagster, dbt, DLT, PySpark, Pandas\\
-\textbf{Cloud and delivery:} Microsoft Azure, AWS, Google Cloud, Terraform, Git, Unix\\
+\textbf{AI and agents:} Claude Code, agent orchestration, context design, tool use, validation gates, human-in-the-loop review\\[1pt]
+\textbf{Languages:} Python, SQL, Java, JavaScript\\[1pt]
+\textbf{Data engineering:} ETL/ELT, Airflow, Dagster, dbt, DLT, PySpark, Pandas, data pipelines\\[1pt]
+\textbf{Cloud and delivery:} Microsoft Azure, AWS, Google Cloud, Terraform, Git, Unix\\[1pt]
 \textbf{Databases and interfaces:} PostgreSQL, MySQL, MongoDB, REST APIs, SOAP APIs
 
 \section{Education}
@@ -68,7 +89,7 @@ cloud platforms, and production software practices.
 Bachelor of Engineering in Computer Science \hfill Aug 2015 -- Jun 2019
 
 \section{Recognition}
-Facebook PyTorch Challenge Scholarship, 2018 $\mid$ Top 200, Infosys HackWithInfy $\mid$
-Google Tech Intern Connect invitee, 2018
+{\small Facebook PyTorch Challenge Scholar (2018) $\mid$ Infosys HackWithInfy Top 200\\[0.5pt]
+Google Tech Intern Connect invitee (2018)}
 
 \end{document}

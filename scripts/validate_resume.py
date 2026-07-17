@@ -20,8 +20,8 @@ def main() -> None:
             raise SystemExit(f"missing file: {path}")
 
     info = output("pdfinfo", str(args.pdf))
-    if not re.search(r"^Pages:\s+[12]$", info, re.MULTILINE):
-        raise SystemExit("resume must contain one or two pages")
+    if not re.search(r"^Pages:\s+1$", info, re.MULTILINE):
+        raise SystemExit("resume must contain exactly one page")
 
     extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n") + "\n"
     maintained = args.text.read_text()
@@ -32,6 +32,7 @@ def main() -> None:
         "Saurabh Shubham", "GROPYUS", "Data Engineer", "Sigmoid",
         "Software Development Engineer", "Amdocs", "Software Engineer",
         "Birla Institute of Technology Mesra", "Python", "SQL",
+        "Applied AI Engineering", "Claude Code", "Pasin", "Agentic Workflow",
     )
     missing = [value for value in required if value not in extracted]
     if missing:
@@ -45,7 +46,7 @@ def main() -> None:
         raise SystemExit("forbidden or private claims: " + ", ".join(found))
 
     evidence = args.evidence.read_text()
-    for claim_id in ("C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31"):
+    for claim_id in ("C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31", "S14"):
         if claim_id not in evidence:
             raise SystemExit(f"missing evidence ID: {claim_id}")
 
