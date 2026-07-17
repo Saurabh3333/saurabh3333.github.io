@@ -19,6 +19,14 @@
 
 ## Reviewed Sources
 
+### S14 — Operator statement: AI workflow work
+- **Classification:** `candidate fact`
+- **Source:** Direct operator instruction in Codex session
+- **Retrieved:** 2026-07-17
+- **Status:** ✅ publication-authorized
+- **Key facts:** Saurabh works with Claude Code, builds agents, and built the Pasin workflow.
+- **Boundary:** Supports current hands-on AI positioning only. Does not establish production scale, business impact, specific third-party frameworks, or employer use.
+
 ### S01 — `saurabh_shubham_resume_onepage.tex`
 - **Classification:** `candidate fact`
 - **Path:** `/root/Working/pasin/inputs/resume/saurabh_shubham_resume_onepage.tex`

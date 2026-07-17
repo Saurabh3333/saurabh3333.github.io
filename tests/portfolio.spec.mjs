@@ -14,7 +14,8 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     const response = await page.goto("/", { waitUntil: "networkidle" });
     expect(response.ok()).toBeTruthy();
-    await expect(page.locator("h1")).toContainText("Data systems");
+    await expect(page.locator("h1")).toContainText("AI agents");
+    await expect(page.locator("#ai")).toContainText("Pasin");
     await expect(page.locator("main")).toBeVisible();
     await expect(page.locator('a[href="./resume/saurabh-shubham-data-engineer.pdf"]')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy();
