@@ -1,6 +1,6 @@
 # Open questions
 
-Reviewed 2026-07-14. No unresolved fact blocks the primary Senior Data Engineer,
+Reviewed 2026-07-28. No unresolved fact blocks the primary Senior Data Engineer,
 Data Platform Engineer, or Data Infrastructure Engineer package.
 
 ## Deliberately omitted themes
@@ -11,7 +11,6 @@ repositories did not establish publication-safe evidence for:
 - SampadAI or another personal-finance platform
 - quantitative finance or asset-management work
 - CrewAI, LangGraph, OpenClaw, or n8n implementation
-- Supabase architecture
 - network-security or privacy-hardening ownership
 
 These themes remain absent from resume, portfolio, and LinkedIn drafts. Add one
