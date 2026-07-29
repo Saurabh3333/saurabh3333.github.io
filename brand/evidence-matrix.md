@@ -1,7 +1,7 @@
 # Evidence Matrix — Saurabh Shubham Portfolio Audit
 
 **Created:** 2026-07-13
-**Reviewed:** 2026-07-14 by Codex
+**Reviewed:** 2026-07-28 by Codex
 **Repository:** `https://github.com/Saurabh3333/saurabh3333.github.io`
 **Unit:** Audit repository and establish evidence authority
 
@@ -18,6 +18,22 @@
 ---
 
 ## Reviewed Sources
+
+### S16 — Regulation Check repository and live service
+- **Classification:** `candidate fact`
+- **Source:** Local owner repository `Saurabh3333/ai-reg-watch-next`, plus `https://regulationcheck.com/healthz`
+- **Retrieved:** 2026-07-28
+- **Status:** ✅ source-inspected; live health endpoint returned `{"status":"ok"}`
+- **Key facts:** FastAPI application with external Supabase PostgreSQL, deterministic EU AI Act screening, tenant isolation, evidence workflows, GitHub Actions CI/CD, commit-pinned Docker images, approval-gated automatic production deployment, health checks, transient-startup retry, service restart policies, and automatic application rollback to the last-known-good release. Together, the verified retry, restart, health-gating, and rollback controls support the concise description "self-healing release path."
+- **Boundary:** The repository is private. Publish product architecture and delivery controls, not credentials, internal topology, customer data, or unsupported usage and impact metrics.
+
+### S15 — Operator statement: current project and GROPYUS scope
+- **Classification:** `candidate fact`
+- **Source:** Direct operator instruction in Codex session
+- **Retrieved:** 2026-07-28
+- **Status:** ✅ publication-authorized
+- **Key facts:** Regulation Check was developed using a Looper workflow. GROPYUS scope includes CI/CD, change data capture (CDC), dbt, DLT, Dagster, lakehouse, and graph-database work.
+- **Boundary:** Supports technologies and practices only. Does not establish scale, quantified impact, sole ownership, employer architecture details, or business outcomes.
 
 ### S14 — Operator statement: AI workflow work
 - **Classification:** `candidate fact`
@@ -170,6 +186,10 @@ Each row maps a specific claim from sources S01–S10 to its evidence status and
 | C47 | Current h1 headline: "I build software with clarity, reliability, and purpose." | S04 | CF (disposition) | — | ⚠️ revise | Generic engineering headline; does not signal Data Engineering primary identity; needs revision |
 | C48 | About copy: generic engineering philosophy | S04 | CF (disposition) | — | ⚠️ revise | No Data Engineering specifics; no mention of Berlin/Germany market; needs update |
 | C49 | Pronouns: he/him | S13 | ER | LOW | ✅ yes (optional) | Public GitHub profile README badge; low-stakes identity signal; include only if Saurabh explicitly chooses to surface it |
+| C50 | GROPYUS scope: CI/CD, CDC, lakehouse, graph databases | S15 | CF | MEDIUM | ✅ yes | Directly publication-authorized; omit internal architecture, scale, and performance |
+| C51 | Regulation Check: FastAPI/Supabase PostgreSQL EU AI Act readiness product | S16 | CF | HIGH | ✅ yes | Source-inspected application and live health endpoint |
+| C52 | Regulation Check delivery: GitHub Actions CI/CD, Docker, automated deployment, health checks, retry, rollback, and a self-healing release path | S16 | CF | HIGH | ✅ yes | Source-inspected workflows, Compose configuration, deployment code, and operations tests; "self-healing" summarizes the verified recovery controls |
+| C53 | Regulation Check development used a Looper workflow | S15 | CF | MEDIUM | ✅ yes | Direct operator statement; describe as development process, not runtime capability |
 
 ---
 
@@ -194,9 +214,11 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | Sigmoid commercial data pipelines | ✅ SUPPORTED | Candidate sources describe sales-reporting pipelines; public copy omits client names and unsupported scale (C17) |
 | Amdocs backend and integration engineering | ✅ VERIFIED | Java/Spring/REST/SOAP at Amdocs for Comcast (C22, C23) |
 | Python, SQL, Dagster, Airflow, dbt, DLT, PySpark, cloud, Terraform | ✅ SUPPORTED | Skills self-reported; consistent with named employer technologies (C32–C35) |
+| GROPYUS CI/CD, CDC, lakehouse, and graph-database work | ✅ SUPPORTED | Direct operator statement (C50); no internal topology or metrics published |
+| Regulation Check product and production delivery controls | ✅ VERIFIED | Owner repository and live health endpoint inspected (C51–C53) |
 | Quantitative financial asset-management interest or work | ❓ UNVERIFIED | No evidence found in any source. →open-questions |
 | LLM architecture and agent frameworks: CrewAI, LangGraph, OpenClaw, n8n | ❓ UNVERIFIED | HuggingClaw fork signals LLM interest; no evidence of CrewAI, LangGraph, OpenClaw, or n8n usage found in public repos or resume. →open-questions |
-| Supabase and cloud-database architecture | ❓ UNVERIFIED | Not found in any source. →open-questions |
+| Supabase PostgreSQL product architecture | ✅ VERIFIED | Regulation Check repository configuration and application code inspected (C51) |
 | Network and privacy hardening | ❓ UNVERIFIED | Not found in any source. →open-questions |
 | SampadAI personal-finance platform | ❓ UNVERIFIED | Not found in any source; no public repo. →open-questions |
 
@@ -253,6 +275,9 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | S11 | README.md (repository root) | candidate fact |
 | S12 | public/pics/ directory (favi.png, profile3.png, social-icons/) — active and orphaned assets | candidate fact |
 | S13 | GitHub profile README (Saurabh3333/saurabh3333, master/README.md) | external research |
+| S14 | Direct operator statement: AI workflow work | candidate fact |
+| S15 | Direct operator statement: Regulation Check and GROPYUS scope | candidate fact |
+| S16 | Regulation Check repository and live service | candidate fact |
 
 ---
 

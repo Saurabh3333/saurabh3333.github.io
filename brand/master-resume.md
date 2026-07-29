@@ -9,11 +9,12 @@ Berlin, Germany · saurabh.friday@gmail.com · +49-1705452439
 ## Profile
 
 Data Engineer with 7+ years across manufacturing data, commercial data
-pipelines, and backend integration. Builds Python-based ETL/ELT workflows with
-orchestration, cloud platforms, and production software practices. Based in
-Berlin and targeting Senior Data Engineer, Data Platform Engineer, and Data
-Infrastructure Engineer roles.
-<!-- C07–C23, C30–C35; duration derived from Jun 2019 to Jul 2026 -->
+pipelines, and backend integration. Builds Python-based CDC and ETL/ELT
+workflows with orchestration, lakehouse and graph-database systems, cloud
+platforms, and CI/CD. Also builds production agentic products with controlled
+deployment and recovery. Based in Berlin and targeting Senior Data Engineer,
+Data Platform Engineer, and Data Infrastructure Engineer roles.
+<!-- C07–C23, C30–C35, C50–C53; duration derived from Jun 2019 to Jul 2026 -->
 
 ## Experience
 
@@ -22,9 +23,10 @@ Infrastructure Engineer roles.
 Berlin, Germany · Aug 2022–Present
 <!-- C08–C13 -->
 
-- Designed and optimised data pipelines connecting robotic systems with
-  enterprise data flows for production insight.
-- Worked with Python, Dagster, Airflow, dbt, DLT, and Microsoft Azure.
+- Designed and optimised Python pipelines across CDC, lakehouse, and
+  graph-database systems, connecting robotic manufacturing and enterprise data.
+- Modelled and orchestrated Dagster, Airflow, dbt, and DLT workflows; delivered
+  tested changes through Azure CI/CD.
 
 ### Sigmoid — Software Development Engineer
 
@@ -45,10 +47,12 @@ Pune, India · Jun 2019–Jun 2021
 ## Skills
 
 - Languages: Python, SQL, Java, JavaScript, C++
-- Data: Airflow, Dagster, dbt, DLT, PySpark, Pandas
-- Cloud and delivery: Microsoft Azure, AWS, Google Cloud, Terraform, Git, Unix
-- Databases and interfaces: PostgreSQL, MySQL, MongoDB, REST APIs, SOAP APIs
-<!-- C31–C35 -->
+- Data: CDC, ETL/ELT, Airflow, Dagster, dbt, DLT, PySpark, lakehouse
+- Cloud and delivery: Microsoft Azure, AWS, Google Cloud, CI/CD, Docker,
+  GitHub Actions, Terraform, Git, Unix
+- Databases and interfaces: PostgreSQL, graph databases, MySQL, MongoDB,
+  REST APIs, SOAP APIs
+<!-- C31–C35, C50–C52 -->
 
 ## Education
 
@@ -58,6 +62,11 @@ Mesra · Aug 2015–Jun 2019
 
 ## Selected public projects
 
+- `Regulation Check`: live FastAPI and Supabase PostgreSQL EU AI Act readiness
+  product. Built through a Looper workflow; GitHub Actions CI/CD publishes
+  commit-pinned Docker images through a self-healing release path with
+  approval-gated automatic deployment, health checks, retry, and
+  last-known-good rollback. <!-- C51–C53 -->
 - `give-me-a-joke`: historical JavaScript/Node.js package published publicly
   under MIT. <!-- C36 -->
 - `Image-Crawler`: historical Node.js/Express web-crawling project. <!-- C39 -->

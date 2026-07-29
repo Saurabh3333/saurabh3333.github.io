@@ -17,7 +17,7 @@ for (const viewport of viewports) {
     await expect(page.locator("h1")).toContainText("AI agents");
     await expect(page.locator("#ai")).toContainText("Pasin");
     await expect(page.locator("main")).toBeVisible();
-    await expect(page.locator('a[href="./resume/saurabh-shubham-data-engineer.pdf"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: "View resume" })).toHaveAttribute("href", "./resume/");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy();
     expect(errors).toEqual([]);
   });

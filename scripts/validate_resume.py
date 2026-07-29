@@ -33,6 +33,8 @@ def main() -> None:
         "Software Development Engineer", "Amdocs", "Software Engineer",
         "Birla Institute of Technology Mesra", "Python", "SQL",
         "Applied AI Engineering", "Claude Code", "Pasin", "Agentic Workflow",
+        "Regulation Check", "CDC", "Dagster", "dbt", "DLT", "lakehouse",
+        "graph-database", "CI/CD", "Docker", "GitHub Actions",
     )
     missing = [value for value in required if value not in extracted]
     if missing:
@@ -46,7 +48,10 @@ def main() -> None:
         raise SystemExit("forbidden or private claims: " + ", ".join(found))
 
     evidence = args.evidence.read_text()
-    for claim_id in ("C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31", "S14"):
+    for claim_id in (
+        "C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31",
+        "C50", "C51", "C52", "C53", "S14", "S15", "S16",
+    ):
         if claim_id not in evidence:
             raise SystemExit(f"missing evidence ID: {claim_id}")
 
