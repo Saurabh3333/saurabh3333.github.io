@@ -21,6 +21,14 @@ for (const viewport of viewports) {
     await expect(page.locator("main")).toBeVisible();
     await expect(page.getByRole("link", { name: "View resume" })).toHaveAttribute("href", "./resume/");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy();
+    if (viewport.name === "desktop") {
+      const [status, signal] = await Promise.all([
+        page.locator(".status").boundingBox(),
+        page.locator(".signal-flow").boundingBox(),
+      ]);
+      expect(status.y + status.height).toBeLessThan(viewport.height);
+      expect(signal.y + signal.height).toBeLessThan(status.y);
+    }
     expect(errors).toEqual([]);
   });
 }

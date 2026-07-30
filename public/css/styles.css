@@ -132,6 +132,14 @@ nav a:hover::after { transform: scaleX(1); transform-origin: left; }
 .hero-content { position: relative; z-index: 2; }
 .home-hero .hero-content { grid-column: 1 / -1; }
 .home-hero h1 { max-width: 11.5ch; }
+.home-hero .status {
+  position: absolute;
+  right: 0;
+  top: 46%;
+  bottom: auto;
+  width: clamp(18rem, 26vw, 24rem);
+  transform: translateY(-50%);
+}
 .eyebrow, .index, .case-type, .period, dt {
   margin: 0 0 1rem;
   color: var(--section-accent, var(--green));
@@ -274,14 +282,14 @@ h3 {
 .signal-loop i:nth-child(4) { transform: rotate(270deg); }
 .signal-node {
   top: 54%;
-  right: 24%;
+  right: 35%;
   color: var(--orange);
   font-size: clamp(2.5rem, 6vw, 5rem);
   line-height: 1;
   animation: signal-node 2.2s cubic-bezier(.22, 1, .36, 1) infinite alternate;
 }
 .signal-flow {
-  top: 38%;
+  top: 30%;
   right: 2%;
   width: clamp(2.7rem, 5vw, 4.8rem);
   aspect-ratio: .7;
@@ -641,11 +649,20 @@ footer p { margin: 0; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+  .home-hero { gap: 1.75rem; }
   .hero-content { max-width: 53rem; }
   .home-hero h1 { max-width: 10ch; }
   .signal-loop { right: 1%; }
   .signal-flow { right: -2%; }
   .status { grid-column: 1; max-width: 32rem; }
+  .home-hero .status {
+    position: relative;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: min(100%, 32rem);
+    transform: none;
+  }
   .section { grid-template-columns: 1fr; }
   .section-heading { position: static; }
   .section-heading h2 { max-width: 16ch; }
