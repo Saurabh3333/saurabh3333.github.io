@@ -9,11 +9,27 @@
   <link rel="canonical" href="https://saurabh3333.github.io/resume/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../public/css/styles.css">
+  <meta name="theme-color" content="#000000">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header"><a class="saurabh-mark" href="../" aria-label="Saurabh Shubham, home"><span>Saurabh</span><i aria-hidden="true">✦</i></a><nav aria-label="Primary navigation"><a href="../">Portfolio</a><a href="../resume/">Resume</a></nav></header>
   <main id="main" tabindex="-1"><section class="hero"><div class="hero-content"><p class="eyebrow">{ CV route }</p><h1>Current <em>resume</em></h1><p class="hero-copy">The maintained PDF and accessible text version live on the same site.</p><div class="actions"><a class="button primary" href="../resume/saurabh-shubham-data-engineer.pdf">Open PDF</a><a class="button" href="../resume/">Resume page</a></div></div></section></main>
   <footer><p>© 2026 Saurabh Shubham</p><p><a href="../">Back to portfolio</a></p></footer>
+  <script>
+    const cards = document.querySelectorAll(".hero");
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(card => {
+      card.classList.add("reveal-card");
+      cardObserver.observe(card);
+    });
+  </script>
 </body>
 </html>

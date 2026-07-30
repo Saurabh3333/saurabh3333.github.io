@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://saurabh3333.github.io/resume/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../public/css/styles.css">
+  <meta name="theme-color" content="#000000">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -32,5 +33,20 @@
     </section>
   </main>
   <footer><p>© 2026 Saurabh Shubham</p><p><a href="../">Back to portfolio</a></p></footer>
+  <script>
+    const cards = document.querySelectorAll(".hero, .resume-preview");
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(card => {
+      card.classList.add("reveal-card");
+      cardObserver.observe(card);
+    });
+  </script>
 </body>
 </html>

@@ -4,6 +4,10 @@ Static GitHub Pages portfolio for a Berlin-based Data Engineer. Personal claims
 are governed by `brand/evidence-matrix.md`; unsupported themes are documented in
 `brand/open-questions.md` and omitted from published copy.
 
+## Temporary preview
+
+Cloudflare Tunnel: https://mark-clerk-promptly-hoping.trycloudflare.com
+
 ## Resume
 
 Requires Tectonic and Poppler (`pdfinfo`, `pdftotext`). Set `TECTONIC_BIN` when
