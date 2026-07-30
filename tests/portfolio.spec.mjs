@@ -15,9 +15,8 @@ for (const viewport of viewports) {
     const response = await page.goto("/", { waitUntil: "networkidle" });
     expect(response.ok()).toBeTruthy();
     await expect(page.locator("h1")).toContainText("AI agents");
-    await expect(page.locator(".wordmark")).toContainText("Saurabh");
-    await expect(page.locator(".home-hero .hero-ornaments")).toBeVisible();
-    await expect(page.locator(".home-hero .motion-core")).toHaveCount(0);
+    await expect(page.locator(".saurabh-mark")).toContainText("Saurabh");
+    await expect(page.locator(".home-hero .saurabh-signals")).toBeVisible();
     await expect(page.locator("#ai")).toContainText("Pasin");
     await expect(page.locator("main")).toBeVisible();
     await expect(page.getByRole("link", { name: "View resume" })).toHaveAttribute("href", "./resume/");
@@ -37,6 +36,7 @@ test("keyboard navigation and resume route", async ({ page }) => {
   expect(resume.headers()["content-type"]).toContain("application/pdf");
   await page.goto("/resume/");
   await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
+  await expect(page.locator(".saurabh-mark")).toContainText("Saurabh");
 });
 
 test("reduced motion is honoured", async ({ page }) => {
@@ -57,13 +57,25 @@ test("cards reveal and respond to hover", async ({ page }) => {
 
 test("hero assembles and scroll motion tracks progress", async ({ page }) => {
   await page.goto("/");
-  const words = page.locator(".motion-word");
+  const words = page.locator(".intro-piece");
   expect(await words.count()).toBeGreaterThan(5);
-  expect(await words.first().evaluate(element => getComputedStyle(element).animationName)).toContain("word-assemble");
-  await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight / 2));
+  expect(await words.first().evaluate(element => getComputedStyle(element).animationName)).toContain("intro-assemble");
+  await page.locator(".timeline").scrollIntoViewIfNeeded();
   await expect.poll(() => page.locator("html").evaluate(element =>
     Number.parseFloat(element.style.getPropertyValue("--scroll-progress"))
   )).toBeGreaterThan(.2);
+  await expect.poll(() => page.locator(".timeline").evaluate(element =>
+    Number.parseFloat(element.style.getPropertyValue("--timeline-progress"))
+  )).toBeGreaterThan(0);
+});
+
+test("final signature reveal stays crisp", async ({ page }) => {
+  await page.goto("/");
+  const signature = page.locator(".signature-cta");
+  await signature.scrollIntoViewIfNeeded();
+  await expect(signature).toHaveClass(/is-visible/);
+  expect(await signature.evaluate(element => getComputedStyle(element).animationName)).toBe("none");
+  await expect.poll(() => signature.evaluate(element => getComputedStyle(element).transform)).toBe("none");
 });
 
 test("@performance static page budget", async ({ page }) => {
