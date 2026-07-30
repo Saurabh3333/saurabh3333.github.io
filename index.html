@@ -33,7 +33,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Saurabh Shubham, home"><span>SS</span></a>
+    <a class="wordmark" href="#top" aria-label="Saurabh Shubham, home"><span>Saurabh</span><i aria-hidden="true">✦</i></a>
     <nav aria-label="Primary navigation">
       <a href="#ai">AI Work</a>
       <a href="#work">Work</a>
@@ -44,7 +44,7 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero home-hero" id="top" aria-labelledby="hero-title">
       <div class="hero-content">
         <p class="eyebrow"><span>Available in Berlin</span> Agentic AI · Data Platforms</p>
         <h1 id="hero-title" class="assemble-title"><span class="motion-word" style="--x:-46vw;--y:-18vh;--r:-18deg;--d:.12s">AI</span> <span class="motion-word" style="--x:38vw;--y:-28vh;--r:14deg;--d:.2s">agents</span> <span class="motion-word" style="--x:-28vw;--y:30vh;--r:11deg;--d:.3s">built</span> <em><span class="motion-word" style="--x:42vw;--y:18vh;--r:-13deg;--d:.38s">for</span> <span class="motion-word" style="--x:-40vw;--y:-8vh;--r:17deg;--d:.46s">the</span> <span class="motion-word" style="--x:24vw;--y:-32vh;--r:-9deg;--d:.54s">work</span></em> <span class="motion-word" style="--x:-30vw;--y:24vh;--r:-15deg;--d:.62s">beyond</span> <span class="motion-word" style="--x:36vw;--y:25vh;--r:12deg;--d:.7s">the</span> <span class="motion-word" style="--x:0;--y:42vh;--r:-8deg;--d:.78s">demo.</span></h1>
@@ -54,12 +54,10 @@
           <a class="button" href="mailto:saurabh.friday@gmail.com">Email me</a>
         </div>
       </div>
-      <div class="hero-motion" aria-hidden="true">
+      <div class="hero-ornaments" aria-hidden="true">
         <div class="motion-flower"><i></i><i></i><i></i><i></i></div>
         <div class="motion-burst">✳</div>
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="motion-core"><span>AI</span><small>× DATA</small></div>
+        <div class="motion-bolt"></div>
       </div>
       <dl class="status" aria-label="Professional profile">
         <div><dt>Current role</dt><dd>Data Engineer</dd></div>
@@ -257,7 +255,7 @@
       }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
       targets.forEach(target => observer.observe(target));
 
-      const hero = document.querySelector(".hero-motion");
+      const hero = document.querySelector(".hero-ornaments");
       const cursor = document.querySelector(".cursor-orb");
       let pointerX = innerWidth / 2;
       let pointerY = innerHeight / 2;

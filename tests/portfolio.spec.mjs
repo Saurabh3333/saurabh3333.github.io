@@ -15,6 +15,9 @@ for (const viewport of viewports) {
     const response = await page.goto("/", { waitUntil: "networkidle" });
     expect(response.ok()).toBeTruthy();
     await expect(page.locator("h1")).toContainText("AI agents");
+    await expect(page.locator(".wordmark")).toContainText("Saurabh");
+    await expect(page.locator(".home-hero .hero-ornaments")).toBeVisible();
+    await expect(page.locator(".home-hero .motion-core")).toHaveCount(0);
     await expect(page.locator("#ai")).toContainText("Pasin");
     await expect(page.locator("main")).toBeVisible();
     await expect(page.getByRole("link", { name: "View resume" })).toHaveAttribute("href", "./resume/");
