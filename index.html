@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://saurabh3333.github.io/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./public/css/styles.css">
-  <meta name="theme-color" content="#f3f0e8">
+  <meta name="theme-color" content="#0e100f">
   <meta property="og:title" content="Saurabh Shubham — Agentic AI &amp; Data Engineering">
   <meta property="og:description" content="Production AI products backed by disciplined data and platform engineering.">
   <meta property="og:type" content="profile">
@@ -33,7 +33,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Saurabh Shubham, home">SS</a>
+    <a class="wordmark" href="#top" aria-label="Saurabh Shubham, home"><span>SS</span></a>
     <nav aria-label="Primary navigation">
       <a href="#ai">AI Work</a>
       <a href="#work">Work</a>
@@ -45,14 +45,19 @@
 
   <main id="main" tabindex="-1">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">Agentic AI · Data Platforms · Berlin</p>
-        <h1 id="hero-title">AI agents built for the work beyond the demo.</h1>
+      <div class="hero-content">
+        <p class="eyebrow"><span>Available in Berlin</span> Agentic AI · Data Platforms</p>
+        <h1 id="hero-title">AI agents built <em>for the work</em> beyond the demo.</h1>
         <p class="hero-copy">I am Saurabh Shubham, a Data Engineer building production AI products and agentic workflows. My work combines automated execution with deterministic checks, safe deployment, and the platform discipline developed across GROPYUS, Sigmoid, and Amdocs.</p>
         <div class="actions">
           <a class="button primary" href="./resume/">View resume</a>
           <a class="button" href="mailto:saurabh.friday@gmail.com">Email me</a>
         </div>
+      </div>
+      <div class="hero-motion" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="motion-core"><span>AI</span><small>× DATA</small></div>
       </div>
       <dl class="status" aria-label="Professional profile">
         <div><dt>Current role</dt><dd>Data Engineer</dd></div>
@@ -62,9 +67,11 @@
       </dl>
     </section>
 
-    <section class="section profile" aria-labelledby="profile-title">
+    <div class="ticker" aria-hidden="true"><div><span>Agentic systems</span><i>✦</i><span>Data platforms</span><i>✦</i><span>Safe delivery</span><i>✦</i><span>Agentic systems</span><i>✦</i><span>Data platforms</span><i>✦</i><span>Safe delivery</span><i>✦</i></div></div>
+
+    <section class="section profile tone-green" aria-labelledby="profile-title">
       <div class="section-heading">
-        <p class="index">01 / Profile</p>
+        <p class="index">{ 01 · Profile }</p>
         <h2 id="profile-title">Reliable AI begins where the model ends.</h2>
       </div>
       <div class="prose">
@@ -73,13 +80,13 @@
       </div>
     </section>
 
-    <section class="section" id="ai" aria-labelledby="ai-title">
+    <section class="section tone-lilac" id="ai" aria-labelledby="ai-title">
       <div class="section-heading">
-        <p class="index">02 / Applied AI</p>
+        <p class="index">{ 02 · Applied AI }</p>
         <h2 id="ai-title">Bounded autonomy. Visible evidence.</h2>
       </div>
       <div class="cases">
-        <article class="case signal-case">
+        <article class="case signal-case" data-accent="green">
           <header>
             <p class="case-type">Independent product · Live production service</p>
             <h3><a href="https://regulationcheck.com/">Regulation Check</a></h3>
@@ -90,7 +97,7 @@
             <div><dt>Delivery</dt><dd>GitHub Actions CI/CD publishes commit-pinned Docker images. The self-healing release path automatically deploys approved releases, retries transient startup failures, verifies production health, and rolls back to the last-known-good release.</dd></div>
           </dl>
         </article>
-        <article class="case">
+        <article class="case" data-accent="lilac">
           <header>
             <p class="case-type">Independent project · Pasin — multi-provider agent workflow orchestrator</p>
             <h3>Reviewable multi-provider execution</h3>
@@ -104,13 +111,13 @@
       </div>
     </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
+    <section class="section tone-orange" id="work" aria-labelledby="work-title">
       <div class="section-heading">
-        <p class="index">03 / Engineering foundation</p>
+        <p class="index">{ 03 · Engineering foundation }</p>
         <h2 id="work-title">The data systems beneath reliable AI.</h2>
       </div>
       <div class="cases">
-        <article class="case">
+        <article class="case" data-accent="orange">
           <header>
             <p class="case-type">Professional experience · GROPYUS</p>
             <h3>Manufacturing data flows</h3>
@@ -121,7 +128,7 @@
             <div><dt>Boundary</dt><dd>Internal topology, production data, and unsupported performance metrics remain private.</dd></div>
           </dl>
         </article>
-        <article class="case">
+        <article class="case" data-accent="pink">
           <header>
             <p class="case-type">Professional experience · Sigmoid</p>
             <h3>Commercial reporting pipelines</h3>
@@ -135,9 +142,9 @@
       </div>
     </section>
 
-    <section class="section" id="experience" aria-labelledby="experience-title">
+    <section class="section tone-blue" id="experience" aria-labelledby="experience-title">
       <div class="section-heading">
-        <p class="index">04 / Experience</p>
+        <p class="index">{ 04 · Experience }</p>
         <h2 id="experience-title">From backend integration to data platforms and agents.</h2>
       </div>
       <ol class="timeline">
@@ -156,9 +163,9 @@
       </ol>
     </section>
 
-    <section class="section" id="skills" aria-labelledby="skills-title">
+    <section class="section tone-pink" id="skills" aria-labelledby="skills-title">
       <div class="section-heading">
-        <p class="index">05 / Toolkit</p>
+        <p class="index">{ 05 · Toolkit }</p>
         <h2 id="skills-title">Tools in systems context.</h2>
       </div>
       <div class="skills">
@@ -170,9 +177,9 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="projects-title">
+    <section class="section tone-lilac" aria-labelledby="projects-title">
       <div class="section-heading">
-        <p class="index">06 / Public archive</p>
+        <p class="index">{ 06 · Public archive }</p>
         <h2 id="projects-title">Earlier hands-on projects.</h2>
       </div>
       <div class="prose">
@@ -182,13 +189,16 @@
     </section>
 
     <section class="contact" aria-labelledby="contact-title">
-      <p class="eyebrow">Open to relevant conversations</p>
-      <h2 id="contact-title">Agentic AI and data-platform work with substance.</h2>
-      <p>Berlin, Germany · relevant European remote markets</p>
-      <div class="actions">
-        <a class="button primary" href="mailto:saurabh.friday@gmail.com">saurabh.friday@gmail.com</a>
-        <a class="button" href="https://www.linkedin.com/in/saurabh-shubham/">LinkedIn</a>
+      <div>
+        <p class="eyebrow">{ Start a conversation }</p>
+        <h2 id="contact-title">Agentic AI and data-platform work <em>with substance.</em></h2>
+        <p>Berlin, Germany · relevant European remote markets</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:saurabh.friday@gmail.com">saurabh.friday@gmail.com</a>
+          <a class="button" href="https://www.linkedin.com/in/saurabh-shubham/">LinkedIn</a>
+        </div>
       </div>
+      <div class="contact-mark" aria-hidden="true"><span>Let’s</span><strong>build.</strong></div>
     </section>
   </main>
 
@@ -196,5 +206,35 @@
     <p>© 2026 Saurabh Shubham</p>
     <p><a href="./resume/">Resume</a> · <a href="https://github.com/Saurabh3333">GitHub</a></p>
   </footer>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const targets = document.querySelectorAll(".section-heading, .prose, .case, .timeline li, .skills > div, .contact > div");
+      targets.forEach((target, index) => {
+        target.classList.add("reveal");
+        target.style.setProperty("--reveal-order", index % 4);
+      });
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        targets.forEach(target => target.classList.add("is-visible"));
+        return;
+      }
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+      targets.forEach(target => observer.observe(target));
+
+      const hero = document.querySelector(".hero-motion");
+      window.addEventListener("pointermove", event => {
+        const x = (event.clientX / window.innerWidth - .5) * 16;
+        const y = (event.clientY / window.innerHeight - .5) * 16;
+        hero?.style.setProperty("--pointer-x", `${x}px`);
+        hero?.style.setProperty("--pointer-y", `${y}px`);
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>

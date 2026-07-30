@@ -32,3 +32,5 @@ npm run validate
 
 Site has no production build or runtime dependency. Serve repository root with
 any static HTTP server for local review.
+
+Temporary Cloudflare preview: https://resolve-pair-cooperative-funky.trycloudflare.com

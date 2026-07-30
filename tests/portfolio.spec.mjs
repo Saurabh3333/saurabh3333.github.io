@@ -40,6 +40,16 @@ test("reduced motion is honoured", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   expect(await page.locator("html").evaluate(element => getComputedStyle(element).scrollBehavior)).toBe("auto");
+  expect(await page.locator(".hero-content > *").first().evaluate(element => getComputedStyle(element).opacity)).toBe("1");
+});
+
+test("cards reveal and respond to hover", async ({ page }) => {
+  await page.goto("/");
+  const card = page.locator(".case").first();
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toHaveClass(/is-visible/);
+  await card.hover();
+  await expect.poll(() => card.evaluate(element => getComputedStyle(element).transform)).not.toBe("none");
 });
 
 test("@performance static page budget", async ({ page }) => {
