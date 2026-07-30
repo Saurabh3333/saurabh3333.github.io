@@ -46,6 +46,8 @@ test("keyboard navigation and resume route", async ({ page }) => {
   await page.goto("/resume/");
   await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
   await expect(page.locator(".saurabh-mark")).toContainText("Saurabh");
+  await expect(page.locator(".resume-signal")).toBeVisible();
+  expect(await page.locator(".resume-sheet").evaluate(element => getComputedStyle(element).animationName)).toBe("document-float");
 });
 
 test("reduced motion is honoured", async ({ page }) => {
