@@ -52,6 +52,17 @@ test("cards reveal and respond to hover", async ({ page }) => {
   await expect.poll(() => card.evaluate(element => getComputedStyle(element).transform)).not.toBe("none");
 });
 
+test("hero assembles and scroll motion tracks progress", async ({ page }) => {
+  await page.goto("/");
+  const words = page.locator(".motion-word");
+  expect(await words.count()).toBeGreaterThan(5);
+  expect(await words.first().evaluate(element => getComputedStyle(element).animationName)).toContain("word-assemble");
+  await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight / 2));
+  await expect.poll(() => page.locator("html").evaluate(element =>
+    Number.parseFloat(element.style.getPropertyValue("--scroll-progress"))
+  )).toBeGreaterThan(.2);
+});
+
 test("@performance static page budget", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
