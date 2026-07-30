@@ -87,12 +87,16 @@ footer {
   height: 3rem;
   display: grid;
   place-items: center;
-  border: 1px solid var(--coffee);
+  border: 1px solid transparent;
   border-radius: 50%;
+  background: #0a0a0a;
   color: var(--cream);
   font: 400 1.1rem/1 var(--serif);
   text-decoration: none;
+  transition: background-color 160ms ease;
 }
+
+.wordmark:hover { background: #171514; }
 
 nav {
   display: flex;
