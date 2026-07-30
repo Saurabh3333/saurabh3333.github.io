@@ -121,6 +121,20 @@ main { display: grid; gap: 1rem; }
   overflow: hidden;
 }
 
+.reveal-card {
+  opacity: 0;
+  transform: translateY(2rem) scale(.985);
+  transition:
+    opacity 650ms cubic-bezier(.2, .75, .25, 1),
+    transform 650ms cubic-bezier(.2, .75, .25, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 .hero {
   min-height: min(48rem, calc(100vh - 7rem));
   display: grid;
@@ -467,5 +481,10 @@ footer p { margin: 0; }
   *::after {
     scroll-behavior: auto !important;
     transition: none !important;
+  }
+
+  .reveal-card {
+    opacity: 1;
+    transform: none;
   }
 }

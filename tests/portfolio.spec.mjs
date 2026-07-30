@@ -40,6 +40,17 @@ test("reduced motion is honoured", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   expect(await page.locator("html").evaluate(element => getComputedStyle(element).scrollBehavior)).toBe("auto");
+  await expect(page.locator("#ai")).toHaveCSS("opacity", "1");
+});
+
+test("cards reveal as they enter the viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const contact = page.locator(".contact");
+  await expect(contact).not.toHaveClass(/is-visible/);
+  await contact.scrollIntoViewIfNeeded();
+  await expect(contact).toHaveClass(/is-visible/);
+  await expect(contact).toHaveCSS("opacity", "1");
 });
 
 test("@performance static page budget", async ({ page }) => {

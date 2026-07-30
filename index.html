@@ -197,5 +197,20 @@
     <p>© 2026 Saurabh Shubham</p>
     <p><a href="./resume/">Resume</a> · <a href="https://github.com/Saurabh3333">GitHub</a></p>
   </footer>
+  <script>
+    const cards = document.querySelectorAll(".hero, .section, .contact");
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(card => {
+      card.classList.add("reveal-card");
+      cardObserver.observe(card);
+    });
+  </script>
 </body>
 </html>
