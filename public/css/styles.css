@@ -45,7 +45,6 @@ a:focus-visible, .button:focus-visible {
   outline: .18rem solid var(--green);
   outline-offset: .25rem;
 }
-
 .skip-link {
   position: fixed;
   left: 1rem;
@@ -58,14 +57,12 @@ a:focus-visible, .button:focus-visible {
   font: 700 .72rem/1 var(--mono);
   transform: translateY(-200%);
 }
-
 .skip-link:focus { transform: none; }
 
 .site-header, main, footer {
   width: min(var(--measure), calc(100% - clamp(2rem, 6vw, 5rem)));
   margin-inline: auto;
 }
-
 .site-header {
   min-height: 6rem;
   display: flex;
@@ -180,7 +177,6 @@ h1 em, h2 em {
   color: var(--green-soft);
   font-style: normal;
 }
-
 h2 {
   max-width: 13ch;
   margin-bottom: 0;
@@ -655,12 +651,7 @@ h3 {
   padding: 0 0 clamp(4rem, 8vw, 7rem);
   border-top: 1px solid var(--line);
 }
-
-.resume-preview h2 {
-  max-width: none;
-  margin-bottom: 2rem;
-}
-
+.resume-preview h2 { max-width: none; margin: clamp(2rem, 5vw, 4rem) 0 1.5rem; }
 .resume-preview object {
   display: block;
   width: 100%;
@@ -679,7 +670,6 @@ footer {
   font: .72rem/1.5 var(--mono);
   text-transform: uppercase;
 }
-
 footer p { margin: 0; }
 
 .reveal {
