@@ -135,7 +135,7 @@ nav a:hover::after { transform: scaleX(1); transform-origin: left; }
 .home-hero .status {
   position: absolute;
   right: 0;
-  top: 46%;
+  top: 57%;
   bottom: auto;
   width: clamp(18rem, 26vw, 24rem);
   transform: translateY(-50%);

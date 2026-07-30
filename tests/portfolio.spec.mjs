@@ -26,6 +26,7 @@ for (const viewport of viewports) {
         page.locator(".status").boundingBox(),
         page.locator(".signal-flow").boundingBox(),
       ]);
+      expect(status.y).toBeGreaterThan(viewport.height * 0.55);
       expect(status.y + status.height).toBeLessThan(viewport.height);
       expect(signal.y + signal.height).toBeLessThan(status.y);
     }
