@@ -230,6 +230,53 @@ h3 {
   box-shadow: 0 0 0 0 rgb(10 228 72 / 0%);
 }
 .button.primary:hover { box-shadow: 0 .8rem 2.5rem rgb(10 228 72 / 16%); }
+.resume-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  gap: .8rem;
+  padding: .55rem .58rem .55rem 1.25rem;
+}
+.resume-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 25%, rgb(171 255 132 / 12%) 48%, transparent 70%);
+  transform: translateX(-110%);
+  animation: resume-sweep 3.4s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+.resume-button-motion {
+  position: relative;
+  width: 2rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgb(171 255 132 / 42%);
+  border-radius: 50%;
+  background: rgb(10 228 72 / 8%);
+}
+.resume-button-motion i {
+  position: absolute;
+  inset: .15rem;
+  border: 1px solid transparent;
+  border-top-color: var(--green-soft);
+  border-right-color: var(--blue);
+  border-radius: inherit;
+  animation: resume-orbit 2.2s linear infinite;
+}
+.resume-button-motion b {
+  color: var(--cream);
+  font-size: .9rem;
+  font-weight: 500;
+  line-height: 1;
+  animation: resume-arrow 1.6s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+.resume-button:hover .resume-button-motion {
+  border-color: var(--green-soft);
+  background: rgb(10 228 72 / 16%);
+}
 .status {
   position: relative;
   z-index: 2;
@@ -646,6 +693,17 @@ footer p { margin: 0; }
 @keyframes signal-flow { to { transform: translateY(-.55rem) rotate(5deg); } }
 @keyframes pulse { 50% { opacity: .5; transform: scale(.78); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes resume-sweep {
+  0%, 48% { transform: translateX(-110%); }
+  78%, 100% { transform: translateX(110%); }
+}
+@keyframes resume-orbit { to { transform: rotate(1turn); } }
+@keyframes resume-arrow {
+  0%, 28%, 100% { opacity: 1; transform: translate(0); }
+  48% { opacity: 0; transform: translate(.55rem, -.55rem); }
+  49% { opacity: 0; transform: translate(-.4rem, .4rem); }
+  70% { opacity: 1; transform: translate(0); }
+}
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; grid-template-rows: auto auto; }

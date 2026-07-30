@@ -67,8 +67,11 @@ test("cards reveal and respond to hover", async ({ page }) => {
 test("hero assembles and scroll motion tracks progress", async ({ page }) => {
   await page.goto("/");
   const words = page.locator(".intro-piece");
+  const resumeMotion = page.locator(".resume-button-motion i");
   expect(await words.count()).toBeGreaterThan(5);
   expect(await words.first().evaluate(element => getComputedStyle(element).animationName)).toContain("intro-assemble");
+  await expect(resumeMotion).toBeVisible();
+  expect(await resumeMotion.evaluate(element => getComputedStyle(element).animationName)).toBe("resume-orbit");
   await page.locator(".timeline").scrollIntoViewIfNeeded();
   await expect.poll(() => page.locator("html").evaluate(element =>
     Number.parseFloat(element.style.getPropertyValue("--scroll-progress"))
