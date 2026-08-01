@@ -2,9 +2,9 @@
 
 <!-- Every substantive personal claim references brand/evidence-matrix.md. -->
 
-Berlin, Germany · saurabh.friday@gmail.com · +49-1705452439
+Berlin, Germany · saurabh.friday@gmail.com
 [LinkedIn](https://www.linkedin.com/in/saurabh-shubham/) · [GitHub](https://github.com/Saurabh3333) · [Portfolio](https://saurabh3333.github.io/)
-<!-- C01–C07 -->
+<!-- C01, C02, C04–C07 -->
 
 ## Profile
 
