@@ -139,7 +139,7 @@ Each row maps a specific claim from sources S01–S10 to its evidence status and
 |----|-------|-----------|----------------|------------|----------------------|-------|
 | C01 | Name: Saurabh Shubham | S01, S04, S05, S06 | CF (multiple) | HIGH | ✅ yes | Consistent across all sources |
 | C02 | Email: `saurabh.friday@gmail.com` | S01, S04, S05 | CF | HIGH | ✅ yes | Self-disclosed on public portfolio and resume |
-| C03 | Phone: `+49-1705452439` | S01 | CF | MEDIUM | ⚠️ yes with caution | German number (+49); confirms Berlin residency; do not embed in portfolio page; resume-appropriate |
+| C03 | Phone number withheld from public artifacts | User privacy request | CF | HIGH | ❌ no | Use only in private application flows |
 | C04 | LinkedIn: `linkedin.com/in/saurabh-shubham/` | S01, S04 | CF | HIGH | ✅ yes | Link appears in both sources; not validated live (requires manual check) |
 | C05 | GitHub: `github.com/Saurabh3333` | S01, S04, S06, S07 | CF + ER | HIGH | ✅ yes | Confirmed by API |
 | C06 | Portfolio: `https://saurabh3333.github.io` | S01, S04, S05 | CF + ER | HIGH | ✅ yes | Live confirmed |

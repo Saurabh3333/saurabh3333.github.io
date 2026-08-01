@@ -1,6 +1,6 @@
 Saurabh Shubham
 DATA ENGINEER | AGENTIC AI & DATA PLATFORMS
-Berlin, Germany | saurabh.friday@gmail.com | +49 170 5452439
+Berlin, Germany | saurabh.friday@gmail.com
 linkedin.com/in/saurabh-shubham | github.com/Saurabh3333 | saurabh3333.github.io
 Summary
 Data Engineer with 7+ years building production data pipelines, orchestration, cloud workflows, and
