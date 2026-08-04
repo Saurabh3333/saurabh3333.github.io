@@ -23,7 +23,7 @@ for (const viewport of viewports) {
 
     expect(response.ok()).toBeTruthy();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.getByRole("heading", { name: "Proof of work" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "AI systems in practice" })).toBeVisible();
     await expect(page.locator("#work")).toContainText("Regulation Check");
     await expect(page.locator("#work")).toContainText("Pasin");
     await expect(page.locator("#experience .timeline > li")).toHaveCount(3);
@@ -33,10 +33,14 @@ for (const viewport of viewports) {
     const layout = await page.evaluate(() => ({
       documentWidth: document.documentElement.scrollWidth,
       viewportWidth: document.documentElement.clientWidth,
+      shellLeft: document.querySelector(".page-shell").getBoundingClientRect().left,
       shellRight: document.querySelector(".page-shell").getBoundingClientRect().right,
+      shellWidth: document.querySelector(".page-shell").getBoundingClientRect().width,
     }));
     expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
     expect(layout.shellRight).toBeLessThanOrEqual(layout.viewportWidth + 0.5);
+    expect(Math.abs(layout.shellLeft - (layout.viewportWidth - layout.shellWidth) / 2)).toBeLessThanOrEqual(0.5);
+    if (viewport.width >= 1000) expect(layout.shellWidth).toBeLessThanOrEqual(769);
 
     await page.locator("#contact").scrollIntoViewIfNeeded();
     await expect(page.locator("#contact")).toHaveClass(/is-visible/);
@@ -72,8 +76,8 @@ test("semantic structure and accessible controls", async ({ page }) => {
 
 test("search and social metadata are complete and canonical", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle("Saurabh Shubham | Data Engineer in Berlin");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Data Engineer.*Python.*SQL.*CDC\/ETL.*AI products/i);
+  await expect(page).toHaveTitle("Saurabh Shubham | AI Systems Builder & Data Engineer");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Agentic AI builder.*Data Engineer.*7\+ years.*Python\/SQL.*AI governance/i);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://saurabh3333.github.io/");
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", "https://saurabh3333.github.io/public/images/saurabh-shubham-og.png");
@@ -87,12 +91,13 @@ test("search and social metadata are complete and canonical", async ({ page }) =
   }
 });
 
-test("recruiter scan surfaces evidence-backed technical depth", async ({ page }) => {
+test("AI-first recruiter scan surfaces controls and technical depth", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".intro")).toContainText("7+ years");
-  await expect(page.locator(".intro")).toContainText(/Python.*SQL.*CDC.*ETL\/ELT/s);
+  await expect(page.locator(".intro")).toContainText(/agentic AI.*Durable scope.*sandboxed execution.*deterministic checks.*human review/is);
+  await expect(page.locator(".intro")).toContainText(/7\+ years.*Python.*SQL.*data engineering/is);
   await expect(page.locator(".principle-grid article")).toHaveCount(3);
-  await expect(page.locator(".principle-grid")).toContainText(/Dagster.*Airflow.*dbt.*DLT/s);
+  await expect(page.locator(".principle-grid")).toContainText(/Bounded execution.*Deterministic verification.*Production foundations/is);
   await expect(page.locator(".project-card")).toHaveCount(2);
   await expect(page.locator(".project-facts > div")).toHaveCount(8);
   await expect(page.locator(".regulation-card")).toContainText(/FastAPI.*PostgreSQL.*tenant-isolated.*automatic rollback/is);
