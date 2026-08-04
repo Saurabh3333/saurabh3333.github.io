@@ -68,6 +68,7 @@ def main() -> None:
 
         assert "tinyurl" not in html.lower(), "TinyURL reference found"
         assert "google drive" not in html.lower() and "drive.google" not in html.lower(), "Google Drive reference found"
+        assert "PDF · 01" not in html, "decorative PDF label found"
 
         page = ResumeParser()
         page.feed(html)
