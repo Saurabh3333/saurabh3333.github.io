@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
 
 Sitemap: https://saurabh3333.github.io/sitemap.xml

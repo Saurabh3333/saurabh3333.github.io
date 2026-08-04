@@ -1,56 +1,193 @@
 import { expect, test } from "@playwright/test";
 
 const viewports = [
-  { name: "desktop", width: 1440, height: 900 },
+  { name: "wide desktop", width: 1440, height: 900 },
+  { name: "laptop", width: 1024, height: 768 },
   { name: "mobile", width: 390, height: 844 },
+  { name: "small mobile", width: 320, height: 568 },
 ];
 
+function collectRuntimeErrors(page) {
+  const errors = [];
+  page.on("console", message => message.type() === "error" && errors.push(message.text()));
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("requestfailed", request => errors.push(`${request.method()} ${request.url()}`));
+  return errors;
+}
+
 for (const viewport of viewports) {
-  test(`${viewport.name} portfolio`, async ({ page }) => {
-    const errors = [];
-    page.on("console", message => message.type() === "error" && errors.push(message.text()));
-    page.on("pageerror", error => errors.push(error.message));
-    page.on("requestfailed", request => errors.push(`${request.method()} ${request.url()}`));
+  test(`${viewport.name}: complete responsive portfolio`, async ({ page }) => {
+    const errors = collectRuntimeErrors(page);
     await page.setViewportSize(viewport);
     const response = await page.goto("/", { waitUntil: "networkidle" });
+
     expect(response.ok()).toBeTruthy();
-    await expect(page.locator("h1")).toContainText("AI agents");
-    await expect(page.locator("#ai")).toContainText("Pasin");
-    await expect(page.locator("main")).toBeVisible();
-    await expect(page.getByRole("link", { name: "View resume" })).toHaveAttribute("href", "./resume/");
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
+    await expect(page.getByRole("heading", { name: "Proof of work" })).toBeVisible();
+    await expect(page.locator("#work")).toContainText("Regulation Check");
+    await expect(page.locator("#work")).toContainText("Pasin");
+    await expect(page.locator("#experience .timeline > li")).toHaveCount(3);
+    await expect(page.locator("#toolkit .skill-groups > div")).toHaveCount(4);
+    await expect(page.locator(".dock")).toBeVisible();
+
+    const layout = await page.evaluate(() => ({
+      documentWidth: document.documentElement.scrollWidth,
+      viewportWidth: document.documentElement.clientWidth,
+      shellRight: document.querySelector(".page-shell").getBoundingClientRect().right,
+    }));
+    expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+    expect(layout.shellRight).toBeLessThanOrEqual(layout.viewportWidth + 0.5);
+
+    await page.locator("#contact").scrollIntoViewIfNeeded();
+    await expect(page.locator("#contact")).toHaveClass(/is-visible/);
+    await expect(page.getByRole("link", { name: /Email me/ })).toBeVisible();
     expect(errors).toEqual([]);
   });
 }
 
-test("keyboard navigation and resume route", async ({ page }) => {
+test("semantic structure and accessible controls", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("main")).toHaveCount(1);
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.getByRole("navigation", { name: "Primary navigation" })).toBeVisible();
+  await expect(page.getByLabel("Quick navigation")).toBeVisible();
+
+  const audit = await page.evaluate(() => {
+    const duplicateIds = [...document.querySelectorAll("[id]")]
+      .map(element => element.id)
+      .filter((id, index, ids) => ids.indexOf(id) !== index);
+    const unnamedButtons = [...document.querySelectorAll("button")]
+      .filter(button => !(button.textContent.trim() || button.getAttribute("aria-label"))).length;
+    const emptyLinks = [...document.querySelectorAll("a")]
+      .filter(link => !link.getAttribute("href") || !(link.textContent.trim() || link.getAttribute("aria-label"))).length;
+    const unlabelledSections = [...document.querySelectorAll("main section")]
+      .filter(section => !section.getAttribute("aria-labelledby")).length;
+    const undersizedTargets = [...document.querySelectorAll(".dock a, .dock button, .site-header nav a, .button, .social-links a, .social-links button")]
+      .filter(element => element.getBoundingClientRect().height < 43.5).length;
+    return { duplicateIds, unnamedButtons, emptyLinks, unlabelledSections, undersizedTargets };
+  });
+
+  expect(audit).toEqual({ duplicateIds: [], unnamedButtons: 0, emptyLinks: 0, unlabelledSections: 0, undersizedTargets: 0 });
+});
+
+test("search and social metadata are complete and canonical", async ({ page }) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle("Saurabh Shubham | Data Engineer in Berlin");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Data Engineer.*data platforms.*AI agent/i);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://saurabh3333.github.io/");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", "https://saurabh3333.github.io/public/images/saurabh-shubham-og.png");
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+
+  const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
+  expect(schema["@graph"].map(node => node["@type"])).toEqual(["Person", "ProfilePage"]);
+
+  for (const path of ["/robots.txt", "/sitemap.xml", "/public/images/saurabh-shubham-og.png"]) {
+    expect((await page.request.get(path)).ok()).toBeTruthy();
+  }
+});
+
+test("keyboard navigation, skip link, and visible focus", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
   await expect(page.locator(".skip-link")).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
-  const resume = await page.request.get("/resume/saurabh-shubham-data-engineer.pdf");
-  expect(resume.ok()).toBeTruthy();
-  expect(resume.headers()["content-type"]).toContain("application/pdf");
-  await page.goto("/resume/");
-  await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
+
+  await page.keyboard.press("Tab");
+  const focused = page.locator(":focus");
+  await expect(focused).toBeVisible();
+  expect(await focused.evaluate(element => getComputedStyle(element).outlineStyle)).not.toBe("none");
 });
 
-test("reduced motion is honoured", async ({ page }) => {
+test("quick navigation reaches work and contact", async ({ page }) => {
+  await page.goto("/");
+  await page.getByLabel("Quick navigation").getByRole("link", { name: "Work" }).click();
+  await expect(page).toHaveURL(/#work$/);
+  await expect(page.locator("#work")).toBeInViewport();
+
+  await page.getByLabel("Quick navigation").getByRole("link", { name: "Contact" }).click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(page.locator("#contact")).toBeInViewport();
+});
+
+test("theme control toggles and persists", async ({ page }) => {
+  await page.goto("/");
+  const toggle = page.locator(".theme-toggle");
+  await expect(toggle).toHaveAttribute("aria-label", "Switch to dark theme");
+  await toggle.click();
+  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(toggle).toHaveAttribute("aria-label", "Switch to light theme");
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#151714");
+
+  await page.reload();
+  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
+  await page.getByRole("button", { name: "Switch to light theme" }).click();
+  await expect(page.locator("body")).toHaveAttribute("data-theme", "light");
+});
+
+test("copy-email interaction gives live feedback", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/");
+  await page.getByRole("button", { name: "Copy email" }).click();
+  await expect(page.getByRole("status")).toHaveText("Email copied.");
+  await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("saurabh.friday@gmail.com");
+});
+
+test("local routes, resume assets, and external project link", async ({ page }) => {
+  const localFailures = [];
+  page.on("response", response => {
+    if (new URL(response.url()).origin === "http://127.0.0.1:4173" && response.status() >= 400) {
+      localFailures.push(`${response.status()} ${response.url()}`);
+    }
+  });
+  await page.goto("/");
+  await expect(page.getByRole("link", { name: /Regulation Check/ })).toHaveAttribute("href", "https://regulationcheck.com/");
+  await page.goto("/resume/");
+  await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
+
+  const [pdf, text] = await Promise.all([
+    page.request.get("/resume/saurabh-shubham-data-engineer.pdf"),
+    page.request.get("/resume/saurabh-shubham-data-engineer.txt"),
+  ]);
+  expect(pdf.ok()).toBeTruthy();
+  expect(pdf.headers()["content-type"]).toContain("application/pdf");
+  expect(text.ok()).toBeTruthy();
+  expect(localFailures).toEqual([]);
+});
+
+test("reduced motion removes transitions and reveals content", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   expect(await page.locator("html").evaluate(element => getComputedStyle(element).scrollBehavior)).toBe("auto");
-  await expect(page.locator("#ai")).toHaveCSS("opacity", "1");
+  await expect(page.locator("#work")).toHaveCSS("opacity", "1");
+  await expect(page.locator("#work")).toHaveCSS("transform", "none");
+  await expect(page.locator(".live-dot")).toHaveCSS("animation-name", "none");
 });
 
-test("cards reveal as they enter the viewport", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
+test("light and dark themes keep readable base contrast", async ({ page }) => {
   await page.goto("/");
-  const contact = page.locator(".contact");
-  await expect(contact).not.toHaveClass(/is-visible/);
-  await contact.scrollIntoViewIfNeeded();
-  await expect(contact).toHaveClass(/is-visible/);
-  await expect(contact).toHaveCSS("opacity", "1");
+  const ratios = [];
+  for (const theme of ["light", "dark"]) {
+    if (theme === "dark") await page.getByRole("button", { name: "Switch to dark theme" }).click();
+    ratios.push(await page.evaluate(() => {
+      const parse = value => value.match(/[\d.]+/g).slice(0, 3).map(Number);
+      const luminance = rgb => {
+        const values = rgb.map(channel => {
+          const value = channel / 255;
+          return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+        });
+        return 0.2126 * values[0] + 0.7152 * values[1] + 0.0722 * values[2];
+      };
+      const style = getComputedStyle(document.body);
+      const a = luminance(parse(style.color));
+      const b = luminance(parse(style.backgroundColor));
+      return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+    }));
+  }
+  ratios.forEach(ratio => expect(ratio).toBeGreaterThanOrEqual(7));
 });
 
 test("@performance static page budget", async ({ page }) => {
