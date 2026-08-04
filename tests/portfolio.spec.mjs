@@ -73,7 +73,7 @@ test("semantic structure and accessible controls", async ({ page }) => {
 test("search and social metadata are complete and canonical", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle("Saurabh Shubham | Data Engineer in Berlin");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Data Engineer.*data platforms.*AI agent/i);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Data Engineer.*Python.*SQL.*CDC\/ETL.*AI products/i);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://saurabh3333.github.io/");
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", "https://saurabh3333.github.io/public/images/saurabh-shubham-og.png");
@@ -84,6 +84,23 @@ test("search and social metadata are complete and canonical", async ({ page }) =
 
   for (const path of ["/robots.txt", "/sitemap.xml", "/public/images/saurabh-shubham-og.png"]) {
     expect((await page.request.get(path)).ok()).toBeTruthy();
+  }
+});
+
+test("recruiter scan surfaces evidence-backed technical depth", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".intro")).toContainText("7+ years");
+  await expect(page.locator(".intro")).toContainText(/Python.*SQL.*CDC.*ETL\/ELT/s);
+  await expect(page.locator(".principle-grid article")).toHaveCount(3);
+  await expect(page.locator(".principle-grid")).toContainText(/Dagster.*Airflow.*dbt.*DLT/s);
+  await expect(page.locator(".project-card")).toHaveCount(2);
+  await expect(page.locator(".project-facts > div")).toHaveCount(8);
+  await expect(page.locator(".regulation-card")).toContainText(/FastAPI.*PostgreSQL.*tenant-isolated.*automatic rollback/is);
+  await expect(page.locator("#experience")).toContainText(/manufacturing data.*CDC.*Azure CI\/CD/is);
+
+  const copy = await page.locator("main").innerText();
+  for (const genericPhrase of ["build the plumbing", "useful autonomy", "calm operations", "honest systems", "heart and purpose"]) {
+    expect(copy.toLowerCase()).not.toContain(genericPhrase);
   }
 });
 

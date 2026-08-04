@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Saurabh Shubham — Data Engineer in Berlin</title>
-  <desc id="desc">A clean signal-map graphic connecting data platforms, pipelines, and practical AI systems.</desc>
+  <desc id="desc">Saurabh Shubham, a Berlin Data Engineer with 7+ years of experience across Python, SQL, and data platforms.</desc>
   <rect width="1200" height="630" fill="#f7f7f2"/>
-  <g fill="none" stroke="#cfd2cb" stroke-width="2" stroke-dasharray="8 10">
-    <path d="M0 92h1200M0 538h1200M92 0v630M1108 0v630"/>
-  </g>
   <rect x="92" y="92" width="1016" height="446" rx="28" fill="#fff" stroke="#171917" stroke-width="3"/>
   <g transform="translate(146 145)">
     <rect width="72" height="72" rx="20" fill="#b8ff38"/>
@@ -12,8 +9,8 @@
     <circle cx="65" cy="7" r="8" fill="#7267f0" stroke="#fff" stroke-width="4"/>
   </g>
   <text x="146" y="284" fill="#171917" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="750" letter-spacing="-3">Saurabh Shubham</text>
-  <text x="149" y="333" fill="#676b66" font-family="Arial, Helvetica, sans-serif" font-size="28">Data Engineer · Berlin, Germany</text>
-  <text x="149" y="402" fill="#171917" font-family="Arial, Helvetica, sans-serif" font-size="26">Reliable data platforms. Practical AI systems.</text>
+  <text x="149" y="333" fill="#676b66" font-family="Arial, Helvetica, sans-serif" font-size="28">Data Engineer · 7+ years · Berlin</text>
+  <text x="149" y="402" fill="#171917" font-family="Arial, Helvetica, sans-serif" font-size="26">Python · SQL · CDC/ETL · Orchestration</text>
   <g transform="translate(750 165)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="middle">
     <path d="M72 45h75M235 45h75M189 91v58" fill="none" stroke="#7267f0" stroke-width="4" stroke-linecap="round"/>
     <circle cx="109" cy="45" r="5" fill="#7267f0"/>
