@@ -23,7 +23,7 @@ for (const viewport of viewports) {
 
     expect(response.ok()).toBeTruthy();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.getByRole("heading", { name: "AI systems in practice" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Data and AI workflows in practice" })).toBeVisible();
     await expect(page.locator("#work")).toContainText("Regulation Check");
     await expect(page.locator("#work")).toContainText("Pasin");
     await expect(page.locator("#experience .timeline > li")).toHaveCount(3);
@@ -76,8 +76,8 @@ test("semantic structure and accessible controls", async ({ page }) => {
 
 test("search and social metadata are complete and canonical", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle("Saurabh Shubham | AI Systems Builder & Data Engineer");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Agentic AI builder.*Data Engineer.*7\+ years.*Python\/SQL.*AI governance/i);
+  await expect(page).toHaveTitle("Saurabh Shubham | Data Engineer & AI Workflow Builder");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Berlin-based Data Engineer.*7\+ years.*Python and SQL.*controlled AI workflows/i);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://saurabh3333.github.io/");
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", "https://saurabh3333.github.io/public/images/saurabh-shubham-og.png");
@@ -91,10 +91,10 @@ test("search and social metadata are complete and canonical", async ({ page }) =
   }
 });
 
-test("AI-first recruiter scan surfaces controls and technical depth", async ({ page }) => {
+test("data-first recruiter scan surfaces controls and technical depth", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".intro")).toContainText("7+ years");
-  await expect(page.locator(".intro")).toContainText(/agentic AI.*Durable scope.*sandboxed execution.*deterministic checks.*human review/is);
+  await expect(page.locator(".intro")).toContainText(/production data systems.*AI-assisted workflows.*sandboxed execution.*explicit checks.*human review/is);
   await expect(page.locator(".intro")).toContainText(/7\+ years.*Python.*SQL.*data engineering/is);
   await expect(page.locator(".principle-grid article")).toHaveCount(3);
   await expect(page.locator(".principle-grid")).toContainText(/Bounded execution.*Deterministic verification.*Production foundations/is);

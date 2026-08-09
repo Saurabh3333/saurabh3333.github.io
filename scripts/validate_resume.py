@@ -23,8 +23,8 @@ def main() -> None:
     if not re.search(r"^Pages:\s+1$", info, re.MULTILINE):
         raise SystemExit("resume must contain exactly one page")
 
-    extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n") + "\n"
-    maintained = args.text.read_text()
+    extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n\f") + "\n"
+    maintained = args.text.read_text().rstrip("\n\f") + "\n"
     if extracted != maintained:
         raise SystemExit("ATS text does not match PDF extraction")
 
@@ -32,9 +32,9 @@ def main() -> None:
         "Saurabh Shubham", "GROPYUS", "Data Engineer", "Sigmoid",
         "Software Development Engineer", "Amdocs", "Software Engineer",
         "Birla Institute of Technology Mesra", "Python", "SQL",
-        "Applied AI Engineering", "Claude Code", "Pasin", "Agentic Workflow",
+        "Selected AI and Platform Work", "Pasin", "Agent workflow",
         "Regulation Check", "CDC", "Dagster", "dbt", "DLT", "lakehouse",
-        "graph-database", "CI/CD", "Docker", "GitHub Actions",
+        "graph database", "CI/CD", "Docker", "GitHub Actions",
     )
     missing = [value for value in required if value not in extracted]
     if missing:
@@ -42,7 +42,10 @@ def main() -> None:
     if not (extracted.index("GROPYUS") < extracted.index("Sigmoid") < extracted.index("Amdocs")):
         raise SystemExit("experience is not reverse chronological")
 
-    forbidden = ("Machine Learning Engineer", "AI System Engineer", "Colgate", "Walmart", "Comcast")
+    forbidden = (
+        "Machine Learning Engineer", "ML Ops Engineer", "MLOps Engineer",
+        "AI System Engineer", "Colgate", "Walmart", "Comcast",
+    )
     found = [value for value in forbidden if value in extracted]
     if found:
         raise SystemExit("forbidden or private claims: " + ", ".join(found))

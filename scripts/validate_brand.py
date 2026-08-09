@@ -22,7 +22,8 @@ def main() -> None:
     text = "\n".join(path.read_text(errors="ignore") for path in files(args.paths))
 
     forbidden = (
-        "Machine Learning Engineer", "AI System Engineer", "tinyurl.com",
+        "Machine Learning Engineer", "ML Ops Engineer", "MLOps Engineer",
+        "AI System Engineer", "AI Systems Builder", "tinyurl.com",
         "Lorem ipsum", "TBD", "TODO", "FIXME", "Colgate", "Walmart", "Comcast",
     )
     found = [value for value in forbidden if value.lower() in text.lower()]
