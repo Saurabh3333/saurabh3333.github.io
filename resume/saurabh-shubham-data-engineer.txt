@@ -46,12 +46,12 @@ Independent product
 isolation, and auditable evidence.
 • Set up GitHub Actions, pinned Docker releases, deployment approvals, startup retry, health checks,
 and automatic rollback to the last known good version.
-Pasin | Agent workflow orchestration
+Retail Demand MLOps Demo | Model lifecycle
 
-Independent project
+Recent learning project
 
-• Designed an agent workflow that plans scope, runs tools in sandboxes, keeps durable status, checks
-results, pauses for review, and creates rollback points in Git.
+• Built a synthetic retail forecasting lifecycle with MLflow tracking and registry, gated model promotion,
+FastAPI serving, Prometheus metrics, drift checks, Docker, and CI.
 Technical Skills
 Languages: Python, SQL, Java, JavaScript
 Data and orchestration: Apache Spark, PySpark, Pandas, CDC, ETL/ELT, Dagster, Airflow, dbt,
@@ -60,8 +60,8 @@ Cloud and delivery: Microsoft Azure, AWS, Google Cloud, Terraform, Docker, GitHu
 CI/CD, Git
 Applications and storage: FastAPI, Spring, PostgreSQL, graph databases, MySQL, MongoDB, REST
 APIs, SOAP APIs
-AI workflow delivery: Agent orchestration, sandboxed execution, validation gates, human review,
-release health checks, rollback
+ML and AI delivery: MLflow, model registry, Prometheus, drift checks, agent orchestration, validation
+gates
 Education and Recognition
 Birla Institute of Technology Mesra
 Bachelor of Engineering in Computer Science

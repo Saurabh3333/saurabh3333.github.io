@@ -98,9 +98,10 @@ test("data-first recruiter scan surfaces controls and technical depth", async ({
   await expect(page.locator(".intro")).toContainText(/7\+ years.*Python.*SQL.*data engineering/is);
   await expect(page.locator(".principle-grid article")).toHaveCount(3);
   await expect(page.locator(".principle-grid")).toContainText(/Bounded execution.*Deterministic verification.*Production foundations/is);
-  await expect(page.locator(".project-card")).toHaveCount(2);
-  await expect(page.locator(".project-facts > div")).toHaveCount(8);
+  await expect(page.locator(".project-card")).toHaveCount(3);
+  await expect(page.locator(".project-facts > div")).toHaveCount(12);
   await expect(page.locator(".regulation-card")).toContainText(/FastAPI.*PostgreSQL.*tenant-isolated.*automatic rollback/is);
+  await expect(page.locator(".mlops-card")).toContainText(/Recent learning project.*MLflow.*champion.*Prometheus.*drift/is);
   await expect(page.locator("#experience")).toContainText(/manufacturing data.*CDC.*Azure CI\/CD/is);
 
   const copy = await page.locator("main").innerText();

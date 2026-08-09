@@ -32,7 +32,8 @@ def main() -> None:
         "Saurabh Shubham", "GROPYUS", "Data Engineer", "Sigmoid",
         "Software Development Engineer", "Amdocs", "Software Engineer",
         "Birla Institute of Technology Mesra", "Python", "SQL",
-        "Selected AI and Platform Work", "Pasin", "Agent workflow",
+        "Selected AI and Platform Work", "Retail Demand MLOps Demo", "Recent learning project",
+        "MLflow", "model registry", "Prometheus", "drift checks",
         "Regulation Check", "CDC", "Dagster", "dbt", "DLT", "lakehouse",
         "graph database", "CI/CD", "Docker", "GitHub Actions",
     )
@@ -53,7 +54,8 @@ def main() -> None:
     evidence = args.evidence.read_text()
     for claim_id in (
         "C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31",
-        "C50", "C51", "C52", "C53", "S14", "S15", "S16",
+        "C50", "C51", "C52", "C53", "C54", "C55",
+        "S14", "S15", "S16", "S17",
     ):
         if claim_id not in evidence:
             raise SystemExit(f"missing evidence ID: {claim_id}")
