@@ -1,59 +1,74 @@
 Saurabh Shubham
-DATA ENGINEER | AGENTIC AI & DATA PLATFORMS
+DATA ENGINEER | PRODUCTION DATA PLATFORMS
 Berlin, Germany | saurabh.friday@gmail.com
 linkedin.com/in/saurabh-shubham | github.com/Saurabh3333 | saurabh3333.github.io
 Summary
-Data Engineer with 7+ years building production data pipelines, orchestration, cloud workflows, and
-backend integrations. Builds agentic products with controlled deployment, deterministic validation, and
-human review. Strong in Python, SQL, CDC, ETL/ELT, Dagster, dbt, lakehouse architectures, CI/CD,
-cloud platforms, and infrastructure as code.
-Applied AI Engineering
-Regulation Check — EU AI Act Readiness Platform
-Independent product
-• Built and deployed a FastAPI and Supabase PostgreSQL product through a Looper-based agentic
-workflow, combining deterministic screening, tenant isolation, and auditable evidence.
-• Engineered a self-healing release path with GitHub Actions CI/CD, commit-pinned Docker images,
-approval-gated automatic deployment, startup retry, production health checks, and last-known-good
-rollback.
-Pasin — Agentic Workflow Orchestration
-Independent project
-• Designed multi-provider agent operations with planned scope, sandboxed execution, durable status,
-deterministic acceptance checks, review gates, and rollback-friendly Git milestones.
+Data Engineer with 7+ years of experience building and supporting production data and backend
+systems. Hands-on with Python, distributed data processing, cloud delivery, infrastructure as code, and
+containerized releases. Current work spans CDC, lakehouse, workflow orchestration, and graph data for
+robotic manufacturing. Also builds independent products and AI-assisted workflows with automated
+deployment, health checks, approval gates, and rollback.
 Experience
 GROPYUS
-Berlin, Germany
 Data Engineer
-Aug 2022 – Present
-• Design and optimise Python pipelines across CDC, lakehouse, and graph-database architectures,
-connecting robotic manufacturing systems with enterprise data flows.
-• Model and orchestrate Dagster, Airflow, dbt, and DLT workflows; deliver tested changes through Azure
-CI/CD.
+
+Berlin, Germany
+Aug 2022 - Present
+
+• Build and maintain Python data pipelines across CDC, lakehouse, and graph database systems that
+connect robotic manufacturing data with enterprise workflows.
+• Develop and orchestrate workflows with Dagster, Airflow, dbt, and DLT, and release tested changes
+through Azure CI/CD.
 Sigmoid
-Bengaluru, India
 Software Development Engineer
-Jun 2021 – Jul 2022
-• Built ETL pipelines that transformed commercial sales data into repeatable reporting datasets using
-Python, PySpark, and Pandas.
-• Orchestrated and deployed data workflows with Airflow, Terraform, Google Cloud, and AWS.
+
+Bengaluru, India
+Jun 2021 - Jul 2022
+
+• Built Python and Apache Spark data pipelines that transformed commercial sales data into repeatable
+reporting datasets.
+• Automated and deployed data workflows with Airflow and Terraform across Google Cloud and AWS.
 Amdocs
-Pune, India
 Software Engineer
-Jun 2019 – Jun 2021
-• Delivered CRM backend capabilities from requirements and wireframes through implementation and
+
+Pune, India
+Jun 2019 - Jun 2021
+
+• Took CRM backend features from requirements and wireframes through implementation and
 integration.
-• Built enterprise integrations and service interfaces using Java, Spring, REST APIs, and SOAP APIs.
+• Built and supported enterprise service integrations in Java and Spring using REST and SOAP APIs.
+Selected AI and Platform Work
+Regulation Check | EU AI Act readiness platform
+
+Independent product
+
+• Built and deployed a FastAPI and Supabase PostgreSQL product with deterministic screening, tenant
+isolation, and auditable evidence.
+• Set up GitHub Actions, pinned Docker releases, deployment approvals, startup retry, health checks,
+and automatic rollback to the last known good version.
+Retail Demand MLOps Demo | Model lifecycle
+
+Recent learning project
+
+• Built a synthetic retail forecasting lifecycle with MLflow tracking and registry, gated model promotion,
+FastAPI serving, Prometheus metrics, drift checks, Docker, and CI.
 Technical Skills
-AI and agents: Claude Code, Looper workflows, agent orchestration, context design, validation gates,
-human-in-the-loop review
 Languages: Python, SQL, Java, JavaScript
-Data engineering: CDC, ETL/ELT, Dagster, Airflow, dbt, DLT, PySpark, lakehouse architectures
-Cloud and delivery: Microsoft Azure, AWS, Google Cloud, CI/CD, Docker, GitHub Actions, Terraform,
-Git
-Databases and interfaces: PostgreSQL, graph databases, MySQL, MongoDB, REST APIs, SOAP APIs
-Education
+Data and orchestration: Apache Spark, PySpark, Pandas, CDC, ETL/ELT, Dagster, Airflow, dbt,
+DLT, lakehouse architectures
+Cloud and delivery: Microsoft Azure, AWS, Google Cloud, Terraform, Docker, GitHub Actions,
+CI/CD, Git
+Applications and storage: FastAPI, Spring, PostgreSQL, graph databases, MySQL, MongoDB, REST
+APIs, SOAP APIs
+ML and AI delivery: MLflow, model registry, Prometheus, drift checks, agent orchestration, validation
+gates
+Education and Recognition
 Birla Institute of Technology Mesra
-India
 Bachelor of Engineering in Computer Science
-Aug 2015 – Jun 2019
-Recognition
+
+India
+Aug 2015 - Jun 2019
+
 Facebook PyTorch Scholar | Infosys HackWithInfy Top 200 | Google Tech Intern Connect invitee (2018)
+
+

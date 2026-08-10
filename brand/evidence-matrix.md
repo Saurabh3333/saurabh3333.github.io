@@ -27,6 +27,14 @@
 - **Key facts:** FastAPI application with external Supabase PostgreSQL, deterministic EU AI Act screening, tenant isolation, evidence workflows, GitHub Actions CI/CD, commit-pinned Docker images, approval-gated automatic production deployment, health checks, transient-startup retry, service restart policies, and automatic application rollback to the last-known-good release. Together, the verified retry, restart, health-gating, and rollback controls support the concise description "self-healing release path."
 - **Boundary:** The repository is private. Publish product architecture and delivery controls, not credentials, internal topology, customer data, or unsupported usage and impact metrics.
 
+### S17 — Retail Demand MLOps Demo repository
+- **Classification:** `candidate fact`
+- **Source:** Owner repository `Saurabh3333/retail-demand-mlops-demo`
+- **Retrieved:** 2026-08-09
+- **Status:** ✅ source-inspected, tested, and publication-authorized by the operator's request to prepare and show hands-on MLOps work for an interview
+- **Key facts:** Recent learning project using synthetic retail data, scikit-learn, MLflow tracking and Model Registry aliases, metric-gated candidate-to-champion promotion, FastAPI serving, Prometheus metrics, structured prediction logs, PSI input-drift checks, Docker Compose, CI, an architecture decision record, a runbook, and a post-incident review. Clean-environment validation trained and registered a model, promoted the first validated champion, loaded it through the registry, and completed a real inference smoke test.
+- **Boundary:** Always label as a recent learning or interview demonstration. It is not employer work, a production deployment, a business-validated forecasting system, or evidence of operating an enterprise ML platform.
+
 ### S15 — Operator statement: current project and GROPYUS scope
 - **Classification:** `candidate fact`
 - **Source:** Direct operator instruction in Codex session
@@ -190,6 +198,8 @@ Each row maps a specific claim from sources S01–S10 to its evidence status and
 | C51 | Regulation Check: FastAPI/Supabase PostgreSQL EU AI Act readiness product | S16 | CF | HIGH | ✅ yes | Source-inspected application and live health endpoint |
 | C52 | Regulation Check delivery: GitHub Actions CI/CD, Docker, automated deployment, health checks, retry, rollback, and a self-healing release path | S16 | CF | HIGH | ✅ yes | Source-inspected workflows, Compose configuration, deployment code, and operations tests; "self-healing" summarizes the verified recovery controls |
 | C53 | Regulation Check development used a Looper workflow | S15 | CF | MEDIUM | ✅ yes | Direct operator statement; describe as development process, not runtime capability |
+| C54 | Project: Retail Demand MLOps Demo | S17 | CF | HIGH | ✅ yes, with learning-project label | Public owner repository created as a recent hands-on interview demonstration using synthetic data |
+| C55 | Retail Demand MLOps Demo lifecycle: MLflow tracking and registry, gated promotion, FastAPI serving, Prometheus metrics, drift checks, Docker, CI, ADR, runbook, and incident review | S17 | CF | HIGH | ✅ yes, with scope boundary | Source-inspected and locally verified; do not describe as production or employer experience |
 
 ---
 
@@ -278,6 +288,7 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | S14 | Direct operator statement: AI workflow work | candidate fact |
 | S15 | Direct operator statement: Regulation Check and GROPYUS scope | candidate fact |
 | S16 | Regulation Check repository and live service | candidate fact |
+| S17 | Retail Demand MLOps Demo repository and verified lifecycle | candidate fact |
 
 ---
 
