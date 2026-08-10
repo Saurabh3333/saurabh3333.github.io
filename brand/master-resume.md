@@ -8,12 +8,11 @@ Berlin, Germany · saurabh.friday@gmail.com
 
 ## Profile
 
-Data Engineer with 7+ years across manufacturing data, commercial data
-pipelines, and backend integration. Builds Python-based CDC and ETL/ELT
-workflows with orchestration, lakehouse and graph-database systems, cloud
-platforms, and CI/CD. Also builds production agentic products with controlled
-deployment and recovery. Based in Berlin and targeting Senior Data Engineer,
-Data Platform Engineer, and Data Infrastructure Engineer roles.
+Data Engineer with 7+ years building production data pipelines, orchestration,
+cloud workflows, and backend integrations. Applies that platform discipline to
+agentic systems through bounded execution, deterministic acceptance checks,
+human review, and recoverable delivery. Based in Berlin and targeting AI
+Platform Engineer, Senior Data Engineer, and Data Platform Engineer roles.
 <!-- C07–C23, C30–C35, C50–C53; duration derived from Jun 2019 to Jul 2026 -->
 
 ## Experience
@@ -23,29 +22,50 @@ Data Platform Engineer, and Data Infrastructure Engineer roles.
 Berlin, Germany · Aug 2022–Present
 <!-- C08–C13 -->
 
-- Designed and optimised Python pipelines across CDC, lakehouse, and
-  graph-database systems, connecting robotic manufacturing and enterprise data.
-- Modelled and orchestrated Dagster, Airflow, dbt, and DLT workflows; delivered
-  tested changes through Azure CI/CD.
+- Build and optimise Python data pipelines connecting robotic manufacturing
+  systems with enterprise platforms across CDC, lakehouse, and graph-database
+  architectures.
+- Model and orchestrate production workflows with Dagster, Airflow, dbt, and
+  DLT; ship tested changes through Azure CI/CD.
 
 ### Sigmoid — Software Development Engineer
 
 Bengaluru, India · Jun 2021–Jul 2022
 <!-- C14–C18; client identity deliberately omitted -->
 
-- Built and maintained ETL pipelines for commercial sales reporting.
-- Worked with Python, PySpark, Airflow, Pandas, Terraform, Google Cloud, and AWS.
+- Built repeatable ETL pipelines for commercial sales reporting, transforming
+  data with Python, PySpark, and Pandas.
+- Orchestrated workflows with Airflow and provisioned delivery infrastructure
+  with Terraform across Google Cloud and AWS.
 
 ### Amdocs — Software Engineer
 
 Pune, India · Jun 2019–Jun 2021
 <!-- C19–C23; client identity deliberately omitted -->
 
-- Delivered CRM features from requirements and wireframes through implementation.
-- Built backend integrations with Java, Spring, REST APIs, and SOAP APIs.
+- Translated CRM requirements and wireframes into Java and Spring backend
+  capabilities and enterprise integrations.
+- Developed REST and SOAP service interfaces, carrying changes from
+  implementation through integration.
+
+## Selected systems
+
+- `Regulation Check`: live tenant-isolated FastAPI and Supabase PostgreSQL EU AI
+  Act readiness workspace. A bounded LLM call through Vercel AI Gateway turns
+  free-text descriptions into schema-validated, human-confirmed inventory
+  proposals; deterministic screening, sourced obligations, evidence, tasks,
+  and reports remain outside the model decision path. MCP-connected tools
+  supported bounded research and delivery verification. Approval-gated GitHub
+  Actions delivery uses commit-pinned Docker images, startup retry, production
+  health checks, and last-known-good rollback. <!-- C51–C55 -->
+- `Pasin`: independent multi-provider agent workflow design around durable
+  scope, sandboxed execution, explicit status, deterministic acceptance checks,
+  human review, and rollback-friendly Git milestones. <!-- S14 -->
 
 ## Skills
 
+- Agentic systems: multi-provider orchestration, sandboxed execution,
+  acceptance checks, human review, release controls
 - Languages: Python, SQL, Java, JavaScript, C++
 - Data: CDC, ETL/ELT, Airflow, Dagster, dbt, DLT, PySpark, lakehouse
 - Cloud and delivery: Microsoft Azure, AWS, Google Cloud, CI/CD, Docker,
@@ -60,22 +80,6 @@ Bachelor of Engineering in Computer Science, Birla Institute of Technology
 Mesra · Aug 2015–Jun 2019
 <!-- C29 -->
 
-## Selected public projects
-
-- `Regulation Check`: live FastAPI and Supabase PostgreSQL EU AI Act readiness
-  product. Built through a Looper workflow; GitHub Actions CI/CD publishes
-  commit-pinned Docker images through a self-healing release path with
-  approval-gated automatic deployment, health checks, retry, and
-  last-known-good rollback. <!-- C51–C53 -->
-- `give-me-a-joke`: historical JavaScript/Node.js package published publicly
-  under MIT. <!-- C36 -->
-- `Image-Crawler`: historical Node.js/Express web-crawling project. <!-- C39 -->
-
-Forks and unverified private projects are not presented as authored case studies.
-
-## Recognition
-
-- Facebook PyTorch Challenge Scholarship, 2018
-- Top 200, Infosys HackWithInfy
-- Google Tech Intern Connect invitee, 2018
-<!-- C26–C28 -->
+Historical projects and recognition remain in the evidence matrix but are
+omitted from the one-page senior resume so current production evidence carries
+the available space.

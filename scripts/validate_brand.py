@@ -6,11 +6,15 @@ import re
 
 def files(paths: list[Path]):
     governance = {"evidence-matrix.md", "market-research.md", "design-research.md", "open-questions.md"}
+    text_suffixes = {".css", ".html", ".js", ".json", ".md", ".svg", ".tex", ".txt", ".xml"}
     for path in paths:
-        if path.is_file():
+        if path.is_file() and path.suffix.lower() in text_suffixes:
             yield path
         elif path.is_dir():
-            yield from (item for item in path.rglob("*") if item.is_file() and item.name not in governance)
+            yield from (
+                item for item in path.rglob("*")
+                if item.is_file() and item.name not in governance and item.suffix.lower() in text_suffixes
+            )
 
 
 def main() -> None:

@@ -23,39 +23,42 @@ def main() -> None:
     if not re.search(r"^Pages:\s+1$", info, re.MULTILINE):
         raise SystemExit("resume must contain exactly one page")
 
-    extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n\f") + "\n"
-    maintained = args.text.read_text().rstrip("\n\f") + "\n"
+    extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n") + "\n"
+    maintained = args.text.read_text()
     if extracted != maintained:
         raise SystemExit("ATS text does not match PDF extraction")
 
+    searchable = re.sub(r"\s+", " ", extracted)
     required = (
         "Saurabh Shubham", "GROPYUS", "Data Engineer", "Sigmoid",
         "Software Development Engineer", "Amdocs", "Software Engineer",
         "Birla Institute of Technology Mesra", "Python", "SQL",
-        "Selected AI and Platform Work", "Retail Demand MLOps Demo", "Recent learning project",
-        "MLflow", "model registry", "Prometheus", "drift checks",
+        "Selected Systems", "Retail Demand MLOps Demo", "Recent learning project",
         "Regulation Check", "CDC", "Dagster", "dbt", "DLT", "lakehouse",
-        "graph database", "CI/CD", "Docker", "GitHub Actions",
+        "graph-database", "CI/CD", "Docker", "GitHub Actions",
+        "deterministic acceptance checks", "human review", "LLM",
+        "Vercel AI Gateway", "Model Context Protocol (MCP)", "MLflow",
+        "model registry", "Prometheus", "drift checks",
     )
-    missing = [value for value in required if value not in extracted]
+    missing = [value for value in required if value not in searchable]
     if missing:
         raise SystemExit("missing required fields: " + ", ".join(missing))
-    if not (extracted.index("GROPYUS") < extracted.index("Sigmoid") < extracted.index("Amdocs")):
+    if not (searchable.index("GROPYUS") < searchable.index("Sigmoid") < searchable.index("Amdocs")):
         raise SystemExit("experience is not reverse chronological")
 
     forbidden = (
         "Machine Learning Engineer", "ML Ops Engineer", "MLOps Engineer",
         "AI System Engineer", "Colgate", "Walmart", "Comcast",
     )
-    found = [value for value in forbidden if value in extracted]
+    found = [value for value in forbidden if value in searchable]
     if found:
         raise SystemExit("forbidden or private claims: " + ", ".join(found))
 
     evidence = args.evidence.read_text()
     for claim_id in (
         "C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31",
-        "C50", "C51", "C52", "C53", "C54", "C55",
-        "S14", "S15", "S16", "S17",
+        "C50", "C51", "C52", "C53", "C54", "C55", "C56", "C57",
+        "S14", "S15", "S16", "S17", "S18",
     ):
         if claim_id not in evidence:
             raise SystemExit(f"missing evidence ID: {claim_id}")

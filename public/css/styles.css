@@ -177,19 +177,6 @@ h1 { margin-bottom: .15rem; font-size: clamp(2rem, 7vw, 3.4rem); line-height: .9
 .quick-facts p + p { border-left: 1px solid var(--line); }
 .quick-facts strong { display: block; margin-bottom: .2rem; color: var(--ink); font: 700 .68rem/1.2 var(--mono); text-transform: uppercase; }
 
-.live-dot {
-  display: inline-block;
-  width: .45rem;
-  height: .45rem;
-  margin-right: .35rem;
-  border-radius: 50%;
-  background: #35c96f;
-  box-shadow: 0 0 0 0 rgb(53 201 111 / 50%);
-  animation: pulse 2.2s infinite;
-}
-
-@keyframes pulse { 60% { box-shadow: 0 0 0 .35rem rgb(53 201 111 / 0%); } }
-
 .availability { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; color: var(--muted); font-size: .76rem; }
 .availability a { color: var(--ink); font-weight: 720; }
 .intro-links { display: flex; gap: 1rem; }
