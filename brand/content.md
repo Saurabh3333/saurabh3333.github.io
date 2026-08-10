@@ -2,31 +2,32 @@
 
 ## Positioning
 
-Primary narrative: agentic AI systems grounded in Data Engineering. Professional
-identity remains Data Engineer; secondary search terms are Data Platform Engineer
-and Data Infrastructure Engineer. Berlin-based; open to relevant Germany and
-European remote opportunities. <!-- C07–C23, C30–C35, S14 -->
+Primary narrative: AI platform engineering grounded in seven years of production
+Data Engineering. Professional identity remains Data Engineer; role-fit language
+connects controlled agentic systems to Data Platform Engineering without claiming
+unverified model, framework, leadership, or scale experience. <!-- C07–C23, C30–C35, S14 -->
 
 ## Page order
 
 1. Identity, role, Berlin location, and direct resume/contact actions.
-2. Operating profile: reliable agentic systems backed by data-platform discipline.
-3. Applied AI: the live Regulation Check product and the Pasin workflow.
-4. Two evidence-backed work narratives, classified as professional experience.
-5. Experience: exact employer titles and chronology.
-6. Skills in demonstrated context.
-7. Public historical projects, clearly separated from professional work.
-8. Contact and same-origin resume route.
+2. Operating profile: agent control, data foundations, and recoverable delivery.
+3. Engineering evidence: live Regulation Check product and clearly labelled
+   Pasin architecture design.
+4. Experience: exact employer titles, chronology, production scope, and delivery.
+5. Skills in demonstrated context.
+6. Engineering judgment focused on failure, state, verification, and recovery.
+7. Education, contact, and same-origin resume route.
 
 ## Hero copy
 
-**Eyebrow:** Agentic AI · Data Platforms · Berlin
+**Role line:** AI Platform · Data Engineering · Berlin
 
-**Headline:** AI agents built for the work beyond the demo.
+**Headline:** I build controlled agentic workflows on production data foundations.
 
-**Summary:** I am Saurabh Shubham, a Data Engineer building production AI
-products and agentic workflows. I combine automated execution with deterministic
-checks, safe deployment, and platform discipline. <!-- C01, C07–C23, C51–C53 -->
+**Summary:** My work combines bounded execution, deterministic acceptance checks,
+human review, and recoverable delivery with 7+ years of Python and SQL engineering
+across pipelines, orchestration, lakehouse systems, and cloud platforms.
+<!-- C01, C07–C23, C51–C53 -->
 
 ## Work narratives
 
@@ -36,8 +37,15 @@ checks, safe deployment, and platform discipline. <!-- C01, C07–C23, C51–C53
 **Product:** FastAPI and Supabase PostgreSQL workspace for deterministic EU AI
 Act screening, tenant-isolated inventories, sourced obligations, tasks,
 evidence, and readiness reports.
+**AI intake:** A bounded LLM call through Vercel AI Gateway converts free-text
+AI-system descriptions into a strict inventory proposal. User text is treated
+as untrusted data; schema and enum validation, field limits, provider fallback,
+and explicit human confirmation prevent model output from becoming an
+unreviewed system record.
 **Process:** Developed through a Looper-based agentic workflow with scoped
-milestones, deterministic tests, review gates, and documented boundaries.
+milestones, MCP-connected tools for bounded research, repository access, and
+delivery verification, deterministic tests, review gates, and documented
+boundaries.
 **Delivery:** GitHub Actions CI/CD publishes commit-pinned Docker images. A
 self-healing release path automatically deploys approved releases, retries
 transient startup failures, verifies production health, and rolls back to the

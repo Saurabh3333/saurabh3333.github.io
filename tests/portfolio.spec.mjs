@@ -23,9 +23,10 @@ for (const viewport of viewports) {
 
     expect(response.ok()).toBeTruthy();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.getByRole("heading", { name: "Data and AI workflows in practice" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Proof, not pitch" })).toBeVisible();
     await expect(page.locator("#work")).toContainText("Regulation Check");
     await expect(page.locator("#work")).toContainText("Pasin");
+    await expect(page.locator("#work")).toContainText("Retail Demand MLOps Demo");
     await expect(page.locator("#experience .timeline > li")).toHaveCount(3);
     await expect(page.locator("#toolkit .skill-groups > div")).toHaveCount(4);
     await expect(page.locator(".dock")).toBeVisible();
@@ -76,8 +77,8 @@ test("semantic structure and accessible controls", async ({ page }) => {
 
 test("search and social metadata are complete and canonical", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle("Saurabh Shubham | Data Engineer & AI Workflow Builder");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Berlin-based Data Engineer.*7\+ years.*Python and SQL.*controlled AI workflows/i);
+  await expect(page).toHaveTitle("Saurabh Shubham | AI Platform & Data Engineer in Berlin");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /AI platform.*data engineering.*controlled agentic workflows.*Python and SQL.*AI governance/i);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://saurabh3333.github.io/");
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", "https://saurabh3333.github.io/public/images/saurabh-shubham-og.png");
@@ -91,18 +92,19 @@ test("search and social metadata are complete and canonical", async ({ page }) =
   }
 });
 
-test("data-first recruiter scan surfaces controls and technical depth", async ({ page }) => {
+test("AI-platform recruiter scan surfaces proof, controls, and technical depth", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".intro")).toContainText("7+ years");
-  await expect(page.locator(".intro")).toContainText(/production data systems.*AI-assisted workflows.*sandboxed execution.*explicit checks.*human review/is);
-  await expect(page.locator(".intro")).toContainText(/7\+ years.*Python.*SQL.*data engineering/is);
+  await expect(page.locator(".intro")).toContainText(/controlled agentic workflows.*bounded execution.*deterministic acceptance checks.*human review.*recoverable delivery/is);
+  await expect(page.locator(".intro")).toContainText(/7\+ years.*Python.*SQL.*pipelines.*orchestration.*lakehouse.*cloud/is);
   await expect(page.locator(".principle-grid article")).toHaveCount(3);
-  await expect(page.locator(".principle-grid")).toContainText(/Bounded execution.*Deterministic verification.*Production foundations/is);
+  await expect(page.locator(".principle-grid")).toContainText(/Agent control.*Data foundations.*Recoverable delivery/is);
   await expect(page.locator(".project-card")).toHaveCount(3);
-  await expect(page.locator(".project-facts > div")).toHaveCount(12);
-  await expect(page.locator(".regulation-card")).toContainText(/FastAPI.*PostgreSQL.*tenant-isolated.*automatic rollback/is);
+  await expect(page.locator(".project-facts > div")).toHaveCount(14);
+  await expect(page.locator(".regulation-card")).toContainText(/live AI governance.*LLM.*Vercel AI Gateway.*schema validation.*human confirmation.*MCP-connected.*deterministic screening.*last-known-good rollback/is);
+  await expect(page.locator(".pasin-card")).toContainText(/architecture.*not a claimed live product/is);
   await expect(page.locator(".mlops-card")).toContainText(/Recent learning project.*MLflow.*champion.*Prometheus.*drift/is);
-  await expect(page.locator("#experience")).toContainText(/manufacturing data.*CDC.*Azure CI\/CD/is);
+  await expect(page.locator("#experience")).toContainText(/robotic manufacturing systems.*CDC.*production workflows.*Azure CI\/CD/is);
 
   const copy = await page.locator("main").innerText();
   for (const genericPhrase of ["build the plumbing", "useful autonomy", "calm operations", "honest systems", "heart and purpose"]) {
@@ -170,6 +172,8 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   await expect(page.getByRole("link", { name: /Regulation Check/ })).toHaveAttribute("href", "https://regulationcheck.com/");
   await page.goto("/resume/");
   await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
+  await expect(page).toHaveTitle("AI Platform & Data Engineer Resume — Saurabh Shubham");
+  await expect(page.locator(".hero-copy")).toHaveText("AI Platform · Data Engineering · Berlin");
 
   const [pdf, text] = await Promise.all([
     page.request.get("/resume/saurabh-shubham-data-engineer.pdf"),
@@ -178,6 +182,13 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   expect(pdf.ok()).toBeTruthy();
   expect(pdf.headers()["content-type"]).toContain("application/pdf");
   expect(text.ok()).toBeTruthy();
+  const ats = (await text.text()).replace(/\s+/g, " ");
+  expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected Systems"));
+  expect(ats).toContain("deterministic acceptance checks");
+  expect(ats).toContain("Vercel AI Gateway");
+  expect(ats).toContain("Model Context Protocol (MCP)");
+  expect(ats).not.toContain("Claude Code");
+  expect(ats).not.toContain("Recognition");
   expect(localFailures).toEqual([]);
 });
 
@@ -187,7 +198,7 @@ test("reduced motion removes transitions and reveals content", async ({ page }) 
   expect(await page.locator("html").evaluate(element => getComputedStyle(element).scrollBehavior)).toBe("auto");
   await expect(page.locator("#work")).toHaveCSS("opacity", "1");
   await expect(page.locator("#work")).toHaveCSS("transform", "none");
-  await expect(page.locator(".live-dot")).toHaveCSS("animation-name", "none");
+  await expect(page.locator(".quick-facts .live-dot")).toHaveCount(0);
 });
 
 test("light and dark themes keep readable base contrast", async ({ page }) => {

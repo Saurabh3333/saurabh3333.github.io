@@ -1,7 +1,7 @@
 # Evidence Matrix — Saurabh Shubham Portfolio Audit
 
 **Created:** 2026-07-13
-**Reviewed:** 2026-07-28 by Codex
+**Reviewed:** 2026-08-10 by Codex
 **Repository:** `https://github.com/Saurabh3333/saurabh3333.github.io`
 **Unit:** Audit repository and establish evidence authority
 
@@ -19,21 +19,29 @@
 
 ## Reviewed Sources
 
-### S16 — Regulation Check repository and live service
-- **Classification:** `candidate fact`
-- **Source:** Local owner repository `Saurabh3333/ai-reg-watch-next`, plus `https://regulationcheck.com/healthz`
-- **Retrieved:** 2026-07-28
-- **Status:** ✅ source-inspected; live health endpoint returned `{"status":"ok"}`
-- **Key facts:** FastAPI application with external Supabase PostgreSQL, deterministic EU AI Act screening, tenant isolation, evidence workflows, GitHub Actions CI/CD, commit-pinned Docker images, approval-gated automatic production deployment, health checks, transient-startup retry, service restart policies, and automatic application rollback to the last-known-good release. Together, the verified retry, restart, health-gating, and rollback controls support the concise description "self-healing release path."
-- **Boundary:** The repository is private. Publish product architecture and delivery controls, not credentials, internal topology, customer data, or unsupported usage and impact metrics.
-
-### S17 — Retail Demand MLOps Demo repository
+### S18 — Retail Demand MLOps Demo repository
 - **Classification:** `candidate fact`
 - **Source:** Owner repository `Saurabh3333/retail-demand-mlops-demo`
 - **Retrieved:** 2026-08-09
 - **Status:** ✅ source-inspected, tested, and publication-authorized by the operator's request to prepare and show hands-on MLOps work for an interview
 - **Key facts:** Recent learning project using synthetic retail data, scikit-learn, MLflow tracking and Model Registry aliases, metric-gated candidate-to-champion promotion, FastAPI serving, Prometheus metrics, structured prediction logs, PSI input-drift checks, Docker Compose, CI, an architecture decision record, a runbook, and a post-incident review. Clean-environment validation trained and registered a model, promoted the first validated champion, loaded it through the registry, and completed a real inference smoke test.
 - **Boundary:** Always label as a recent learning or interview demonstration. It is not employer work, a production deployment, a business-validated forecasting system, or evidence of operating an enterprise ML platform.
+
+### S17 — Operator statement: Regulation Check MCP workflow
+- **Classification:** `candidate fact`
+- **Source:** Direct operator instruction in Codex session
+- **Retrieved:** 2026-08-05
+- **Status:** ✅ publication-authorized
+- **Key facts:** Regulation Check development used MCP-connected tools alongside the agentic workflow.
+- **Boundary:** Describe MCP as engineering-tool access for bounded research, repository work, and verification; do not claim an MCP server is part of the live customer runtime.
+
+### S16 — Regulation Check repository and live service
+- **Classification:** `candidate fact`
+- **Source:** Local owner repository `Saurabh3333/ai-reg-watch-next`, plus `https://regulationcheck.com/healthz`
+- **Retrieved:** 2026-07-28
+- **Status:** ✅ source-inspected; live health endpoint returned `{"status":"ok"}`
+- **Key facts:** FastAPI application with external Supabase PostgreSQL, deterministic EU AI Act screening, tenant isolation, and evidence workflows. A Vercel AI Gateway adapter uses an LLM to extract free-text system descriptions into a strict JSON proposal with field limits, canonical enums, temperature zero, provider fallback, untrusted-input instructions, and mandatory user confirmation before completion. GitHub Actions CI/CD uses commit-pinned Docker images, approval-gated automatic production deployment, health checks, transient-startup retry, service restart policies, and automatic application rollback to the last-known-good release. Together, the verified retry, restart, health-gating, and rollback controls support the concise description "self-healing release path."
+- **Boundary:** The repository is private. Publish product architecture and delivery controls, not credentials, internal topology, customer data, or unsupported usage and impact metrics.
 
 ### S15 — Operator statement: current project and GROPYUS scope
 - **Classification:** `candidate fact`
@@ -198,8 +206,10 @@ Each row maps a specific claim from sources S01–S10 to its evidence status and
 | C51 | Regulation Check: FastAPI/Supabase PostgreSQL EU AI Act readiness product | S16 | CF | HIGH | ✅ yes | Source-inspected application and live health endpoint |
 | C52 | Regulation Check delivery: GitHub Actions CI/CD, Docker, automated deployment, health checks, retry, rollback, and a self-healing release path | S16 | CF | HIGH | ✅ yes | Source-inspected workflows, Compose configuration, deployment code, and operations tests; "self-healing" summarizes the verified recovery controls |
 | C53 | Regulation Check development used a Looper workflow | S15 | CF | MEDIUM | ✅ yes | Direct operator statement; describe as development process, not runtime capability |
-| C54 | Project: Retail Demand MLOps Demo | S17 | CF | HIGH | ✅ yes, with learning-project label | Public owner repository created as a recent hands-on interview demonstration using synthetic data |
-| C55 | Retail Demand MLOps Demo lifecycle: MLflow tracking and registry, gated promotion, FastAPI serving, Prometheus metrics, drift checks, Docker, CI, ADR, runbook, and incident review | S17 | CF | HIGH | ✅ yes, with scope boundary | Source-inspected and locally verified; do not describe as production or employer experience |
+| C54 | Regulation Check LLM intake: Vercel AI Gateway, strict structured output, bounded validation, fallback, and human confirmation | S16 | CF | HIGH | ✅ yes | Source-inspected adapter, onboarding state machine, domain model, and unit tests |
+| C55 | Regulation Check development used MCP-connected tools | S17 | CF | MEDIUM | ✅ yes | Direct operator statement; describe as development tooling, not product runtime architecture |
+| C56 | Project: Retail Demand MLOps Demo | S18 | CF | HIGH | ✅ yes, with learning-project label | Public owner repository created as a recent hands-on interview demonstration using synthetic data |
+| C57 | Retail Demand MLOps Demo lifecycle: MLflow tracking and registry, gated promotion, FastAPI serving, Prometheus metrics, drift checks, Docker, CI, ADR, runbook, and incident review | S18 | CF | HIGH | ✅ yes, with scope boundary | Source-inspected and locally verified; do not describe as production or employer experience |
 
 ---
 
@@ -225,9 +235,10 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | Amdocs backend and integration engineering | ✅ VERIFIED | Java/Spring/REST/SOAP at Amdocs for Comcast (C22, C23) |
 | Python, SQL, Dagster, Airflow, dbt, DLT, PySpark, cloud, Terraform | ✅ SUPPORTED | Skills self-reported; consistent with named employer technologies (C32–C35) |
 | GROPYUS CI/CD, CDC, lakehouse, and graph-database work | ✅ SUPPORTED | Direct operator statement (C50); no internal topology or metrics published |
-| Regulation Check product and production delivery controls | ✅ VERIFIED | Owner repository and live health endpoint inspected (C51–C53) |
+| Regulation Check product, LLM intake, and production delivery controls | ✅ VERIFIED | Owner repository and live health endpoint inspected (C51–C54) |
 | Quantitative financial asset-management interest or work | ❓ UNVERIFIED | No evidence found in any source. →open-questions |
-| LLM architecture and agent frameworks: CrewAI, LangGraph, OpenClaw, n8n | ❓ UNVERIFIED | HuggingClaw fork signals LLM interest; no evidence of CrewAI, LangGraph, OpenClaw, or n8n usage found in public repos or resume. →open-questions |
+| LLM integration | ✅ VERIFIED | Regulation Check uses Vercel AI Gateway for bounded structured extraction with human confirmation (C54) |
+| Agent frameworks: CrewAI, LangGraph, OpenClaw, n8n | ❓ UNVERIFIED | No evidence of these frameworks in inspected sources. →open-questions |
 | Supabase PostgreSQL product architecture | ✅ VERIFIED | Regulation Check repository configuration and application code inspected (C51) |
 | Network and privacy hardening | ❓ UNVERIFIED | Not found in any source. →open-questions |
 | SampadAI personal-finance platform | ❓ UNVERIFIED | Not found in any source; no public repo. →open-questions |
@@ -238,13 +249,15 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 
 | Claim on current site | Evidence | Disposition |
 |-----------------------|----------|-------------|
-| Works at GROPYUS in Berlin | C08, C11 ✅ | Keep; update with role title and dates |
-| Worked at Sigmoid and Amdocs | C14, C19 ✅ | Keep; add role detail |
-| Hasura Technologies fellowship | C24 ✅ | Keep; clarify as fellowship/internship |
-| Google Tech Intern Connect | C25, C28 ✅ | Keep; clarify as competitive networking program, not full SWE internship |
-| "I build software with clarity, reliability, and purpose" (h1) | Generic | Revise; does not signal Data Engineering identity |
-| "intersection of product judgment and engineering delivery" | Generic | Revise; does not reflect DE/platform specialization |
-| Resume via TinyURL | C45 ❌ deficiency | Eliminate; route to repository-hosted PDF |
+| AI Platform · Data Engineering positioning | C08–C23, C30–C35, C50–C55, S14 ✅ | Keep as role-fit narrative; exact employer title remains Data Engineer |
+| 7+ years production engineering | C30 ✅ | Keep; duration derives from Jun 2019 to present |
+| Controlled agentic workflows | S14, C51–C55 ✅ | Keep with bounded execution, structured outputs, deterministic checks, review, and recovery specifics |
+| GROPYUS production data work | C08, C11–C13, C50 ✅ | Keep without confidential architecture, scale, or outcome metrics |
+| Regulation Check as live product | C51–C55 ✅ | Keep LLM runtime and MCP-assisted development clearly distinguished |
+| Pasin as architecture design | S14 ✅ | Keep only when explicitly labelled design, not live production software |
+| Retail Demand MLOps Demo | C56–C57, S18 ✅ | Keep clearly labelled as a recent learning project using synthetic data |
+| Recognition from 2018 | C26–C28 ✅ | Omit from current senior package; verified but lower-value than recent engineering evidence |
+| Hosted one-page PDF and ATS text | C45 ✅ | Keep same-origin routes; no redirect or external document host |
 
 ---
 
@@ -288,7 +301,8 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | S14 | Direct operator statement: AI workflow work | candidate fact |
 | S15 | Direct operator statement: Regulation Check and GROPYUS scope | candidate fact |
 | S16 | Regulation Check repository and live service | candidate fact |
-| S17 | Retail Demand MLOps Demo repository and verified lifecycle | candidate fact |
+| S17 | Direct operator statement: Regulation Check MCP workflow | candidate fact |
+| S18 | Retail Demand MLOps Demo repository and verified lifecycle | candidate fact |
 
 ---
 
