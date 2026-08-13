@@ -17,6 +17,7 @@ training, model deployment, or ML platform operations.
 | GROPYUS | Dagster, Airflow, dbt, DLT, CDC, PostgreSQL, lakehouse, graph databases, Azure, and CI/CD | Direct operator confirmation, S19 |
 | GROPYUS | Data-pipeline anomaly detection, Prometheus, Grafana, and operational alerts | Direct operator confirmation, S19 |
 | GROPYUS | Work supports robot and manufacturing efficiency | Direct operator confirmation, S19; no quantified outcome claimed |
+| GROPYUS | Terraform, Docker, Kubernetes, and Unleash feature flags for platform delivery | Direct operator confirmation, S19; no infrastructure scale or rollout outcome claimed |
 | Sigmoid | Python, PySpark, Pandas, Airflow, Terraform, Google Cloud, MySQL, and sales-data pipelines | Direct operator confirmation, S19 |
 | Amdocs | Java, Spring, REST, SOAP, Oracle, and CRM backend work | Direct operator confirmation, S19 |
 | Regulation Check | Independent FastAPI and PostgreSQL application using Docker and GitHub Actions | Direct operator confirmation, S19; repository evidence, S16 |

@@ -187,6 +187,8 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   expect(ats).toContain("production planning");
   expect(ats).toContain("Prometheus");
   expect(ats).toContain("Grafana");
+  expect(ats).toContain("Kubernetes");
+  expect(ats).toContain("Unleash feature flags");
   expect(ats).toContain("Oracle");
   expect(ats).toContain("Recognition");
   for (const removedClaim of ["MLflow", "MLOps", "Vercel AI Gateway", "Model Context Protocol", "Claude Code"]) {

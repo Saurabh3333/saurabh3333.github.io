@@ -11,16 +11,16 @@ Berlin, Germany · saurabh.friday@gmail.com
 Senior Data Engineer with 7+ years across manufacturing data platforms,
 sales-data pipelines, and backend services. Builds Python and SQL ETL/ELT
 pipelines with orchestration, CDC, lakehouse, graph databases, cloud delivery,
-monitoring, and CI/CD. Based in Berlin and targeting Senior Data Engineer roles,
+monitoring, feature flags, and CI/CD. Based in Berlin and targeting Senior Data Engineer roles,
 with transferable backend engineering and data-platform observability experience.
-<!-- C07-C23, C30-C35, C50, C58-C62; duration derived from Jun 2019 to Aug 2026 -->
+<!-- C07-C23, C30-C35, C50, C58-C63; duration derived from Jun 2019 to Aug 2026 -->
 
 ## Experience
 
 ### GROPYUS - Data Engineer
 
 Berlin, Germany · Aug 2022-Present
-<!-- C08-C13, C58-C60 -->
+<!-- C08-C13, C58-C60, C63 -->
 
 - Build Python and SQL ETL/ELT pipelines for production planning, element
   lifecycle tracking, manufacturing reporting, and operational monitoring.
@@ -28,6 +28,8 @@ Berlin, Germany · Aug 2022-Present
   Dagster, Airflow, dbt, and DLT; release tested changes through Azure CI/CD.
 - Implement anomaly detection for data pipelines and monitor them with
   Prometheus, Grafana, and operational alerts.
+- Use Terraform, Docker, Kubernetes, and Unleash feature flags to support
+  platform delivery and controlled releases.
 
 ### Sigmoid - Software Development Engineer
 
@@ -52,11 +54,11 @@ Pune, India · Jun 2019-Jun 2021
 - Languages and frameworks: Python, SQL, Java, Spring, FastAPI
 - Data: ETL/ELT, CDC, Dagster, Airflow, dbt, DLT, PySpark, Pandas, lakehouse
 - Cloud and delivery: Microsoft Azure, Google Cloud, Terraform, Docker,
-  GitHub Actions, CI/CD, Git
-- Monitoring and storage: Prometheus, Grafana, alerting, PostgreSQL, MySQL,
-  Oracle, graph databases
-- Interfaces: REST APIs, SOAP APIs
-<!-- C31-C35, C50-C52, C58-C62 -->
+  Kubernetes, GitHub Actions, CI/CD, Git
+- Observability and controls: Prometheus, Grafana, alerting, Unleash feature flags
+- Storage and interfaces: PostgreSQL, MySQL, Oracle, graph databases, REST APIs,
+  SOAP APIs
+<!-- C31-C35, C50-C52, C58-C63 -->
 
 ## Education
 

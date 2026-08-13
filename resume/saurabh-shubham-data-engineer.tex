@@ -1,5 +1,5 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage[hmargin=0.58in,vmargin=0.49in]{geometry}
+\usepackage[hmargin=0.66in,vmargin=0.60in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
@@ -19,11 +19,11 @@
 \setlength{\parindent}{0pt}
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
-\setlist[itemize]{leftmargin=1.2em,itemsep=1.5pt,topsep=2pt,parsep=0pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=2.5pt,topsep=3pt,parsep=0pt}
 \titleformat{\section}{\normalsize\bfseries\color{black}}{}{0pt}{}[\vspace{-3pt}\titlerule]
-\titlespacing*{\section}{0pt}{4pt}{6pt}
-\newcommand{\role}[4]{\vspace{1pt}\textbf{#1} \hfill #2\\[0.5pt]\textit{#3} \hfill \textit{#4}}
-\newcommand{\project}[2]{\vspace{1pt}\textbf{#1} \hfill \textit{#2}}
+\titlespacing*{\section}{0pt}{6pt}{7pt}
+\newcommand{\role}[4]{\vspace{1.5pt}\textbf{#1} \hfill #2\\[1pt]\textit{#3} \hfill \textit{#4}}
+\newcommand{\project}[2]{\vspace{1.5pt}\textbf{#1} \hfill \textit{#2}}
 
 \begin{document}
 \raggedright
@@ -40,9 +40,9 @@
 \section{Summary}
 Senior Data Engineer with 7+ years of experience across manufacturing data platforms,
 sales-data pipelines, and backend services. Build Python and SQL ETL/ELT pipelines
-with Dagster, Airflow, dbt, DLT, CDC, lakehouse, and graph database systems. Experienced
-in Azure CI/CD, Terraform, data-pipeline anomaly detection, and production monitoring
-with Prometheus and Grafana.
+with Dagster, Airflow, dbt, and DLT. Work spans CDC, lakehouse and graph database
+systems, cloud delivery, infrastructure as code, feature flags, and production
+observability.
 
 \section{Experience}
 \role{GROPYUS}{Berlin, Germany}{Data Engineer}{Aug 2022 - Present}
@@ -50,6 +50,7 @@ with Prometheus and Grafana.
   \item Build Python and SQL ETL/ELT pipelines for production planning, element lifecycle tracking, manufacturing reporting, and operational monitoring.
   \item Orchestrate CDC, PostgreSQL, lakehouse, and graph database workflows with Dagster, Airflow, dbt, and DLT; release tested changes through Azure CI/CD.
   \item Implement anomaly detection for data pipelines and monitor them with Prometheus, Grafana, and operational alerts, supporting improvements to robot and manufacturing ef\kern0pt ficiency.
+  \item Use Terraform, Docker, Kubernetes, and Unleash feature flags to support platform delivery and controlled releases.
 \end{itemize}
 
 \role{Sigmoid}{Bengaluru, India}{Software Development Engineer}{Jun 2021 - Jul 2022}
@@ -73,9 +74,9 @@ with Prometheus and Grafana.
 \section{Technical Skills}
 \textbf{Languages and frameworks:} Python, SQL, Java, Spring, FastAPI\\[1pt]
 \textbf{Data engineering:} ETL/ELT, CDC, Dagster, Airflow, dbt, DLT, PySpark, Pandas, lakehouse\\[1pt]
-\textbf{Cloud and delivery:} Microsoft Azure, Google Cloud, Terraform, Docker, GitHub Actions, CI/CD, Git\\[1pt]
-\textbf{Monitoring and storage:} Prometheus, Grafana, alerting, PostgreSQL, MySQL, Oracle, graph databases\\[1pt]
-\textbf{Interfaces:} REST APIs, SOAP APIs
+\textbf{Cloud and delivery:} Microsoft Azure, Google Cloud, Terraform, Docker, Kubernetes, GitHub Actions, CI/CD, Git\\[1pt]
+\textbf{Observability and controls:} Prometheus, Grafana, alerting, Unleash feature flags\\[1pt]
+\textbf{Storage and interfaces:} PostgreSQL, MySQL, Oracle, graph databases, REST APIs, SOAP APIs
 
 \section{Education}
 \textbf{Birla Institute of Technology Mesra} \hfill India\\

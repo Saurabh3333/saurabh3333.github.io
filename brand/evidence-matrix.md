@@ -40,7 +40,7 @@
 - **Source:** Direct operator statements in Codex session
 - **Retrieved:** 2026-08-13
 - **Status:** ✅ publication-authorized for resume correction
-- **Key facts:** Target priority is Senior Data Engineer, followed by Senior MLOps Engineer and Senior Software Engineer. GROPYUS work uses Python, SQL, Dagster, dbt, DLT, Airflow, CDC, PostgreSQL, lakehouse, graph databases, Azure, CI/CD, and ETL/ELT pipelines for production planning, element lifecycle tracking, robot and manufacturing efficiency, reporting, and monitoring. GROPYUS work also includes anomaly detection in data pipelines and monitoring with Prometheus, Grafana, and operational alerts. Sigmoid work used Python, PySpark, Pandas, Airflow, Terraform, Google Cloud, MySQL, and sales-data pipelines for Colgate. Amdocs work used Java, Spring, REST, SOAP, Oracle, and CRM backend systems. Regulation Check uses FastAPI, PostgreSQL, Docker, and GitHub Actions. Recognition claims were reconfirmed.
+- **Key facts:** Target priority is Senior Data Engineer, followed by Senior MLOps Engineer and Senior Software Engineer. GROPYUS work uses Python, SQL, Dagster, dbt, DLT, Airflow, CDC, PostgreSQL, lakehouse, graph databases, Azure, CI/CD, and ETL/ELT pipelines for production planning, element lifecycle tracking, robot and manufacturing efficiency, reporting, and monitoring. GROPYUS work also includes anomaly detection in data pipelines and monitoring with Prometheus, Grafana, and operational alerts, plus platform-delivery experience with Terraform, Docker, Kubernetes, and Unleash feature flags. Sigmoid work used Python, PySpark, Pandas, Airflow, Terraform, Google Cloud, MySQL, and sales-data pipelines for Colgate. Amdocs work used Java, Spring, REST, SOAP, Oracle, and CRM backend systems. Regulation Check uses FastAPI, PostgreSQL, Docker, and GitHub Actions. Recognition claims were reconfirmed.
 - **Boundary:** Do not infer model training, MLflow, model registry, model serving, model drift, production ML ownership, quantified outcomes, or the MLOps Engineer title. Public resume omits the Sigmoid client name because it is not required for role relevance.
 
 ### S16 — Regulation Check repository and live service
@@ -223,6 +223,7 @@ Each row maps a specific claim from sources S01–S10 to its evidence status and
 | C60 | GROPYUS observability: anomaly detection in data pipelines, Prometheus, Grafana, and operational alerts | S19 | CF | HIGH | ✅ yes | Direct operator confirmation; does not establish ML model training or model operations |
 | C61 | Sigmoid stack and scope: Python, PySpark, Pandas, Airflow, Terraform, Google Cloud, MySQL, and consumer-goods sales pipelines | S19 | CF | HIGH | ✅ yes, generic customer description | Client was confirmed as Colgate but is omitted from public resume |
 | C62 | Amdocs uses Oracle for CRM backend integrations; Regulation Check uses FastAPI, PostgreSQL, Docker, and GitHub Actions | S19, S16 | CF | HIGH | ✅ yes | Direct operator confirmation and project-source corroboration |
+| C63 | GROPYUS platform delivery includes Terraform, Docker, Kubernetes, and Unleash feature flags | S19 | CF | HIGH | ✅ yes | Direct operator confirmation; no infrastructure scale, ownership, or rollout outcome inferred |
 
 ---
 
