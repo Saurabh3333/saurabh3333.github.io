@@ -172,8 +172,8 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   await expect(page.getByRole("link", { name: /Regulation Check/ })).toHaveAttribute("href", "https://regulationcheck.com/");
   await page.goto("/resume/");
   await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
-  await expect(page).toHaveTitle("AI Platform & Data Engineer Resume — Saurabh Shubham");
-  await expect(page.locator(".hero-copy")).toHaveText("AI Platform · Data Engineering · Berlin");
+  await expect(page).toHaveTitle("Senior Data Engineer Resume - Saurabh Shubham");
+  await expect(page.locator(".hero-copy")).toHaveText("Senior Data Engineer · Berlin, Germany");
 
   const [pdf, text] = await Promise.all([
     page.request.get("/resume/saurabh-shubham-data-engineer.pdf"),
@@ -183,12 +183,15 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   expect(pdf.headers()["content-type"]).toContain("application/pdf");
   expect(text.ok()).toBeTruthy();
   const ats = (await text.text()).replace(/\s+/g, " ");
-  expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected Systems"));
-  expect(ats).toContain("deterministic acceptance checks");
-  expect(ats).toContain("Vercel AI Gateway");
-  expect(ats).toContain("Model Context Protocol (MCP)");
-  expect(ats).not.toContain("Claude Code");
-  expect(ats).not.toContain("Recognition");
+  expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected Project"));
+  expect(ats).toContain("production planning");
+  expect(ats).toContain("Prometheus");
+  expect(ats).toContain("Grafana");
+  expect(ats).toContain("Oracle");
+  expect(ats).toContain("Recognition");
+  for (const removedClaim of ["MLflow", "MLOps", "Vercel AI Gateway", "Model Context Protocol", "Claude Code"]) {
+    expect(ats).not.toContain(removedClaim);
+  }
   expect(localFailures).toEqual([]);
 });
 
