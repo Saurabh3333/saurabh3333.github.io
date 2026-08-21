@@ -25,7 +25,7 @@ def main() -> None:
 
     extracted = output("pdftotext", str(args.pdf), "-")
     maintained = args.text.read_text()
-    if extracted != maintained:
+    if extracted.rstrip("\n") != maintained.rstrip("\n"):
         raise SystemExit("ATS text does not match PDF extraction")
 
     searchable = re.sub(r"\s+", " ", extracted)

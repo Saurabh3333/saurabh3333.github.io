@@ -5,10 +5,7 @@ import re
 
 
 def files(paths: list[Path]):
-    governance = {
-        "evidence-matrix.md", "market-research.md", "design-research.md",
-        "open-questions.md", "resume-claim-audit.md",
-    }
+    governance = {"evidence-matrix.md", "market-research.md", "design-research.md", "open-questions.md", "resume-claim-audit.md"}
     text_suffixes = {".css", ".html", ".js", ".json", ".md", ".svg", ".tex", ".txt", ".xml"}
     for path in paths:
         if path.is_file() and path.suffix.lower() in text_suffixes:
