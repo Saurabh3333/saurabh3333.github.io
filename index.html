@@ -81,13 +81,11 @@
 
     <main id="main" tabindex="-1">
       <section class="intro reveal" aria-labelledby="intro-title">
+        <p class="hero-proof"><span aria-hidden="true">✦</span> 7+ years in production engineering</p>
         <div class="identity-row">
-          <div class="avatar" aria-hidden="true">S</div>
-          <div>
-            <p class="kicker">Hello, I’m</p>
-            <h1 id="intro-title">Saurabh Shubham</h1>
-            <p class="role-line">AI Platform <span>·</span> Data Engineering <span>·</span> Berlin</p>
-          </div>
+          <p class="kicker">Hello, I’m</p>
+          <h1 id="intro-title">Saurabh Shubham</h1>
+          <p class="role-line"><span>AI Platform</span> <span>Data Engineering</span> <span>Berlin</span></p>
         </div>
 
         <div class="intro-copy">
@@ -105,7 +103,13 @@
           <span>Agent orchestration · AI governance · Data platforms</span>
           <span class="intro-links"><a href="https://github.com/Saurabh3333">GitHub</a><a href="./resume/">Résumé</a></span>
         </div>
+        <div class="hero-orbit orbit-one" aria-hidden="true">CONTROL</div>
+        <div class="hero-orbit orbit-two" aria-hidden="true">DATA</div>
       </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track"><span>BOUNDED EXECUTION</span><i>✦</i><span>HUMAN REVIEW</span><i>✦</i><span>RECOVERABLE DELIVERY</span><i>✦</i><span>BOUNDED EXECUTION</span><i>✦</i><span>HUMAN REVIEW</span><i>✦</i><span>RECOVERABLE DELIVERY</span><i>✦</i></div>
+      </div>
 
       <section class="snapshot reveal" aria-labelledby="snapshot-title">
         <div class="section-label"><span>01</span><h2 id="snapshot-title">What I bring to AI infrastructure</h2></div>
@@ -135,7 +139,8 @@
           <p>One live product, one workflow architecture, and one recent learning project—each labelled by what is implemented.</p>
         </div>
 
-        <article class="project-card regulation-card">
+        <div class="project-deck">
+        <article class="project-card regulation-card" data-tilt="-2.2">
           <div class="project-layout">
             <div class="project-copy">
               <p class="project-number">01 / Live product</p>
@@ -155,7 +160,7 @@
           <footer class="project-foot"><span>LLM · AI Gateway · MCP · structured outputs</span><span>FastAPI · PostgreSQL · CI/CD · rollback</span></footer>
         </article>
 
-        <article class="project-card pasin-card">
+        <article class="project-card pasin-card" data-tilt="1.4">
           <div class="project-layout">
             <div class="project-copy">
               <p class="project-number">02 / Architecture design</p>
@@ -172,7 +177,7 @@
           <footer class="project-foot"><span>Multi-provider orchestration</span><span>Sandbox · validation · Git gates</span></footer>
         </article>
 
-        <article class="project-card mlops-card">
+        <article class="project-card mlops-card" data-tilt="-1">
           <div class="project-layout">
             <div class="project-copy">
               <p class="project-number">03 / Recent learning project</p>
@@ -189,13 +194,14 @@
           </div>
           <footer class="project-foot"><span>MLflow · scikit-learn · FastAPI</span><span>Prometheus · Docker · CI</span></footer>
         </article>
+        </div>
         <!-- C56-C57 -->
       </section>
 
       <section class="experience-section reveal" id="experience" aria-labelledby="experience-title">
         <div class="section-label"><span>02</span><h2 id="experience-title">Production experience</h2></div>
         <ol class="timeline">
-          <li>
+          <li class="experience-card experience-current" data-tilt="-1.4">
             <div class="company-mark" aria-hidden="true">G</div>
             <div class="job-copy">
               <div class="job-title"><h3>GROPYUS</h3><time datetime="2022-08">Aug 2022 — Present</time></div>
@@ -203,7 +209,7 @@
               <p>Build and optimize Python data pipelines connecting robotic manufacturing systems with enterprise platforms across CDC, lakehouse, and graph-database architectures. Model and orchestrate production workflows with Dagster, Airflow, dbt, and DLT; ship tested changes through Azure CI/CD.</p>
             </div>
           </li>
-          <li>
+          <li class="experience-card experience-middle" data-tilt="1.1">
             <div class="company-mark" aria-hidden="true">S</div>
             <div class="job-copy">
               <div class="job-title"><h3>Sigmoid</h3><time datetime="2021-06">Jun 2021 — Jul 2022</time></div>
@@ -211,7 +217,7 @@
               <p>Built repeatable ETL pipelines for commercial sales reporting with Python, PySpark, Pandas, and Airflow. Provisioned delivery infrastructure with Terraform across Google Cloud and AWS.</p>
             </div>
           </li>
-          <li>
+          <li class="experience-card experience-first" data-tilt="-.7">
             <div class="company-mark" aria-hidden="true">A</div>
             <div class="job-copy">
               <div class="job-title"><h3>Amdocs</h3><time datetime="2019-06">Jun 2019 — Jun 2021</time></div>
@@ -324,6 +330,26 @@
         });
       }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
       reveals.forEach(element => observer.observe(element));
+    }
+
+    if (!reducedMotion && matchMedia("(pointer: fine)").matches) {
+      document.querySelectorAll(".project-card, .experience-card").forEach(card => {
+        const base = Number(card.dataset.tilt || 0);
+        card.style.setProperty("--card-rotate", `${base}deg`);
+        card.addEventListener("pointermove", event => {
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - .5;
+          const y = (event.clientY - rect.top) / rect.height - .5;
+          card.style.setProperty("--tilt-x", `${y * -4}deg`);
+          card.style.setProperty("--tilt-y", `${x * 5}deg`);
+          card.style.setProperty("--glow-x", `${(x + .5) * 100}%`);
+          card.style.setProperty("--glow-y", `${(y + .5) * 100}%`);
+        });
+        card.addEventListener("pointerleave", () => {
+          card.style.setProperty("--tilt-x", "0deg");
+          card.style.setProperty("--tilt-y", "0deg");
+        });
+      });
     }
 
     const copyButton = document.querySelector(".copy-email");
