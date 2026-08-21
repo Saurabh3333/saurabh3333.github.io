@@ -3,30 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Platform &amp; Data Engineer Resume — Saurabh Shubham</title>
-  <meta name="description" content="One-page resume of Saurabh Shubham, a Berlin Data Engineer applying production data-platform discipline to controlled agentic systems.">
+  <title>Senior Data Engineer Resume — Saurabh Shubham</title>
+  <meta name="description" content="One-page resume of Saurabh Shubham, a Senior Data Engineer working on production data platforms and backend systems in Berlin.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://saurabh3333.github.io/resume/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../public/css/styles.css">
+  <meta name="theme-color" content="#f3f1e9">
 </head>
-<body>
+<body class="resume-page">
   <a class="skip-link" href="#main">Skip to main content</a>
-  <header class="site-header"><a class="saurabh-mark" href="../" aria-label="Saurabh Shubham, home"><span>Saurabh</span><i aria-hidden="true">✦</i></a><nav aria-label="Primary navigation"><a href="../">Portfolio</a><a href="../#experience">Experience</a></nav></header>
-  <main id="main" tabindex="-1">
-    <section class="hero">
-      <div class="hero-content"><p class="eyebrow">One-page resume</p><h1>Saurabh <em>Shubham</em></h1><p class="hero-copy">AI Platform · Data Engineering · Berlin</p><div class="actions"><a class="button primary" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF</a><a class="button" href="./saurabh-shubham-data-engineer.txt">ATS text</a></div></div>
-      <div class="resume-aside">
-        <dl class="status"><div><dt>Focus</dt><dd>AI platform + data systems</dd></div><div><dt>Format</dt><dd>ATS-readable PDF</dd></div><div><dt>Contact</dt><dd><a href="mailto:saurabh.friday@gmail.com">Email</a></dd></div></dl>
-      </div>
-    </section>
-    <section class="resume-preview" aria-labelledby="resume-preview-heading">
-      <h2 id="resume-preview-heading">Resume preview</h2>
-      <object data="./saurabh-shubham-data-engineer.pdf" type="application/pdf" title="Saurabh Shubham AI platform and data engineer resume preview" aria-label="Saurabh Shubham AI platform and data engineer resume preview">
-        <p>PDF preview unavailable. <a href="./saurabh-shubham-data-engineer.pdf">Open the resume PDF</a>.</p>
-      </object>
-    </section>
-  </main>
-  <footer><p>© 2026 Saurabh Shubham</p><p><a href="../">Back to portfolio</a></p></footer>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <a class="wordmark" href="../" aria-label="Saurabh Shubham, home"><span class="mark-orbit" aria-hidden="true"></span>SS</a>
+      <p class="header-role">One-page résumé<br><span>Senior Data Engineer</span></p>
+      <nav aria-label="Primary navigation"><a href="../">Portfolio</a><a href="../#experience">Experience</a><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-track" aria-hidden="true"><span></span></span></button><a class="nav-resume" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF ↓</a></nav>
+    </header>
+    <main class="resume-main" id="main" tabindex="-1">
+      <section class="resume-hero" aria-labelledby="resume-title">
+        <div class="resume-intro">
+          <p class="hero-kicker"><span>Résumé</span> Production data · Backend systems</p>
+          <h1 id="resume-title"><span>Saurabh</span> <em>Shubham</em></h1>
+          <p class="hero-copy"><span>Senior Data Engineer</span> <span>· Data Platforms</span> <span>· Backend Systems</span></p>
+          <div class="actions"><a class="button primary" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF</a><a class="button" href="./saurabh-shubham-data-engineer.txt">ATS text</a></div>
+        </div>
+        <dl class="status"><div><dt>Focus</dt><dd>Production data platforms</dd></div><div><dt>Location</dt><dd>Berlin, Germany</dd></div><div><dt>Contact</dt><dd><a href="mailto:saurabh.friday@gmail.com">Email Saurabh ↗</a></dd></div></dl>
+      </section>
+      <section class="resume-preview" aria-labelledby="resume-preview-heading">
+        <div class="resume-preview-heading"><p class="section-index">Current production PDF</p><h2 id="resume-preview-heading">Résumé<br><span>preview.</span></h2></div>
+        <object data="./saurabh-shubham-data-engineer.pdf#view=Fit" type="application/pdf" title="Saurabh Shubham Senior Data Engineer résumé preview" aria-label="Saurabh Shubham Senior Data Engineer résumé preview">
+          <p>PDF preview unavailable. <a href="./saurabh-shubham-data-engineer.pdf">Open the resume PDF</a>.</p>
+        </object>
+      </section>
+    </main>
+    <footer class="site-footer"><p>© 2026 Saurabh Shubham</p><p><a href="../">Back to portfolio</a></p></footer>
+  </div>
+  <script>
+    const body=document.body,themeButton=document.querySelector(".theme-toggle"),savedTheme=localStorage.getItem("portfolio-theme");
+    function setTheme(theme){body.dataset.theme=theme;const dark=theme==="dark";themeButton.setAttribute("aria-pressed",String(dark));themeButton.setAttribute("aria-label",`Switch to ${dark?"light":"dark"} theme`);document.querySelector('meta[name="theme-color"]').content=dark?"#0d0d0f":"#f3f1e9";}
+    setTheme(savedTheme==="dark"?"dark":"light");themeButton.addEventListener("click",()=>{const theme=body.dataset.theme==="dark"?"light":"dark";setTheme(theme);localStorage.setItem("portfolio-theme",theme);});
+  </script>
 </body>
 </html>

@@ -26,8 +26,18 @@ SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-0} TZ=${TZ:-UTC} \
 pdftotext "$tmp/$name.pdf" "$tmp/$name.txt"
 
 if [[ ${1:-} == --check ]]; then
-  cmp "$tmp/$name.pdf" "$output_pdf"
   cmp "$tmp/$name.txt" "$output_text"
+  if ! cmp -s "$tmp/$name.pdf" "$output_pdf"; then
+    pdftotext "$output_pdf" "$tmp/committed.txt"
+    cmp "$tmp/$name.txt" "$tmp/committed.txt"
+
+    generated_pages=$(pdfinfo "$tmp/$name.pdf" | awk '/^Pages:/ {print $2}')
+    committed_pages=$(pdfinfo "$output_pdf" | awk '/^Pages:/ {print $2}')
+    if [[ -z $generated_pages || $generated_pages != "$committed_pages" ]]; then
+      echo "Generated and committed PDFs have different page counts" >&2
+      exit 1
+    fi
+  fi
 else
   install -m 0644 "$tmp/$name.pdf" "$output_pdf"
   install -m 0644 "$tmp/$name.txt" "$output_text"

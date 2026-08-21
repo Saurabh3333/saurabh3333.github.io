@@ -23,22 +23,21 @@ def main() -> None:
     if not re.search(r"^Pages:\s+1$", info, re.MULTILINE):
         raise SystemExit("resume must contain exactly one page")
 
-    extracted = output("pdftotext", str(args.pdf), "-").rstrip("\n") + "\n"
+    extracted = output("pdftotext", str(args.pdf), "-")
     maintained = args.text.read_text()
-    if extracted != maintained:
+    if extracted.rstrip("\n") != maintained.rstrip("\n"):
         raise SystemExit("ATS text does not match PDF extraction")
 
     searchable = re.sub(r"\s+", " ", extracted)
     required = (
-        "Saurabh Shubham", "GROPYUS", "Data Engineer", "Sigmoid",
+        "Saurabh Shubham", "Senior Data Engineer", "GROPYUS", "Data Engineer", "Sigmoid",
         "Software Development Engineer", "Amdocs", "Software Engineer",
         "Birla Institute of Technology Mesra", "Python", "SQL",
-        "Selected Systems", "Retail Demand MLOps Demo", "Recent learning project",
-        "Regulation Check", "CDC", "Dagster", "dbt", "DLT", "lakehouse",
-        "graph-database", "CI/CD", "Docker", "GitHub Actions",
-        "deterministic acceptance checks", "human review", "LLM",
-        "Vercel AI Gateway", "Model Context Protocol (MCP)", "MLflow",
-        "model registry", "Prometheus", "drift checks",
+        "Regulation Check", "ETL/ELT", "CDC", "Dagster", "Airflow", "dbt", "DLT",
+        "PySpark", "Pandas", "lakehouse", "PostgreSQL", "graph database",
+        "Prometheus", "Grafana", "anomaly detection", "CI/CD", "Terraform",
+        "Google Cloud", "MySQL", "Oracle", "Docker", "Kubernetes", "Unleash",
+        "feature flags", "GitHub Actions",
     )
     missing = [value for value in required if value not in searchable]
     if missing:
@@ -47,18 +46,19 @@ def main() -> None:
         raise SystemExit("experience is not reverse chronological")
 
     forbidden = (
-        "Machine Learning Engineer", "ML Ops Engineer", "MLOps Engineer",
-        "AI System Engineer", "Colgate", "Walmart", "Comcast",
+        "Machine Learning Engineer", "ML Ops Engineer", "MLOps Engineer", "MLflow",
+        "model registry", "model serving", "model drift", "Agentic AI", "Claude Code",
+        "Pasin", "Vercel AI Gateway", "Model Context Protocol", "AWS", "MongoDB",
+        "Colgate", "Walmart", "Comcast", "ﬀ", "ﬁ", "ﬂ", "ﬃ", "ﬄ", "–", "—", "--",
     )
-    found = [value for value in forbidden if value in searchable]
+    found = [value for value in forbidden if value in extracted]
     if found:
         raise SystemExit("forbidden or private claims: " + ", ".join(found))
 
     evidence = args.evidence.read_text()
     for claim_id in (
         "C01", "C07", "C08", "C14", "C19", "C29", "C30", "C31",
-        "C50", "C51", "C52", "C53", "C54", "C55", "C56", "C57",
-        "S14", "S15", "S16", "S17", "S18",
+        "C50", "C51", "C52", "C58", "C59", "C60", "C61", "C62", "C63", "S19",
     ):
         if claim_id not in evidence:
             raise SystemExit(f"missing evidence ID: {claim_id}")
