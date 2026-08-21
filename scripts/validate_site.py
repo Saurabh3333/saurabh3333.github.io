@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import hashlib
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -44,6 +45,11 @@ def main() -> None:
     if missing:
         raise SystemExit("missing local targets:\n" + "\n".join(missing))
     homepage = (root / "index.html").read_text()
+    resume_page = (root / "resume/index.html").read_text()
+    stylesheet_version = hashlib.sha256((root / "public/css/styles.css").read_bytes()).hexdigest()[:12]
+    for page_name, source in (("homepage", homepage), ("resume", resume_page)):
+        if f"public/css/styles.css?v={stylesheet_version}" not in source:
+            raise SystemExit(f"{page_name} stylesheet cache version is stale")
     for token in ('rel="canonical"', "og:title", "application/ld+json", "prefers-reduced-motion", "focus-visible"):
         source = homepage + (root / "public/css/styles.css").read_text()
         if token not in source:
