@@ -103,6 +103,21 @@ test("AI-platform recruiter scan surfaces proof, controls, and technical depth",
   await expect(page.locator(".project-deck")).toBeVisible();
   await expect(page.locator(".marquee-track")).toHaveCSS("animation-name", "marquee");
   await expect(page.locator(".experience-card")).toHaveCount(3);
+  const cardSets = await page.evaluate(() => [".project-card", ".experience-card"].map(selector => {
+    const cards = [...document.querySelectorAll(selector)];
+    return {
+      heights: cards.map(card => card.offsetHeight),
+      widths: cards.map(card => card.offsetWidth),
+      depth: cards.map(card => getComputedStyle(card).boxShadow),
+      preserve3d: cards.map(card => getComputedStyle(card).transformStyle),
+    };
+  }));
+  cardSets.forEach(set => {
+    expect(new Set(set.heights).size).toBe(1);
+    expect(new Set(set.widths).size).toBe(1);
+    expect(set.depth.every(shadow => shadow !== "none")).toBeTruthy();
+    expect(set.preserve3d.every(value => value === "preserve-3d")).toBeTruthy();
+  });
   await expect(page.locator(".project-facts > div")).toHaveCount(14);
   await expect(page.locator(".regulation-card")).toContainText(/live AI governance.*LLM.*Vercel AI Gateway.*schema validation.*human confirmation.*MCP-connected.*deterministic screening.*last-known-good rollback/is);
   await expect(page.locator(".pasin-card")).toContainText(/architecture.*not a claimed live product/is);

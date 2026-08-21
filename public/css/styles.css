@@ -75,15 +75,17 @@ h1 { max-width: 12ch; margin: 0; font-size: clamp(3.5rem, 9.7vw, 8.7rem); font-w
 .section-heading.centered { width: min(47rem, 100%); margin: 0 auto clamp(4rem, 8vw, 7rem); text-align: center; }
 .section-heading h2 { margin: 0 0 .8rem; font-size: clamp(3.8rem, 9vw, 8rem); font-weight: 600; line-height: .82; letter-spacing: -.085em; text-transform: uppercase; }
 .section-heading > p:last-child { max-width: 42rem; margin: auto; color: var(--muted); font-size: .84rem; }
-.project-deck { width: min(88rem, 100%); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: clamp(1rem, 2.5vw, 2.4rem); margin-inline: auto; perspective: 1400px; }
-.project-card { --card-rotate: 0deg; --tilt-x: 0deg; --tilt-y: 0deg; --lift: 0px; --card-bg: #fff; --card-ink: #222; --card-muted: #5f615d; --card-line: rgb(35 35 35 / 20%); --glow-x: 50%; --glow-y: 50%; position: relative; min-width: 0; overflow: hidden; border: 1px solid rgb(25 25 25 / 16%); border-radius: 1.3rem; background: var(--card-bg); box-shadow: var(--shadow); color: var(--card-ink); transform: translateY(var(--lift)) rotate(var(--card-rotate)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transform-style: preserve-3d; transition: transform 180ms ease, box-shadow 180ms ease; }
-.project-card::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgb(255 255 255 / 32%), transparent 28%); opacity: .8; }
-.project-card:hover { --lift: -12px; z-index: 3; box-shadow: 0 34px 62px rgb(27 31 27 / 23%); }
-.regulation-card { --card-bg: #fff3dc; --card-ink: #3b271b; --card-muted: #75594a; --card-line: rgb(112 73 50 / 24%); }
-.pasin-card { --card-bg: #ad59ed; --card-ink: #fff; --card-muted: #f5e9ff; --card-line: rgb(255 255 255 / 32%); margin-top: 2.4rem; }
-.mlops-card { --card-bg: #3779d8; --card-ink: #fff; --card-muted: #eaf3ff; --card-line: rgb(255 255 255 / 30%); margin-top: .8rem; }
+.project-deck { width: min(82rem, 100%); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; align-items: stretch; gap: clamp(1.4rem, 3vw, 3.2rem); margin-inline: auto; perspective: 1200px; perspective-origin: 50% 42%; }
+.project-card { --card-rotate: 0deg; --tilt-x: 0deg; --tilt-y: 0deg; --lift: 0px; --card-bg: #fff; --card-ink: #222; --card-muted: #5f615d; --card-line: rgb(35 35 35 / 20%); --card-edge: #bdbdb7; --glow-x: 50%; --glow-y: 50%; position: relative; z-index: 1; min-width: 0; height: 100%; display: grid; grid-template-rows: 1fr auto; border: 1px solid rgb(25 25 25 / 25%); border-radius: 1.45rem; background: var(--card-bg); box-shadow: 0 4px 0 var(--card-edge), 0 10px 0 color-mix(in srgb, var(--card-edge) 64%, #222), 0 30px 50px rgb(26 28 25 / 22%); color: var(--card-ink); transform: translateY(var(--lift)) rotate(var(--card-rotate)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transform-style: preserve-3d; transition: transform 220ms cubic-bezier(.2,.75,.2,1), box-shadow 220ms ease; will-change: transform; }
+.project-card::before, .experience-card::before { content: ""; position: absolute; inset: .42rem; z-index: 2; pointer-events: none; border: 1px solid color-mix(in srgb, var(--card-line) 65%, transparent); border-radius: 1.1rem; transform: translateZ(18px); }
+.project-card::after, .experience-card::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit; background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgb(255 255 255 / 52%), transparent 30%); opacity: .62; mix-blend-mode: soft-light; transform: translateZ(24px); }
+.project-card:hover { --lift: -18px; z-index: 5; box-shadow: 0 6px 0 var(--card-edge), 0 14px 0 color-mix(in srgb, var(--card-edge) 64%, #222), 0 42px 70px rgb(25 27 24 / 30%); }
+.regulation-card { --card-bg: #fff3dc; --card-ink: #3b271b; --card-muted: #75594a; --card-line: rgb(112 73 50 / 24%); --card-edge: #d8b98e; }
+.pasin-card { --card-bg: #ad59ed; --card-ink: #fff; --card-muted: #f5e9ff; --card-line: rgb(255 255 255 / 32%); --card-edge: #7430a9; }
+.mlops-card { --card-bg: #3779d8; --card-ink: #fff; --card-muted: #eaf3ff; --card-line: rgb(255 255 255 / 30%); --card-edge: #1f4f95; }
 .project-layout, .project-copy, .project-facts, .project-foot { position: relative; z-index: 1; }
-.project-copy { min-height: 20rem; padding: clamp(1.5rem, 2.8vw, 2.4rem); border-bottom: 1px solid var(--card-line); }
+.project-layout { display: grid; grid-template-rows: auto 1fr; }
+.project-copy { min-height: 20rem; padding: clamp(1.5rem, 2.8vw, 2.4rem); border-bottom: 1px solid var(--card-line); transform: translateZ(22px); }
 .project-copy::before { content: "SS"; width: 3.3rem; height: 3.3rem; display: grid; place-items: center; margin: 0 auto 1.3rem; border: 1px solid var(--card-line); border-radius: 50%; background: color-mix(in srgb, var(--card-bg) 80%, #fff); box-shadow: inset 0 0 0 .35rem color-mix(in srgb, var(--card-bg) 60%, #fff); color: var(--card-ink); font: 800 .72rem/1 var(--mono); }
 .project-number { color: var(--card-muted); text-align: center; }
 .project-copy h3 { margin: .55rem 0 .75rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.7rem, 3vw, 2.55rem); font-weight: 500; line-height: 1; text-align: center; }
@@ -92,20 +94,21 @@ h1 { max-width: 12ch; margin: 0; font-size: clamp(3.5rem, 9.7vw, 8.7rem); font-w
 .project-link:hover { background: rgb(255 255 255 / 24%); }
 .tag-list { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
 .tag-list li { padding: .35rem .55rem; border: 1px solid var(--line); border-radius: 2rem; background: var(--paper); color: var(--muted); font: 650 .64rem/1 var(--mono); }
-.project-facts { margin: 0; padding: .6rem clamp(1.25rem, 2.5vw, 2rem) 1rem; }
+.project-facts { margin: 0; padding: .6rem clamp(1.25rem, 2.5vw, 2rem) 1rem; transform: translateZ(14px); }
 .project-facts div { padding: .85rem 0; border-bottom: 1px solid var(--card-line); }
 .project-facts div:last-child { border: 0; }
 .project-facts dt { margin-bottom: .2rem; color: var(--card-ink); font: 750 .62rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .project-facts dd { margin: 0; color: var(--card-muted); font-size: .7rem; line-height: 1.45; }
-.project-foot { display: flex; flex-direction: column; gap: .25rem; padding: 1rem 1.5rem; border-top: 1px solid var(--card-line); color: var(--card-muted); font: 650 .58rem/1.4 var(--mono); letter-spacing: .03em; text-transform: uppercase; }
+.project-foot { min-height: 4.2rem; display: flex; flex-direction: column; justify-content: center; gap: .25rem; padding: 1rem 1.5rem; border-top: 1px solid var(--card-line); color: var(--card-muted); font: 650 .58rem/1.4 var(--mono); letter-spacing: .03em; text-transform: uppercase; transform: translateZ(18px); }
 .experience-section { width: min(88rem, 100%); margin-inline: auto; }
-.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0; padding: 0; list-style: none; }
-.timeline li { min-height: 25rem; display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid rgb(24 24 24 / 15%); border-radius: 1.15rem; box-shadow: var(--shadow); color: #242424; transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease; }
-.timeline li:hover { transform: translateY(-8px) rotate(0deg); box-shadow: 0 30px 58px rgb(20 22 20 / 18%); }
-.experience-current { background: #ff8d9f; transform: rotate(-1.2deg); }
-.experience-middle { background: #c9f070; transform: translateY(1.5rem) rotate(1deg); }
-.experience-first { background: #f1cf67; transform: rotate(-.5deg); }
+.timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; align-items: stretch; gap: clamp(1.4rem, 2.5vw, 2.5rem); margin: 0; padding: 1.2rem .25rem 2rem; list-style: none; perspective: 1200px; }
+.timeline li { --card-rotate: 0deg; --tilt-x: 0deg; --tilt-y: 0deg; --lift: 0px; --glow-x: 50%; --glow-y: 50%; --card-line: rgb(24 24 24 / 18%); --card-edge: #9b9b95; position: relative; z-index: 1; min-height: 28rem; height: 100%; display: flex; flex-direction: column; padding: 1.7rem; border: 1px solid rgb(24 24 24 / 24%); border-radius: 1.4rem; box-shadow: 0 4px 0 var(--card-edge), 0 10px 0 color-mix(in srgb, var(--card-edge) 62%, #222), 0 28px 48px rgb(20 22 20 / 20%); color: #242424; transform: translateY(var(--lift)) rotate(var(--card-rotate)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transform-style: preserve-3d; transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease; will-change: transform; }
+.timeline li:hover { --lift: -16px; z-index: 5; box-shadow: 0 6px 0 var(--card-edge), 0 14px 0 color-mix(in srgb, var(--card-edge) 62%, #222), 0 40px 65px rgb(20 22 20 / 28%); }
+.experience-current { --card-edge: #bd5468; background: #ff8d9f; }
+.experience-middle { --card-edge: #85ac37; background: #c9f070; }
+.experience-first { --card-edge: #b49336; background: #f1cf67; }
 .company-mark, .school-mark { width: 3.1rem; height: 3.1rem; display: grid; place-items: center; margin-bottom: auto; border: 1px solid rgb(0 0 0 / 18%); border-radius: 50%; background: rgb(255 255 255 / 45%); font: 800 .72rem/1 var(--mono); }
+.experience-card .company-mark, .experience-card .job-copy { position: relative; z-index: 4; transform: translateZ(22px); }
 .job-copy { margin-top: 4rem; }
 .job-title { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; padding-bottom: .8rem; border-bottom: 1px solid rgb(0 0 0 / 16%); }
 .job-title h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; font-weight: 500; }
@@ -158,6 +161,9 @@ h1 { max-width: 12ch; margin: 0; font-size: clamp(3.5rem, 9.7vw, 8.7rem); font-w
 .js .work-section.is-visible .project-card { animation: deck-in 760ms cubic-bezier(.2,.82,.2,1) both; }
 .js .work-section.is-visible .project-card:nth-child(2) { animation-delay: 100ms; }
 .js .work-section.is-visible .project-card:nth-child(3) { animation-delay: 200ms; }
+.js .experience-section.is-visible .experience-card { animation: deck-in 700ms cubic-bezier(.2,.82,.2,1) both; }
+.js .experience-section.is-visible .experience-card:nth-child(2) { animation-delay: 100ms; }
+.js .experience-section.is-visible .experience-card:nth-child(3) { animation-delay: 200ms; }
 @keyframes reveal-in { from { opacity: 0; transform: translateY(1.5rem); } to { opacity: 1; transform: none; } }
 @keyframes deck-in { from { opacity: 0; transform: translateY(7rem) rotate(0deg); } to { opacity: 1; transform: translateY(var(--lift)) rotate(var(--card-rotate)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
