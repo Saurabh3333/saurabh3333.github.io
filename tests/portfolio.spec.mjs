@@ -41,7 +41,7 @@ for (const viewport of viewports) {
     expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
     expect(layout.shellRight).toBeLessThanOrEqual(layout.viewportWidth + 0.5);
     expect(Math.abs(layout.shellLeft - (layout.viewportWidth - layout.shellWidth) / 2)).toBeLessThanOrEqual(0.5);
-    if (viewport.width >= 1000) expect(layout.shellWidth).toBeLessThanOrEqual(769);
+    expect(layout.shellWidth).toBeLessThanOrEqual(Math.min(viewport.width, 1536));
 
     await page.locator("#contact").scrollIntoViewIfNeeded();
     await expect(page.locator("#contact")).toHaveClass(/is-visible/);
@@ -100,6 +100,9 @@ test("AI-platform recruiter scan surfaces proof, controls, and technical depth",
   await expect(page.locator(".principle-grid article")).toHaveCount(3);
   await expect(page.locator(".principle-grid")).toContainText(/Agent control.*Data foundations.*Recoverable delivery/is);
   await expect(page.locator(".project-card")).toHaveCount(3);
+  await expect(page.locator(".project-deck")).toBeVisible();
+  await expect(page.locator(".marquee-track")).toHaveCSS("animation-name", "marquee");
+  await expect(page.locator(".experience-card")).toHaveCount(3);
   await expect(page.locator(".project-facts > div")).toHaveCount(14);
   await expect(page.locator(".regulation-card")).toContainText(/live AI governance.*LLM.*Vercel AI Gateway.*schema validation.*human confirmation.*MCP-connected.*deterministic screening.*last-known-good rollback/is);
   await expect(page.locator(".pasin-card")).toContainText(/architecture.*not a claimed live product/is);
