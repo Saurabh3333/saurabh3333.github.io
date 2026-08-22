@@ -129,15 +129,24 @@ test("search and social metadata are complete and canonical", async ({ page }) =
   await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Senior Data Engineer.*7\+ years.*manufacturing data platforms.*backend services.*production observability/i);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://saurabh3333.github.io/");
+  await expect(page.locator('link[rel="alternate"][type="text/markdown"]')).toHaveAttribute("href", "https://saurabh3333.github.io/index.md");
+  await expect(page.locator('link[rel="describedby"]')).toHaveAttribute("href", "https://saurabh3333.github.io/llms.txt");
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", "https://saurabh3333.github.io/public/images/saurabh-shubham-og.png");
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
 
   const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
-  expect(schema["@graph"].map(node => node["@type"])).toEqual(["Person", "ProfilePage"]);
+  expect(schema["@graph"].map(node => node["@type"])).toEqual(["Person", "ProfilePage", "WebSite"]);
 
-  for (const path of ["/robots.txt", "/sitemap.xml", "/public/images/saurabh-shubham-og.png"]) {
+  for (const path of ["/robots.txt", "/sitemap.xml", "/llms.txt", "/index.md", "/resume/index.md", "/public/images/saurabh-shubham-og.png"]) {
     expect((await page.request.get(path)).ok()).toBeTruthy();
   }
+
+  const robots = await (await page.request.get("/robots.txt")).text();
+  expect(robots).toContain("User-agent: *");
+  expect(robots).toContain("Allow: /");
+  const llms = await (await page.request.get("/llms.txt")).text();
+  expect(llms).toContain("# Saurabh Shubham");
+  expect(llms).toContain("https://saurabh3333.github.io/index.md");
 });
 
 test("senior data engineer recruiter scan matches the production resume", async ({ page }) => {

@@ -1,28 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Saurabh Shubham — AI Platform and Data Engineer</title>
-  <desc id="desc">Saurabh Shubham builds controlled agentic workflows backed by seven years of production data engineering.</desc>
-  <rect width="1200" height="630" fill="#f7f7f2"/>
-  <rect x="92" y="92" width="1016" height="446" rx="28" fill="#fff" stroke="#171917" stroke-width="3"/>
-  <g transform="translate(146 145)">
-    <rect width="72" height="72" rx="20" fill="#b8ff38"/>
-    <text x="36" y="49" text-anchor="middle" fill="#213400" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">SS</text>
-    <circle cx="65" cy="7" r="8" fill="#7267f0" stroke="#fff" stroke-width="4"/>
+  <title id="title">Saurabh Shubham — Senior Data Engineer in Berlin</title>
+  <desc id="desc">Data platforms built for production, with backend systems and production observability.</desc>
+  <rect width="1200" height="630" fill="#f3f1e9"/>
+  <g transform="translate(70 62)" font-family="Arial, Helvetica, sans-serif">
+    <circle cx="39" cy="39" r="36" fill="none" stroke="#151515" stroke-width="2"/>
+    <ellipse cx="39" cy="39" rx="48" ry="28" fill="none" stroke="#151515" transform="rotate(-34 39 39)"/>
+    <circle cx="58" cy="7" r="6" fill="#3155ff"/>
+    <text x="39" y="45" text-anchor="middle" fill="#151515" font-size="18" font-weight="900">SS</text>
   </g>
-  <text x="146" y="284" fill="#171917" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="750" letter-spacing="-3">Saurabh Shubham</text>
-  <text x="149" y="333" fill="#676b66" font-family="Arial, Helvetica, sans-serif" font-size="28">AI Platform · Data Engineering</text>
-  <text x="149" y="402" fill="#171917" font-family="Arial, Helvetica, sans-serif" font-size="26">Bounded execution · Verify · Recover</text>
-  <g transform="translate(750 165)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="middle">
-    <path d="M72 45h75M235 45h75M189 91v58" fill="none" stroke="#7267f0" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="109" cy="45" r="5" fill="#7267f0"/>
-    <circle cx="273" cy="45" r="5" fill="#7267f0"/>
-    <circle cx="189" cy="112" r="5" fill="#7267f0"/>
-    <rect x="0" y="0" width="92" height="90" rx="18" fill="#d9efff" stroke="#171917" stroke-width="2"/>
-    <rect x="143" y="0" width="92" height="90" rx="18" fill="#b8ff38" stroke="#171917" stroke-width="2"/>
-    <rect x="286" y="0" width="92" height="90" rx="18" fill="#ecebea" stroke="#171917" stroke-width="2"/>
-    <rect x="143" y="149" width="92" height="90" rx="18" fill="#7267f0" stroke="#171917" stroke-width="2"/>
-    <text x="46" y="52" fill="#171917">DATA</text>
-    <text x="189" y="52" fill="#213400">FLOW</text>
-    <text x="332" y="52" fill="#171917">MODEL</text>
-    <text x="189" y="201" fill="#fff">VERIFY</text>
+  <g transform="translate(173 69)" font-family="Arial, Helvetica, sans-serif">
+    <text x="0" y="22" fill="#151515" font-size="19" font-weight="800" letter-spacing="1.2">SAURABH SHUBHAM</text>
+    <text x="0" y="49" fill="#65645f" font-size="15" font-weight="700" letter-spacing="1">SENIOR DATA ENGINEER · BERLIN</text>
+  </g>
+  <g transform="translate(68 193)" font-family="Arial, Helvetica, sans-serif" font-weight="900">
+    <text x="0" y="77" fill="#151515" font-size="96" letter-spacing="-6">DATA PLATFORMS</text>
+    <g transform="translate(1 96) rotate(-2)">
+      <rect width="345" height="88" rx="20" fill="#fffef9" stroke="#bbb9b0"/>
+      <text x="173" y="62" text-anchor="middle" fill="#9a9994" font-size="58" letter-spacing="-4">BUILT FOR</text>
+    </g>
+    <text x="370" y="174" fill="#151515" font-size="96" letter-spacing="-6">PRODUCTION</text>
+  </g>
+  <g transform="translate(70 458)" font-family="Arial, Helvetica, sans-serif">
+    <g>
+      <rect width="335" height="112" rx="24" fill="#a68aff" stroke="#151515"/>
+      <text x="24" y="35" fill="#151515" font-size="13" font-weight="800" letter-spacing="1">01 / DATA PLATFORMS</text>
+      <text x="24" y="78" fill="#151515" font-size="27" font-weight="900">Python · SQL · CDC</text>
+    </g>
+    <g transform="translate(362)">
+      <rect width="335" height="112" rx="24" fill="#222" stroke="#151515"/>
+      <text x="24" y="35" fill="#fff" font-size="13" font-weight="800" letter-spacing="1">02 / OBSERVABILITY</text>
+      <text x="24" y="78" fill="#fff" font-size="27" font-weight="900">Prometheus · Grafana</text>
+    </g>
+    <g transform="translate(724)">
+      <rect width="335" height="112" rx="24" fill="#ff795f" stroke="#151515"/>
+      <text x="24" y="35" fill="#151515" font-size="13" font-weight="800" letter-spacing="1">03 / BACKEND SYSTEMS</text>
+      <text x="24" y="78" fill="#151515" font-size="27" font-weight="900">Java · Spring · REST</text>
+    </g>
   </g>
 </svg>

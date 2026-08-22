@@ -32,3 +32,11 @@ npm run validate
 
 Site has no production build or runtime dependency. Serve repository root with
 any static HTTP server for local review.
+
+## Ownership and discovery
+
+Original repository work is all-rights-reserved under `LICENSE`; current-tree
+provenance and third-party development-tool boundaries are recorded in
+`PROVENANCE.md`. Search crawlers use `robots.txt` and `sitemap.xml`; LLM clients
+can discover clean Markdown content through `llms.txt` and each page's alternate
+Markdown link.

@@ -9,6 +9,7 @@ from urllib.request import urlopen
 
 
 PDF_URL = "./saurabh-shubham-data-engineer.pdf"
+PDF_PREVIEW_URL = f"{PDF_URL}#view=Fit"
 ATS_URL = "./saurabh-shubham-data-engineer.txt"
 
 
@@ -76,7 +77,7 @@ def main() -> None:
         assert previews, "application/pdf preview missing"
         preview = previews[0]
         assert preview.get("aria-label") or preview.get("title"), "PDF preview needs an accessible name"
-        assert preview.get("data") == PDF_URL and relative(PDF_URL), "PDF preview must use the relative PDF URL"
+        assert preview.get("data") == PDF_PREVIEW_URL and relative(PDF_PREVIEW_URL), "PDF preview must use the relative PDF URL"
 
         download = [attrs for attrs, _, text in page.anchors if attrs.get("href") == PDF_URL and "download" in attrs and text.strip() == "Download PDF"]
         assert download, "explicit Download PDF link with download attribute missing"
