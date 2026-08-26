@@ -1,6 +1,6 @@
 # Resume claim audit
 
-Reviewed on 2026-08-13 for the Senior Data Engineer resume.
+Reviewed on 2026-08-26 for the Senior Data Engineer resume.
 
 ## Positioning decision
 
@@ -20,7 +20,7 @@ training, model deployment, or ML platform operations.
 | GROPYUS | Terraform, Docker, Kubernetes, and Unleash feature flags for platform delivery | Direct operator confirmation, S19; no infrastructure scale or rollout outcome claimed |
 | Sigmoid | Python, PySpark, Pandas, Airflow, Terraform, Google Cloud, MySQL, and sales-data pipelines | Direct operator confirmation, S19 |
 | Amdocs | Java, Spring, REST, SOAP, Oracle, and CRM backend work | Direct operator confirmation, S19 |
-| Regulation Check | Independent FastAPI and PostgreSQL application using Docker and GitHub Actions | Direct operator confirmation, S19; repository evidence, S16 |
+| Regulation Check | Independent FastAPI and PostgreSQL application with deterministic EU AI Act screening and evidence workflows, using Docker and GitHub Actions | Direct operator confirmation, S19; repository evidence, S16 |
 | Recognition | Facebook PyTorch Scholarship, HackWithInfy Top 200, and Google Tech Intern Connect | Direct operator confirmation, S19; prior candidate resume, S01/S02 |
 
 The Sigmoid customer was confirmed as Colgate, but the public resume says
@@ -47,5 +47,7 @@ The corrected resume deliberately excludes:
   "Senior Data Engineer."
 - Current-role bullets use present tense; previous roles use past tense.
 - Keywords appear inside supported experience or skill context.
+- Bullets lead with the system purpose or operational responsibility before the supporting tools.
+- No metric or scale is included unless it has been supplied and can be defended in an interview.
 - No em dash or double-hyphen prose appears in the resume body.
 - Outcomes use "supporting" when no measured result was supplied.

@@ -8,11 +8,11 @@ Berlin, Germany · saurabh.friday@gmail.com
 
 ## Profile
 
-Senior Data Engineer with 7+ years across manufacturing data platforms,
-sales-data pipelines, and backend services. Builds Python and SQL ETL/ELT
-pipelines with orchestration, CDC, lakehouse, graph databases, cloud delivery,
-monitoring, feature flags, and CI/CD. Based in Berlin and targeting Senior Data Engineer roles,
-with transferable backend engineering and data-platform observability experience.
+Senior Data Engineer with 7+ years building manufacturing data platforms,
+consumer-goods sales pipelines, and CRM backend services. At GROPYUS, develops
+Python and SQL pipelines for production planning, element lifecycle tracking,
+reporting, and manufacturing operations. Hands-on with orchestration, CDC,
+cloud delivery, infrastructure as code, feature flags, and production observability.
 <!-- C07-C23, C30-C35, C50, C58-C63; duration derived from Jun 2019 to Aug 2026 -->
 
 ## Experience
@@ -22,32 +22,35 @@ with transferable backend engineering and data-platform observability experience
 Berlin, Germany · Aug 2022-Present
 <!-- C08-C13, C58-C60, C63 -->
 
-- Build Python and SQL ETL/ELT pipelines for production planning, element
-  lifecycle tracking, manufacturing reporting, and operational monitoring.
+- Build and operate Python and SQL ETL/ELT pipelines that support production
+  planning, element lifecycle tracking, manufacturing reporting, and operational
+  monitoring.
 - Orchestrate CDC, PostgreSQL, lakehouse, and graph database workflows with
-  Dagster, Airflow, dbt, and DLT; release tested changes through Azure CI/CD.
-- Implement anomaly detection for data pipelines and monitor them with
-  Prometheus, Grafana, and operational alerts.
-- Use Terraform, Docker, Kubernetes, and Unleash feature flags to support
-  platform delivery and controlled releases.
+  Dagster, Airflow, dbt, and DLT, releasing tested changes through Azure CI/CD.
+- Apply anomaly detection to data pipelines and surface operational issues through
+  Prometheus metrics, Grafana dashboards, and alerts.
+- Work with Terraform, Docker, Kubernetes, and Unleash feature flags to deliver
+  platform changes and control feature releases.
 
 ### Sigmoid - Software Development Engineer
 
 Bengaluru, India · Jun 2021-Jul 2022
 <!-- C14-C18, C61; client identity deliberately omitted -->
 
-- Built Python, PySpark, and Pandas ETL pipelines for consumer-goods sales data.
-- Orchestrated workflows with Airflow on Google Cloud, managed infrastructure
-  with Terraform, and worked with MySQL data stores.
+- Built Python, PySpark, and Pandas ETL pipelines that prepared consumer-goods
+  sales data for reporting and analysis.
+- Scheduled and operated Airflow workflows on Google Cloud, managed
+  infrastructure with Terraform, and persisted pipeline data in MySQL.
 
 ### Amdocs - Software Engineer
 
 Pune, India · Jun 2019-Jun 2021
 <!-- C19-C23, C62; client identity deliberately omitted -->
 
-- Developed CRM backend features in Java and Spring from requirements through
-  implementation and integration.
-- Built REST and SOAP service integrations backed by Oracle databases.
+- Delivered CRM backend features in Java and Spring from requirements through
+  implementation and system integration.
+- Developed REST and SOAP service integrations backed by Oracle databases for
+  CRM workflows.
 
 ## Skills
 
@@ -68,8 +71,9 @@ Mesra · Aug 2015-Jun 2019
 
 ## Selected public project
 
-- `Regulation Check`: independent FastAPI and PostgreSQL EU AI Act readiness
-  application, packaged with Docker and delivered through GitHub Actions.
+- `Regulation Check`: independent FastAPI and PostgreSQL application with
+  deterministic EU AI Act screening and evidence workflows, deployed with
+  Docker and delivered through GitHub Actions.
   <!-- C51-C52, C62 -->
 
 ## Recognition

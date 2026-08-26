@@ -1,56 +1,74 @@
 Saurabh Shubham
-SENIOR DATA ENGINEER | DATA PLATFORMS | BACKEND SYSTEMS
-Berlin, Germany | saurabh.friday@gmail.com
-linkedin.com/in/saurabh-shubham | github.com/Saurabh3333 | saurabh3333.github.io
-Summary
-Senior Data Engineer with 7+ years of experience across manufacturing data platforms, sales-data
-pipelines, and backend services. Build Python and SQL ETL/ELT pipelines with Dagster, Airflow, dbt,
-and DLT. Work spans CDC, lakehouse and graph database systems, cloud delivery, infrastructure as
-code, feature flags, and production observability.
-Experience
-GROPYUS
-Berlin, Germany
+Senior Data Engineer
+Berlin, Germany | saurabh.friday@gmail.com | linkedin.com/in/saurabh-shubham
+github.com/Saurabh3333 | saurabh3333.github.io
+PROFILE
+
+Senior Data Engineer with 7+ years building manufacturing data platforms, consumer-goods sales pipelines,
+and CRM backend services. At GROPYUS, develop Python and SQL pipelines for production planning,
+element lifecycle tracking, reporting, and manufacturing operations. Hands-on with orchestration, CDC, cloud
+delivery, infrastructure as code, feature flags, and production observability.
+EXPERIENCE
+
 Data Engineer
+GROPYUS
+
 Aug 2022 - Present
-• Build Python and SQL ETL/ELT pipelines for production planning, element lifecycle tracking,
-manufacturing reporting, and operational monitoring.
-• Orchestrate CDC, PostgreSQL, lakehouse, and graph database workflows with Dagster, Airflow, dbt,
-and DLT; release tested changes through Azure CI/CD.
-• Implement anomaly detection for data pipelines and monitor them with Prometheus, Grafana, and
-operational alerts, supporting improvements to robot and manufacturing efficiency.
-• Use Terraform, Docker, Kubernetes, and Unleash feature flags to support platform delivery and
-controlled releases.
-Sigmoid
-Bengaluru, India
+Berlin, Germany
+
+• Build and operate Python and SQL ETL/ELT pipelines that support production planning, element lifecycle
+tracking, manufacturing reporting, and operational monitoring.
+• Orchestrate CDC, PostgreSQL, lakehouse, and graph database workflows with Dagster, Airflow, dbt, and
+DLT, releasing tested changes through Azure CI/CD.
+• Apply anomaly detection to data pipelines and surface operational issues through Prometheus metrics,
+Grafana dashboards, and alerts, helping improve robot and manufacturing efficiency.
+• Work with Terraform, Docker, Kubernetes, and Unleash feature flags to deliver platform changes and
+control feature releases.
 Software Development Engineer
+Sigmoid
+
 Jun 2021 - Jul 2022
-• Built Python, PySpark, and Pandas ETL pipelines that transformed consumer-goods sales data into
-reporting datasets.
-• Orchestrated data workflows with Airflow on Google Cloud, managed infrastructure with Terraform,
-and worked with MySQL data stores.
-Amdocs
-Pune, India
+Bengaluru, India
+
+• Built Python, PySpark, and Pandas ETL pipelines that prepared consumer-goods sales data for reporting
+and analysis.
+• Scheduled and operated Airflow workflows on Google Cloud, managed infrastructure with Terraform, and
+persisted pipeline data in MySQL.
 Software Engineer
+Amdocs
+
 Jun 2019 - Jun 2021
-• Developed CRM backend features in Java and Spring, taking requirements through implementation
-and integration.
-• Built REST and SOAP service integrations backed by Oracle databases.
-Selected Project
+Pune, India
+
+• Delivered CRM backend features in Java and Spring, taking requirements through implementation and
+system integration.
+• Developed REST and SOAP service integrations backed by Oracle databases for CRM workflows.
+SELECTED PROJECT
+
 Regulation Check | EU AI Act readiness application
+
 Independent project
-• Built a FastAPI and PostgreSQL application, packaged it with Docker, and automated testing and
-deployment with GitHub Actions.
-Technical Skills
+
+• Built and deployed a FastAPI and PostgreSQL application with deterministic EU AI Act screening and
+evidence workflows.
+• Packaged the service with Docker and automated testing and deployment through GitHub Actions.
+SKILLS
+
 Languages and frameworks: Python, SQL, Java, Spring, FastAPI
 Data engineering: ETL/ELT, CDC, Dagster, Airflow, dbt, DLT, PySpark, Pandas, lakehouse
-Cloud and delivery: Microsoft Azure, Google Cloud, Terraform, Docker, Kubernetes, GitHub
-Actions, CI/CD, Git
+Cloud and delivery: Microsoft Azure, Google Cloud, Terraform, Docker, Kubernetes, GitHub Actions,
+CI/CD, Git
 Observability and controls: Prometheus, Grafana, alerting, Unleash feature flags
 Storage and interfaces: PostgreSQL, MySQL, Oracle, graph databases, REST APIs, SOAP APIs
-Education
+EDUCATION
+
 Birla Institute of Technology Mesra
-India
 Bachelor of Engineering in Computer Science
+
+India
 Aug 2015 - Jun 2019
-Recognition
+
+RECOGNITION
 Facebook PyTorch Scholar (2018) | Infosys HackWithInfy Top 200 | Google Tech Intern Connect invitee (2018)
+
+

@@ -255,14 +255,15 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   expect(pdf.headers()["content-type"]).toContain("application/pdf");
   expect(text.ok()).toBeTruthy();
   const ats = (await text.text()).replace(/\s+/g, " ");
-  expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected Project"));
+  const normalizedAts = ats.toLowerCase();
+  expect(normalizedAts.indexOf("experience")).toBeLessThan(normalizedAts.indexOf("selected project"));
   expect(ats).toContain("Senior Data Engineer");
   expect(ats).toContain("Prometheus");
   expect(ats).toContain("Grafana");
   expect(ats).toContain("Kubernetes");
   expect(ats).toContain("Unleash feature flags");
   expect(ats).toContain("Oracle databases");
-  expect(ats).toContain("Recognition");
+  expect(normalizedAts).toContain("recognition");
   for (const excluded of ["Retail Demand MLOps Demo", "MLflow", "Vercel AI Gateway", "Model Context Protocol", "Claude Code", "AWS", "MongoDB"]) {
     expect(ats).not.toContain(excluded);
   }
