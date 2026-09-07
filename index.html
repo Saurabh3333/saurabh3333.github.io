@@ -225,7 +225,7 @@
                 </a>
               </div>
             </div>
-            <p class="project-desc">High-throughput Change Data Capture pipeline streaming manufacturing ERP and machine telemetry into an Apache Iceberg lakehouse using Dagster and dbt.</p>
+            <p class="project-desc">High-throughput Change Data Capture pipeline streaming manufacturing ERP and machine telemetry into partitioned lakehouse storage using Dagster, dbt, and DLT.</p>
           </article>
 
           <article class="project-row">
@@ -268,7 +268,7 @@
           </div>
 
           <div class="project-card-box">
-            <div class="project-badge"><span>02</span> · <span>Dagster · dbt · Iceberg</span></div>
+            <div class="project-badge"><span>02</span> · <span>Dagster · dbt · Lakehouse</span></div>
             <h3 class="project-title"><a href="https://github.com/Saurabh3333" target="_blank" rel="noreferrer">Lakehouse Manufacturing CDC</a></h3>
             <p class="project-desc">Real-time data ingestion architecture that synchronizes shop-floor events, assembly station signals, and ERP records into unified analytical tables with under 30-second freshness.</p>
             <div class="project-links">
@@ -300,10 +300,10 @@
           <!-- Craft 1: Live CDC Stream Engine -->
           <article class="craft-item">
             <div class="craft-item-header">
-              <h3>Live CDC Stream Engine</h3>
-              <span class="project-badge">Interactive Simulation</span>
+              <h3>Live CDC Ingestion Engine</h3>
+              <span class="project-badge">Interactive Pipeline</span>
             </div>
-            <p class="craft-item-desc">Real-time Change Data Capture replication across PostgreSQL WAL, Debezium, Dagster, and Apache Iceberg Lakehouse.</p>
+            <p class="craft-item-desc">Real-time Change Data Capture replication synchronizing PostgreSQL operational tables via DLT and Dagster into partitioned lakehouse storage.</p>
 
             <div class="craft-interactive-box">
               <div class="pipeline-nodes-flow" id="cdc-flow">
@@ -311,27 +311,27 @@
                   <span class="node-title">PostgreSQL</span>
                   <span class="node-sub">WAL Source</span>
                 </div>
-                <div class="flow-node" id="node-deb">
-                  <span class="node-title">Debezium</span>
-                  <span class="node-sub">CDC Connector</span>
+                <div class="flow-node" id="node-dlt">
+                  <span class="node-title">DLT</span>
+                  <span class="node-sub">CDC Ingestion</span>
                 </div>
                 <div class="flow-node" id="node-dag">
                   <span class="node-title">Dagster</span>
-                  <span class="node-sub">Orchestrator</span>
+                  <span class="node-sub">Asset Engine</span>
                 </div>
-                <div class="flow-node" id="node-ice">
-                  <span class="node-title">Iceberg</span>
-                  <span class="node-sub">Lakehouse Sink</span>
+                <div class="flow-node" id="node-lake">
+                  <span class="node-title">Lakehouse</span>
+                  <span class="node-sub">Partitioned Sink</span>
                 </div>
               </div>
 
               <div class="craft-stats-bar">
                 <div class="craft-stat-item"><span>Rate:</span> <strong id="cdc-stat-rate">1,420 evt/s</strong></div>
-                <div class="craft-stat-item"><span>Latency:</span> <strong id="cdc-stat-latency">16 ms</strong></div>
+                <div class="craft-stat-item"><span>Latency:</span> <strong id="cdc-stat-latency">14 ms</strong></div>
                 <div class="craft-stat-item"><span>Lag:</span> <strong id="cdc-stat-lag">0.0 s</strong></div>
               </div>
 
-              <div class="craft-terminal" id="cdc-terminal" aria-live="polite">[cdc-stream] connected to slot pg_lakehouse_wal. Listening for mutations...</div>
+              <div class="craft-terminal" id="cdc-terminal" aria-live="polite">[cdc-stream] Connected to PostgreSQL replication stream. Ingesting mutations through DLT into Dagster lakehouse assets...</div>
 
               <div class="craft-controls-row">
                 <button class="craft-btn" type="button" id="btn-emit-cdc">
@@ -540,7 +540,7 @@
             <h3>Storage + Architecture</h3>
             <div class="stack-chips-wrap">
               <span class="stack-chip">PostgreSQL</span>
-              <span class="stack-chip">Apache Iceberg Lakehouse</span>
+              <span class="stack-chip">Lakehouse Architecture</span>
               <span class="stack-chip">MySQL</span>
               <span class="stack-chip">Oracle</span>
               <span class="stack-chip">Graph Databases</span>
@@ -832,7 +832,7 @@
     const terminal = document.getElementById('cdc-terminal');
     const statRate = document.getElementById('cdc-stat-rate');
     const statLatency = document.getElementById('cdc-stat-latency');
-    const nodes = ['node-pg', 'node-deb', 'node-dag', 'node-ice'];
+    const nodes = ['node-pg', 'node-dlt', 'node-dag', 'node-lake'];
 
     let streamActive = true;
     let eventCount = 1420;
@@ -861,7 +861,7 @@
       statRate.textContent = eventCount.toLocaleString() + ' evt/s';
       statLatency.textContent = lat + ' ms';
 
-      const line = '[cdc:' + op + '] table=' + table + ' pk=' + pk + ' latency=' + lat + 'ms -> Iceberg partition=2026-09';
+      const line = '[cdc:' + op + '] table=' + table + ' pk=' + pk + ' (' + lat + 'ms) -> DLT load -> Dagster Lakehouse asset';
       terminal.textContent = line + '\n' + terminal.textContent.split('\n').slice(0, 3).join('\n');
     }
 
