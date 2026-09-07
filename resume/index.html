@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Senior Data Engineer Resume — Saurabh Shubham</title>
   <meta name="description" content="One-page resume of Saurabh Shubham, a Senior Data Engineer working on production data platforms and backend systems in Berlin.">
   <meta name="author" content="Saurabh Shubham">
@@ -13,8 +13,8 @@
   <link rel="me" href="https://github.com/Saurabh3333">
   <link rel="me" href="https://www.linkedin.com/in/saurabh-shubham/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../public/css/styles.css?v=0c3fed00f695">
-  <meta name="theme-color" content="#f3f1e9">
+  <link rel="stylesheet" href="../public/css/styles.css?v=7d326779edee">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Senior Data Engineer Resume — Saurabh Shubham">
   <meta property="og:description" content="One-page resume covering production data platforms, backend systems, observability, and cloud delivery.">
   <meta property="og:type" content="profile">
@@ -22,41 +22,111 @@
   <meta property="og:image" content="https://saurabh3333.github.io/public/images/saurabh-shubham-og.png">
   <meta property="og:image:alt" content="Saurabh Shubham — Senior Data Engineer in Berlin">
   <meta name="twitter:card" content="summary_large_image">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0a0a0a');
+      }
+    } catch (_) {}
+  </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://saurabh3333.github.io/#person","name":"Saurabh Shubham","alternateName":"Saurabh3333","url":"https://saurabh3333.github.io/","jobTitle":"Senior Data Engineer","homeLocation":{"@type":"Place","name":"Berlin, Germany"},"sameAs":["https://github.com/Saurabh3333","https://www.linkedin.com/in/saurabh-shubham/"]},{"@type":"ProfilePage","@id":"https://saurabh3333.github.io/resume/#profile","url":"https://saurabh3333.github.io/resume/","name":"Senior Data Engineer Resume — Saurabh Shubham","description":"One-page resume of Saurabh Shubham, a Senior Data Engineer working on production data platforms and backend systems in Berlin.","inLanguage":"en","dateModified":"2026-08-22","mainEntity":{"@id":"https://saurabh3333.github.io/#person"}}]}
+  {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://saurabh3333.github.io/#person", "name": "Saurabh Shubham", "alternateName": "Saurabh3333", "url": "https://saurabh3333.github.io/", "jobTitle": "Senior Data Engineer", "homeLocation": {"@type": "Place", "name": "Berlin, Germany"}, "sameAs": ["https://github.com/Saurabh3333", "https://www.linkedin.com/in/saurabh-shubham/"]}, {"@type": "ProfilePage", "@id": "https://saurabh3333.github.io/resume/#profile", "url": "https://saurabh3333.github.io/resume/", "name": "Senior Data Engineer Resume \u2014 Saurabh Shubham", "description": "One-page resume of Saurabh Shubham, a Senior Data Engineer working on production data platforms and backend systems in Berlin.", "inLanguage": "en", "dateModified": "2026-09-07", "mainEntity": {"@id": "https://saurabh3333.github.io/#person"}}]}
   </script>
 </head>
 <body class="resume-page">
   <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="top-blur-mask" aria-hidden="true"></div>
+
   <div class="page-shell">
-    <header class="site-header" id="top">
-      <a class="wordmark" href="../" aria-label="Saurabh Shubham, home"><span class="mark-orbit" aria-hidden="true"></span>SS</a>
-      <p class="header-role">One-page résumé<br><span>Senior Data Engineer</span></p>
-      <nav aria-label="Primary navigation"><a href="../">Portfolio</a><a href="../#experience">Experience</a><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-track" aria-hidden="true"><span></span></span></button><a class="nav-resume" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF ↓</a></nav>
+    <header class="view-container site-header animate-slide-in" id="top">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="../">home</a>
+        <a class="nav-link" href="../#experience">experience</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button primary" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF ↓</a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Toggle theme">
+          <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="theme-icon-dark" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
     </header>
-    <main class="resume-main" id="main" tabindex="-1">
-      <section class="resume-hero" aria-labelledby="resume-title">
-        <div class="resume-intro">
-          <p class="hero-kicker"><span>Résumé</span> Production data · Backend systems</p>
-          <h1 id="resume-title"><span>Saurabh</span> <em>Shubham</em></h1>
-          <p class="hero-copy"><span>Senior Data Engineer</span> <span>· Data Platforms</span> <span>· Backend Systems</span></p>
-          <div class="actions"><a class="button primary" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF</a><a class="button" href="./saurabh-shubham-data-engineer.txt">ATS text</a></div>
+
+    <main class="view-container resume-main" id="main" tabindex="-1">
+      <section class="resume-hero animate-slide-in" aria-labelledby="resume-title">
+        <p class="hero-kicker"><span>Production Data</span> · Backend Systems</p>
+        <h1 id="resume-title"><span>Saurabh</span> <em>Shubham</em></h1>
+        <p class="hero-copy" style="font-size: 1rem; color: var(--muted-foreground);"><span>Senior Data Engineer</span> <span>· Data Platforms</span> <span>· Backend Systems</span></p>
+
+        <div class="resume-status-card">
+          <div class="status-cell">
+            <dt>Focus</dt>
+            <dd>Production data platforms</dd>
+          </div>
+          <div class="status-cell">
+            <dt>Location</dt>
+            <dd>Berlin, Germany</dd>
+          </div>
+          <div class="status-cell">
+            <dt>Contact</dt>
+            <dd><a href="mailto:saurabh.friday@gmail.com">Email Saurabh ↗</a></dd>
+          </div>
         </div>
-        <dl class="status"><div><dt>Focus</dt><dd>Production data platforms</dd></div><div><dt>Location</dt><dd>Berlin, Germany</dd></div><div><dt>Contact</dt><dd><a href="mailto:saurabh.friday@gmail.com">Email Saurabh ↗</a></dd></div></dl>
+
+        <div style="display: flex; gap: 0.75rem; padding-top: 0.5rem; flex-wrap: wrap;">
+          <a class="button primary" href="./saurabh-shubham-data-engineer.pdf" download>Download PDF</a>
+          <a class="button" href="./saurabh-shubham-data-engineer.txt">ATS text</a>
+        </div>
       </section>
-      <section class="resume-preview" aria-labelledby="resume-preview-heading">
-        <div class="resume-preview-heading"><p class="section-index">Current production PDF</p><h2 id="resume-preview-heading">Résumé<br><span>preview.</span></h2></div>
-        <object data="./saurabh-shubham-data-engineer.pdf#view=Fit" type="application/pdf" title="Saurabh Shubham Senior Data Engineer résumé preview" aria-label="Saurabh Shubham Senior Data Engineer résumé preview">
-          <p>PDF preview unavailable. <a href="./saurabh-shubham-data-engineer.pdf">Open the resume PDF</a>.</p>
+
+      <section class="resume-preview-section animate-slide-in delay-200" aria-labelledby="resume-preview-heading">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2 class="font-heading" id="resume-preview-heading">preview.</h2>
+          </div>
+        </div>
+        <object class="resume-object-frame" data="./saurabh-shubham-data-engineer.pdf#view=Fit" type="application/pdf" title="Saurabh Shubham Senior Data Engineer résumé preview" aria-label="Saurabh Shubham Senior Data Engineer résumé preview">
+          <p style="padding: 2rem; text-align: center; color: var(--muted-foreground);">PDF preview unavailable. <a href="./saurabh-shubham-data-engineer.pdf">Open the resume PDF directly</a>.</p>
         </object>
       </section>
     </main>
-    <footer class="site-footer"><p>© 2026 Saurabh Shubham</p><p><a href="../">Back to portfolio</a></p></footer>
+
+    <footer class="view-container site-footer">
+      <div class="footer-inner">
+        <p>© 2026 Saurabh Shubham</p>
+        <p><a href="../" style="color:inherit; text-decoration:none;">Back to portfolio ↗</a></p>
+      </div>
+    </footer>
   </div>
+
   <script>
-    const body=document.body,themeButton=document.querySelector(".theme-toggle"),savedTheme=localStorage.getItem("portfolio-theme");
-    function setTheme(theme){body.dataset.theme=theme;const dark=theme==="dark";themeButton.setAttribute("aria-pressed",String(dark));themeButton.setAttribute("aria-label",`Switch to ${dark?"light":"dark"} theme`);document.querySelector('meta[name="theme-color"]').content=dark?"#0d0d0f":"#f3f1e9";}
-    setTheme(savedTheme==="dark"?"dark":"light");themeButton.addEventListener("click",()=>{const theme=body.dataset.theme==="dark"?"light":"dark";setTheme(theme);localStorage.setItem("portfolio-theme",theme);});
+    const themeButton = document.querySelector('.theme-toggle');
+    const themeIconLight = document.querySelector('.theme-icon-light');
+    const themeIconDark = document.querySelector('.theme-icon-dark');
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.body.setAttribute('data-theme', theme);
+      const isDark = theme === 'dark';
+      themeButton.setAttribute('aria-pressed', String(isDark));
+      themeButton.setAttribute('aria-label', 'Switch to ' + (isDark ? 'light' : 'dark') + ' theme');
+      themeIconLight.style.display = isDark ? 'none' : 'block';
+      themeIconDark.style.display = isDark ? 'block' : 'none';
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', isDark ? '#0a0a0a' : '#ffffff');
+    }
+
+    const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    setTheme(activeTheme);
+
+    themeButton.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      try { localStorage.setItem('portfolio-theme', next); } catch (_) {}
+    });
   </script>
 </body>
 </html>
