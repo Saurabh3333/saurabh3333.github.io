@@ -18,6 +18,7 @@ Student chapter titles follow the operator’s confirmation (S21); dates and act
 
 All displayed logos are cached locally in `public/images/logos/`, identify the corresponding employer, educational institution, or program, and remain the property of their trademark holders. Sources:
 
+- Regulation Check: [official brand SVG](https://regulationcheck.com/static/logo.svg), cached unchanged from the owner’s product website.
 - GROPYUS: white wordmark extracted unchanged from the inline SVG on [gropyus.com](https://www.gropyus.com/).
 - Sigmoid: [official white logo](https://www.sigmoid.com/wp-content/uploads/2025/12/sigmoid-white-logo@2x.png).
 - Amdocs: [CompaniesLogo wordmark](https://companieslogo.com/img/orig/DOX_BIG-fca821f4.svg?t=1742469639), attributed to Amdocs; editorial identification only.
@@ -30,4 +31,4 @@ All displayed logos are cached locally in `public/images/logos/`, identify the c
 - IEEE: [official white logo](https://brand-experience.ieee.org/wp-content/themes/porto-child/img/ieee-logo.png).
 - PyTorch: [official wordmark](https://pytorch.org/wp-content/uploads/2024/10/logo.svg).
 
-The Regulation Check and engineering marks are original portfolio artwork, not third-party logos. Berlin, Pune, Bengaluru, Patna, and Gurgaon skyline SVGs in `public/images/places/` are original code-drawn illustrations created for this portfolio. Landmarks are stylized illustrations, not workplace photographs or precise maps. No external assets load at runtime; logos and illustrations load only when a preview is opened.
+The engineering mark is original portfolio artwork. Berlin, Pune, Bengaluru, Patna, and Gurgaon skyline SVGs in `public/images/places/` are original code-drawn illustrations created for this portfolio. Landmarks are stylized illustrations, not workplace photographs or precise maps. No external assets load at runtime; logos and illustrations load only when a preview is opened.

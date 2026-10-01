@@ -49,7 +49,7 @@
 
   const projects = {
     regulation: {
-      caption: 'independent project', title: 'regulation check', logo: 'regulation.svg',
+      caption: 'independent project', title: 'regulation check', logo: 'regulation-check.svg',
       detail: 'EU AI Act readiness · FastAPI · PostgreSQL',
       story: 'Building a practical application for EU AI Act readiness, from backend services to automated delivery.'
     },

@@ -114,11 +114,12 @@ footer a { overflow-wrap: anywhere; }
 .preview-education .preview-logo, .preview-kwoc .preview-logo { width: 66px; height: 66px; }
 .preview-kwoc .preview-logo { width: 56px; height: 66px; object-fit: cover; object-position: left; }
 .preview-education .logo-plaque, .preview-kwoc .logo-plaque { padding: 8px; background: transparent; box-shadow: none; }
-.preview-regulation .preview-logo, .preview-engineering .preview-logo { width: 56px; height: 56px; }
+.preview-regulation .preview-logo { width: 88px; height: 88px; }
+.preview-engineering .preview-logo { width: 56px; height: 56px; }
 .preview-regulation .logo-plaque, .preview-engineering .logo-plaque { background: none; box-shadow: none; }
 .preview-finnov .preview-logo { width: 96px; height: 48px; }
 .preview-schooglink .preview-logo { width: 148px; height: 54px; }
-.preview-regulation { background: #f1f4ed; color: #243a2b; }
+.preview-regulation { background: #f4f1fc; color: #332a55; }
 .preview-engineering { background: #eff2ff; color: #15214d; }
 .preview-gropyus { background: #eeedf7; color: #393864; }
 .preview-sigmoid { background: #eff4fb; color: #174793; }
