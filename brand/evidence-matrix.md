@@ -19,6 +19,14 @@
 
 ## Reviewed Sources
 
+### S21 — Operator confirmation: student leadership titles
+- **Classification:** `candidate fact`
+- **Source:** Direct operator instruction in the 2026-10-01 Codex session: add Vice President for ACM and Tech Head for IEEE.
+- **Retrieved:** 2026-10-01
+- **Status:** ✅ confirmed and publication-authorized
+- **Key facts:** ACM Vice President and IEEE Tech Head at BIT Mesra. Dates and activities follow S20: ACM October 2017–September 2018, university coding-contest problem setting and maintenance; IEEE September 2017–September 2018, technical needs and club website development.
+- **Boundary:** These are student chapter roles at BIT Mesra. The operator-confirmed IEEE title supersedes the export’s technical committee wording; no global organization leadership is claimed.
+
 ### S20 — Operator-provided LinkedIn profile export
 - **Classification:** `candidate fact`
 - **Source:** Saurabh's LinkedIn PDF export, supplied privately in the 2026-10-01 Codex session (not published).
@@ -326,6 +334,8 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | S17 | Direct operator statement: Regulation Check MCP workflow | candidate fact |
 | S18 | Retail Demand MLOps Demo repository and verified lifecycle | candidate fact |
 | S19 | Direct operator confirmation: audited resume scope | candidate fact |
+| S20 | Operator-provided LinkedIn profile export | candidate fact |
+| S21 | Direct operator confirmation: student leadership titles | candidate fact |
 
 ---
 

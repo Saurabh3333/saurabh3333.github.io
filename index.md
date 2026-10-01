@@ -28,6 +28,8 @@ Saurabh Shubham is a Senior Data Engineer in Berlin with 7+ years across manufac
 
 - Birla Institute of Technology, Mesra — Bachelor of Engineering in Computer Science; 2015 to 2019, first class with distinction.
 - Facebook PyTorch Challenge Scholarship with Udacity; November 2018.
+- ACM student chapter at BIT Mesra — Vice President; October 2017 to September 2018. Previously Student Coordinator, September 2016 to September 2017.
+- IEEE student chapter at BIT Mesra — Tech Head; September 2017 to September 2018. Managed technical needs and built the club website.
 
 ## Places
 

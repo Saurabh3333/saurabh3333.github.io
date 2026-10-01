@@ -25,7 +25,7 @@ for (const viewport of viewports) {
     const response = await page.goto("/", { waitUntil: "networkidle" });
     expect(response.ok()).toBeTruthy();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.locator(".timeline > li")).toHaveCount(13);
+    await expect(page.locator(".timeline > li")).toHaveCount(15);
     await expect(page.getByRole("link", { name: "regulation check", exact: true })).toBeVisible();
     await expect(page.getByRole("link", { name: "resume", exact: true })).toBeVisible();
     const layout = await page.evaluate(() => {
@@ -50,9 +50,12 @@ for (const viewport of viewports) {
     expect(layout.overlaps).toBe(false);
     await page.goto("/resume/", { waitUntil: "networkidle" });
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.getByRole("button", { name: /Switch to (dark|light) theme/ })).toBeVisible();
+    await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await expect(page.locator("body")).toHaveCSS("font-family", "Inter, Arial, sans-serif");
+    await expect(page.locator("object, iframe")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "open full PDF", exact: true })).toHaveAttribute("target", "_blank");
     const resumeLayout = await page.evaluate(() => {
-      const groups = [".site-nav > *", ".header-actions > *", ".resume-hero > *", ".resume-status-card > *", ".resume-preview-section > *"];
+      const groups = [".resume-formats > *", ".resume-section", ".resume-entry", ".resume-entry > *", ".resume-skills > *"];
       const overlaps = groups.flatMap(selector => {
         const elements = [...document.querySelectorAll(selector)];
         return elements.flatMap((element, index) => elements.slice(index + 1).filter(other => {
@@ -60,23 +63,21 @@ for (const viewport of viewports) {
           return Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1;
         }).map(() => selector));
       });
-      const preview = document.querySelector(".resume-preview-section object, .resume-object-frame").getBoundingClientRect();
-      const clipped = [...document.querySelectorAll("body *")].filter(element => {
-        const style = getComputedStyle(element), rect = element.getBoundingClientRect();
-        return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0
-          && !element.closest('[aria-hidden="true"]') && (rect.left < -0.5 || rect.right > document.documentElement.clientWidth + 0.5);
+      const main = document.querySelector("main").getBoundingClientRect();
+      const clipped = [...document.querySelectorAll("main *")].filter(element => {
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && (rect.left < -0.5 || rect.right > innerWidth + 0.5);
       }).map(element => `${element.tagName}.${element.className}`);
-      const undersizedTargets = [...document.querySelectorAll("a, button")].filter(element => {
-        const rect = element.getBoundingClientRect(), style = getComputedStyle(element);
-        return style.display !== "none" && (rect.width < 43.5 || rect.height < 43.5);
-      }).map(element => `${element.tagName}.${element.className}`);
-      return { documentWidth: document.documentElement.scrollWidth, viewportWidth: document.documentElement.clientWidth, overlaps, clipped, undersizedTargets, previewRatio: preview.width / preview.height };
+      return { documentWidth: document.documentElement.scrollWidth, viewportWidth: innerWidth, overlaps, clipped, mainWidth: main.width, mainLeft: main.left };
     });
     expect(resumeLayout.documentWidth).toBeLessThanOrEqual(resumeLayout.viewportWidth);
     expect(resumeLayout.overlaps).toEqual([]);
     expect(resumeLayout.clipped).toEqual([]);
-    expect(resumeLayout.undersizedTargets).toEqual([]);
-    expect(resumeLayout.previewRatio).toBeCloseTo(210 / 297, 2);
+    expect(resumeLayout.mainWidth).toBeLessThanOrEqual(580);
+    expect(resumeLayout.mainLeft).toBeCloseTo((viewport.width - resumeLayout.mainWidth) / 2, 1);
+    await page.getByRole("heading", { name: "recognition", exact: true }).scrollIntoViewIfNeeded();
+    await expect(page.getByRole("heading", { name: "recognition", exact: true })).toBeInViewport();
+    await expect(page.locator("#recognition + ul")).toContainText("Facebook PyTorch Scholar (2018)");
     expect(errors).toEqual([]);
   });
 }
@@ -127,6 +128,9 @@ test("timeline uses verified personal history and working contact links", async 
   await page.goto("/");
   await expect(page.locator(".occupation")).toHaveText("senior data engineer");
   await expect(page.locator(".timeline")).toContainText(/2022.*data engineering at gropyus.*2021.*software development at sigmoid.*2019.*software engineering at amdocs.*2019.*graduated from bit mesra.*2019.*software development internship at finnov.*2018.*facebook pytorch challenge scholarship.*2017.*product development internship at hasura.*2017.*kharagpur winter of code.*2016.*web development internship at schooglink.*2015.*started computer science/is);
+  await expect(page.locator("[data-preview=acm]").locator("..")).toHaveText("vice president at acm");
+  await expect(page.locator("[data-preview=ieee]").locator("..")).toHaveText("tech head at ieee");
+  await expect(page.locator("[data-preview=schooglink]").locator("..")).toHaveText("web development internship at schooglink");
   await expect(page.getByRole("link", { name: "saurabh.friday@gmail.com" })).toHaveAttribute("href", "mailto:saurabh.friday@gmail.com");
   await expect(page.getByRole("link", { name: "on linkedin" })).toHaveAttribute("href", "https://www.linkedin.com/in/saurabh-shubham/");
   await expect(page.getByRole("link", { name: "resume", exact: true })).toHaveAttribute("href", "./resume/");
@@ -211,6 +215,9 @@ test("every work and place preview loads its local artwork", async ({ page }) =>
   const triggers = page.locator("[data-preview]");
   for (let i = 0; i < await triggers.count(); i++) {
     const trigger = triggers.nth(i);
+    // Scrolling intentionally dismisses previews; hover after the row is in view.
+    await trigger.scrollIntoViewIfNeeded();
+    await page.mouse.move(0, 0);
     await trigger.hover();
     const preview = page.locator(".project-preview");
     await expect(preview).toHaveClass(/is-visible/);
@@ -235,7 +242,9 @@ test("all details expand on touch, load logos, and keep one card open", async ({
   const page = await context.newPage();
   const errors = collectRuntimeErrors(page);
   await page.goto("http://127.0.0.1:4173/");
-  const buttons = page.locator(".detail-toggle, .place-link");
+  await expect(page.locator(".detail-toggle")).toHaveCount(0);
+  const buttons = page.locator("[data-preview]");
+  await expect(buttons).toHaveCount(17);
   for (let i = 0; i < await buttons.count(); i++) {
     const button = buttons.nth(i);
     await button.tap();
@@ -244,6 +253,10 @@ test("all details expand on touch, load logos, and keep one card open", async ({
     await expect(panel).toBeVisible();
     await expect(page.locator(".expanded-details:visible")).toHaveCount(1);
     await expect(panel.locator(".details-story")).not.toBeEmpty();
+    if (await button.evaluate(el => el.tagName === "A")) {
+      await expect(panel.getByRole("link", { name: "visit website", exact: true })).toHaveAttribute("href", await button.getAttribute("href"));
+      await expect(panel.getByRole("link", { name: "visit website", exact: true })).toHaveAttribute("target", "_blank");
+    }
     await expect.poll(() => panel.locator("img").evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
     const geometry = await panel.evaluate(el => {
       const bounds = el.getBoundingClientRect();
@@ -251,7 +264,7 @@ test("all details expand on touch, load logos, and keep one card open", async ({
       const scene = el.querySelector(".preview-scene").getBoundingClientRect();
       const copy = el.querySelector(".preview-copy").getBoundingClientRect();
       const story = el.querySelector(".details-story").getBoundingClientRect();
-      const contents = [...el.querySelectorAll(".preview-caption, .preview-copy, .preview-logo, .details-story, .city-route")];
+      const contents = [...el.querySelectorAll(".preview-caption, .preview-copy, .preview-logo, .details-story, .city-route, .details-website")];
       const clipped = contents.some(content => {
         const box = content.getBoundingClientRect();
         return box.left < bounds.left - .5 || box.right > bounds.right + .5 || box.top < bounds.top - .5 || box.bottom > bounds.bottom + .5;
@@ -285,9 +298,9 @@ test("city journey and internship details support keyboard dismissal", async ({ 
   await expect(berlin).toBeFocused();
   await expect(berlin).toHaveAttribute("aria-expanded", "false");
   await expect(journey).toBeHidden();
-  const hasura = page.getByRole("button", { name: "Show hasura details", exact: true });
+  const hasura = page.getByRole("link", { name: "hasura", exact: true });
   await hasura.focus();
-  await page.keyboard.press("Space");
+  await page.keyboard.press("Enter");
   const panel = page.locator(`#${await hasura.getAttribute("aria-controls")}`);
   await expect(panel).toContainText("dec 2017 — feb 2018");
   await expect(panel).toContainText("Alexa skill");
@@ -306,10 +319,12 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   await page.goto("/resume/");
   await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
   await expect(page).toHaveTitle("Senior Data Engineer Resume — Saurabh Shubham");
-  await expect(page.locator(".hero-copy")).toHaveText(/Senior Data Engineer.*Data Platforms.*Backend Systems/);
+  await expect(page.locator(".occupation")).toHaveText("senior data engineer · berlin, germany");
   await expect(page.locator("body")).toHaveClass("resume-page");
-  await expect(page.locator(".resume-status-card > div")).toHaveCount(3);
-  await expect(page.getByRole("heading", { name: /preview/i })).toBeVisible();
+  await expect(page.locator(".resume-section")).toHaveCount(6);
+  await expect(page.locator(".resume-entry")).toHaveCount(5);
+  await expect(page.getByRole("heading", { name: "experience", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "download PDF", exact: true })).toHaveAttribute("download", "");
 
   const [pdf, text] = await Promise.all([
     page.request.get("/resume/saurabh-shubham-data-engineer.pdf"),
@@ -332,6 +347,21 @@ test("local routes, resume assets, and external project link", async ({ page }) 
     expect(ats).not.toContain(excluded);
   }
   expect(localFailures).toEqual([]);
+});
+
+test("complete resume opens from homepage and works without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await page.goto("http://127.0.0.1:4173/");
+  await page.getByRole("link", { name: "resume", exact: true }).click();
+  await expect(page).toHaveURL(/\/resume\/$/);
+  await expect(page.locator("h2")).toHaveText(["summary", "experience", "selected project", "technical skills", "education", "recognition"]);
+  await expect(page.locator("main")).toContainText("Senior Data Engineer with 7+ years");
+  await expect(page.locator("main")).toContainText("Birla Institute of Technology Mesra");
+  await expect(page.locator("main")).toContainText("Facebook PyTorch Scholar (2018)");
+  await page.getByRole("link", { name: "back to portfolio", exact: true }).click();
+  await expect(page).toHaveURL("http://127.0.0.1:4173/");
+  await context.close();
 });
 
 test("reduced motion disables tracking and animation while preserving reactions", async ({ page }) => {

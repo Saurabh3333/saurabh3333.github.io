@@ -57,15 +57,13 @@ h1 { text-transform: lowercase; }
 }
 
 .timeline li { display: grid; grid-template-columns: 38px minmax(0, 1fr); column-gap: 32px; }
-.place-link, .detail-toggle { border: 0; background: none; color: #00f; font: inherit; cursor: pointer; padding: 0; }
+.place-link { border: 0; background: none; color: #00f; font: inherit; cursor: pointer; padding: 0; }
 .place-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.detail-toggle { display: inline-grid; place-items: center; width: 24px; height: 24px; margin-left: 2px; vertical-align: baseline; color: #aaa; line-height: 1; }
-.detail-toggle:hover, .detail-toggle[aria-expanded="true"] { color: #00f; }
-.detail-toggle[aria-expanded="true"] { transform: rotate(45deg); }
 .expanded-details { grid-column: 2; width: min(320px, 100%); margin: 12px 0 4px; border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
 .expanded-details[hidden] { display: none; }
 .expanded-details .preview-cover { width: 100%; height: auto; aspect-ratio: 1243 / 936; min-height: 230px; }
 .details-story { padding: 18px 20px; font-size: 12px; line-height: 20px; color: #666; }
+.details-website { display: block; width: fit-content; margin: 0 20px 18px; font-size: 12px; }
 .city-route { display: flex; justify-content: space-between; list-style: none; margin: 0 20px 20px; padding: 14px 0 0; border-top: 1px dashed #ccd0dd; }
 .city-route li { display: block; position: relative; font-size: 10px; line-height: 16px; }
 .city-route li::before { content: ''; position: absolute; top: -18px; left: 0; width: 6px; height: 6px; border-radius: 50%; background: #52629c; }
@@ -130,11 +128,15 @@ footer a { overflow-wrap: anywhere; }
 .preview-scholarship { background: #fff2e9; color: #953e2a; }
 .preview-hasura { background: #eff5fa; color: #1a4967; }
 .preview-kwoc { background: #f8f5e9; color: #5e522a; }
+.preview-acm { background: #edf5fc; color: #154b68; }
+.preview-acm .preview-logo { width: 66px; height: 66px; }
+.preview-ieee { background: #edf5fa; color: #00629b; }
+.preview-ieee .logo-plaque { background: #00629b; }
 .preview-schooglink { background: #edf6ef; color: #29595c; }
 .preview-berlin { background: #17275d; color: #f5e8d1; }
 .preview-pune { background: #fff0df; color: #713f38; }
 .preview-bengaluru { background: #f3edf5; color: #40334f; }
-.preview-patna { background: #eaf3e9; color: #29595c; }
+
 .city-postcard .preview-scene { margin-top: 12px; margin-bottom: 14px; }
 
 @media (max-width: 1199px) {

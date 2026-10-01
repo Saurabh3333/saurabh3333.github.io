@@ -92,7 +92,7 @@
     education: {
       caption: '2015 — 2019 · computer science', title: 'BIT Mesra', logo: 'bit-mesra.png',
       detail: 'Bachelor of Engineering · first class with distinction',
-      story: 'Studied Computer Science at Birla Institute of Technology, Mesra, graduating in 2019. Also served as an ACM student coordinator and vice president, and on the IEEE technical team.'
+      story: 'Studied Computer Science at Birla Institute of Technology, Mesra, graduating in 2019. Also served as an ACM student coordinator and vice president, and as IEEE Tech Head.'
     },
     finnov: {
       caption: 'feb — apr 2019 · gurgaon', title: 'finnov', logo: 'finnov.png', city: 'gurgaon',
@@ -114,15 +114,20 @@
       detail: 'Kharagpur Winter of Code · IIT Kharagpur',
       story: 'Contributed to cli-cube-timer and relative-date-reverse during the online Kharagpur Winter of Code program, mentored by Siddharth Kannan.'
     },
+    acm: {
+      caption: 'oct 2017 — sep 2018 · BIT Mesra', title: 'ACM', logo: 'acm.svg',
+      detail: 'Vice President · student chapter',
+      story: 'Served as Vice President of the ACM student chapter at BIT Mesra, setting problems and maintaining university coding contests. Previously served as Student Coordinator from September 2016 to September 2017.'
+    },
+    ieee: {
+      caption: 'sep 2017 — sep 2018 · BIT Mesra', title: 'IEEE', logo: 'ieee.png',
+      detail: 'Tech Head · student chapter',
+      story: 'Led the student chapter’s technical needs at BIT Mesra and designed and developed the club website.'
+    },
     schooglink: {
       caption: 'dec 2016 — jan 2017 · patna', title: 'schooglink', logo: 'schooglink.png', city: 'patna',
       detail: 'Web Development Intern · Ember.js · Node.js',
       story: 'Built the Education 360 section, improved school and parent search, and deployed features to users. Worked with Ember.js, Node.js, Express, and REST APIs.'
-    },
-    patna: {
-      caption: 'india · where it began', title: 'roots in patna.', city: 'patna',
-      detail: 'School days, computer science, and a first internship.',
-      story: 'Studied at Patna Central School and later interned at Schooglink in Patna, building education tools for schools and parents.'
     }
   };
 
@@ -219,14 +224,8 @@
     const key = link.dataset.preview;
     const project = projects[key];
     if (!project) return;
-    const button = link.tagName === 'BUTTON' ? link : document.createElement('button');
-    if (button !== link) {
-      button.type = 'button';
-      button.className = 'detail-toggle';
-      button.textContent = '+';
-      button.setAttribute('aria-label', `Show ${project.title} details`);
-      link.after(button);
-    } else {
+    const button = link;
+    if (button.tagName === 'BUTTON') {
       button.setAttribute('aria-label', `Show ${link.textContent} details`);
     }
     const panel = document.createElement('section');
@@ -237,7 +236,9 @@
     link.closest('li').append(panel);
     button.setAttribute('aria-controls', panel.id);
     button.setAttribute('aria-expanded', 'false');
-    button.addEventListener('click', () => {
+    button.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault();
       hidePreview();
       const wasOpen = expanded?.button === button;
       closeDetails();
@@ -254,6 +255,15 @@
             route.append(stop);
           });
           panel.append(route);
+        }
+        if (link.tagName === 'A') {
+          const website = document.createElement('a');
+          website.className = 'details-website';
+          website.href = link.href;
+          website.target = '_blank';
+          website.rel = 'noopener noreferrer';
+          website.textContent = 'visit website';
+          panel.append(website);
         }
       }
       panel.hidden = false;
