@@ -264,15 +264,17 @@ test("all details expand on touch, load logos, and keep one card open", async ({
       const scene = el.querySelector(".preview-scene").getBoundingClientRect();
       const copy = el.querySelector(".preview-copy").getBoundingClientRect();
       const story = el.querySelector(".details-story").getBoundingClientRect();
+      const logo = el.querySelector(".preview-logo")?.getBoundingClientRect();
       const contents = [...el.querySelectorAll(".preview-caption, .preview-copy, .preview-logo, .details-story, .city-route, .details-website")];
       const clipped = contents.some(content => {
         const box = content.getBoundingClientRect();
         return box.left < bounds.left - .5 || box.right > bounds.right + .5 || box.top < bounds.top - .5 || box.bottom > bounds.bottom + .5;
       });
-      return { width: document.documentElement.scrollWidth, viewport: innerWidth, overlaps: scene.bottom > copy.top + .5, clipped, storyBelowCover: story.top >= cover.bottom - .5, sceneHeight: scene.height };
+      return { width: document.documentElement.scrollWidth, viewport: innerWidth, overlaps: scene.bottom > copy.top + .5, logoOverlapsCopy: Boolean(logo && logo.bottom > copy.top + .5), clipped, storyBelowCover: story.top >= cover.bottom - .5, sceneHeight: scene.height };
     });
     expect(geometry.width).toBeLessThanOrEqual(geometry.viewport);
     expect(geometry.overlaps).toBe(false);
+    expect(geometry.logoOverlapsCopy).toBe(false);
     expect(geometry.clipped).toBe(false);
     expect(geometry.storyBelowCover).toBe(true);
     expect(geometry.sceneHeight).toBeGreaterThan(30);
