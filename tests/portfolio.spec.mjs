@@ -19,61 +19,60 @@ function collectRuntimeErrors(page) {
 }
 
 for (const viewport of viewports) {
-  test(`${viewport.name}: complete responsive portfolio`, async ({ page }) => {
+  test(`${viewport.name}: responsive timeline and resume`, async ({ page }) => {
     const errors = collectRuntimeErrors(page);
     await page.setViewportSize(viewport);
     const response = await page.goto("/", { waitUntil: "networkidle" });
-
     expect(response.ok()).toBeTruthy();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.getByRole("heading", { name: "Regulation Check", exact: true })).toBeVisible();
-    await expect(page.locator("#projects")).toContainText("Regulation Check");
-    await expect(page.locator("#experience .experience-row")).toHaveCount(3);
-    await expect(page.locator("#stack .stack-group")).toHaveCount(5);
-    await expect(page.getByRole("navigation", { name: "Primary navigation" })).toBeVisible();
-
-    const layout = await page.evaluate(() => ({
-      documentWidth: document.documentElement.scrollWidth,
-      viewportWidth: document.documentElement.clientWidth,
-      shellLeft: document.querySelector(".page-shell").getBoundingClientRect().left,
-      shellRight: document.querySelector(".page-shell").getBoundingClientRect().right,
-      shellWidth: document.querySelector(".page-shell").getBoundingClientRect().width,
-      clipped: [...document.querySelectorAll("body *")].filter(element => {
-        const style = getComputedStyle(element), rect = element.getBoundingClientRect();
-        return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0
-          && !element.closest('[aria-hidden="true"]') && (rect.left < -0.5 || rect.right > document.documentElement.clientWidth + 0.5);
-      }).map(element => `${element.tagName}.${element.className}`),
-      overlaps: [
-        ".site-nav > *", ".header-actions > *",
-        ".project-row", ".craft-item", ".experience-row",
-        ".stack-group", ".education-card", ".recognition-pills > li", ".social-item"
-      ].flatMap(selector => {
-        const elements = [...document.querySelectorAll(selector)].filter(element => {
-          const rect = element.getBoundingClientRect(), style = getComputedStyle(element);
-          return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
-        });
-        return elements.flatMap((element, index) => elements.slice(index + 1).filter(other => {
-          const a = element.getBoundingClientRect(), b = other.getBoundingClientRect();
-          return Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1;
-        }).map(() => selector));
-      }),
+    await expect(page.locator(".timeline > li")).toHaveCount(15);
+    await expect(page.getByRole("link", { name: "regulation check", exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: "resume", exact: true })).toBeVisible();
+    const layout = await page.evaluate(() => {
+      const main = document.querySelector("main").getBoundingClientRect();
+      const rows = [...document.querySelectorAll(".timeline li")].map(el => el.getBoundingClientRect());
+      return {
+        width: document.documentElement.scrollWidth,
+        viewport: document.documentElement.clientWidth,
+        mainLeft: main.left,
+        mainWidth: main.width,
+        clipped: [...document.querySelectorAll("main a, main p, .year")].filter(el => {
+          const rect = el.getBoundingClientRect();
+          return rect.left < 0 || rect.right > innerWidth + .5;
+        }).length,
+        overlaps: rows.slice(1).some((row, i) => row.top < rows[i].bottom),
+      };
+    });
+    expect(layout.width).toBeLessThanOrEqual(layout.viewport);
+    expect(layout.mainWidth).toBeLessThanOrEqual(580);
+    expect(layout.mainLeft).toBeCloseTo((viewport.width - layout.mainWidth) / 2, 1);
+    expect(layout.clipped).toBe(0);
+    expect(layout.overlaps).toBe(false);
+    const homepageStyle = await page.evaluate(() => ({
+      nameTop: document.querySelector("h1").getBoundingClientRect().top,
+      portrait: getComputedStyle(document.querySelector(".avatar-sprite")).backgroundImage,
+      yearOffset: document.querySelector(".timeline li > p").getBoundingClientRect().left - document.querySelector(".timeline .year").getBoundingClientRect().left,
     }));
-    expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
-    expect(layout.shellRight).toBeLessThanOrEqual(layout.viewportWidth + 0.5);
-    expect(Math.abs(layout.shellLeft - (layout.viewportWidth - layout.shellWidth) / 2)).toBeLessThanOrEqual(0.5);
-    expect(layout.shellWidth).toBeLessThanOrEqual(Math.min(viewport.width, 1536));
-    expect(layout.clipped).toEqual([]);
-    expect(layout.overlaps).toEqual([]);
-
-    await page.locator("#contact").scrollIntoViewIfNeeded();
-    await expect(page.locator("#contact")).toBeVisible();
-    await expect(page.getByRole("link", { name: /Email me/ })).toBeVisible();
-
     await page.goto("/resume/", { waitUntil: "networkidle" });
+    const resumeStyle = await page.evaluate(() => ({
+      nameTop: document.querySelector("h1").getBoundingClientRect().top,
+      portrait: getComputedStyle(document.querySelector(".avatar-sprite")).backgroundImage,
+      yearOffsets: [...document.querySelectorAll(".resume-entry")].map(entry => entry.querySelector("h3").getBoundingClientRect().left - entry.querySelector(".year").getBoundingClientRect().left),
+    }));
+    expect(resumeStyle.nameTop).toBe(homepageStyle.nameTop);
+    expect(resumeStyle.portrait).toBe(homepageStyle.portrait);
+    expect(resumeStyle.portrait).not.toBe("none");
+    for (const offset of resumeStyle.yearOffsets) expect(offset).toBe(homepageStyle.yearOffset);
+    await expect(page.locator(".resume-entry h3 a").first()).toHaveCSS("color", "rgb(0, 0, 255)");
+    await expect(page.locator(".resume-section").first()).toHaveCSS("border-top-width", "0px");
+    await expect(page.locator(".resume-entry ul").first()).toHaveCSS("list-style-type", "none");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
-    await expect(page.getByRole("button", { name: /Switch to (dark|light) theme/ })).toBeVisible();
+    await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await expect(page.locator("body")).toHaveCSS("font-family", "Inter, Arial, sans-serif");
+    await expect(page.locator("object, iframe")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "open full PDF", exact: true })).toHaveAttribute("target", "_blank");
     const resumeLayout = await page.evaluate(() => {
-      const groups = [".site-nav > *", ".header-actions > *", ".resume-hero > *", ".resume-status-card > *", ".resume-preview-section > *"];
+      const groups = [".resume-formats > *", ".resume-section", ".resume-entry", ".resume-entry > *", ".resume-entry-copy > *", ".resume-skills > *"];
       const overlaps = groups.flatMap(selector => {
         const elements = [...document.querySelectorAll(selector)];
         return elements.flatMap((element, index) => elements.slice(index + 1).filter(other => {
@@ -81,50 +80,24 @@ for (const viewport of viewports) {
           return Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1;
         }).map(() => selector));
       });
-      const preview = document.querySelector(".resume-preview-section object, .resume-object-frame").getBoundingClientRect();
-      const clipped = [...document.querySelectorAll("body *")].filter(element => {
-        const style = getComputedStyle(element), rect = element.getBoundingClientRect();
-        return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0
-          && !element.closest('[aria-hidden="true"]') && (rect.left < -0.5 || rect.right > document.documentElement.clientWidth + 0.5);
+      const main = document.querySelector("main").getBoundingClientRect();
+      const clipped = [...document.querySelectorAll("main *")].filter(element => {
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && (rect.left < -0.5 || rect.right > innerWidth + 0.5);
       }).map(element => `${element.tagName}.${element.className}`);
-      const undersizedTargets = [...document.querySelectorAll("a, button")].filter(element => {
-        const rect = element.getBoundingClientRect(), style = getComputedStyle(element);
-        return style.display !== "none" && (rect.width < 43.5 || rect.height < 43.5);
-      }).map(element => `${element.tagName}.${element.className}`);
-      return { documentWidth: document.documentElement.scrollWidth, viewportWidth: document.documentElement.clientWidth, overlaps, clipped, undersizedTargets, previewRatio: preview.width / preview.height };
+      return { documentWidth: document.documentElement.scrollWidth, viewportWidth: innerWidth, overlaps, clipped, mainWidth: main.width, mainLeft: main.left };
     });
     expect(resumeLayout.documentWidth).toBeLessThanOrEqual(resumeLayout.viewportWidth);
     expect(resumeLayout.overlaps).toEqual([]);
     expect(resumeLayout.clipped).toEqual([]);
-    expect(resumeLayout.undersizedTargets).toEqual([]);
-    expect(resumeLayout.previewRatio).toBeCloseTo(210 / 297, 2);
+    expect(resumeLayout.mainWidth).toBeLessThanOrEqual(580);
+    expect(resumeLayout.mainLeft).toBeCloseTo((viewport.width - resumeLayout.mainWidth) / 2, 1);
+    await page.getByRole("heading", { name: "recognition", exact: true }).scrollIntoViewIfNeeded();
+    await expect(page.getByRole("heading", { name: "recognition", exact: true })).toBeInViewport();
+    await expect(page.locator("#recognition + ul")).toContainText("Facebook PyTorch Scholar (2018)");
     expect(errors).toEqual([]);
   });
 }
-
-test("semantic structure and accessible controls", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.locator("main")).toHaveCount(1);
-  await expect(page.locator("h1")).toHaveCount(1);
-  await expect(page.getByRole("navigation", { name: "Primary navigation" })).toBeVisible();
-
-  const audit = await page.evaluate(() => {
-    const duplicateIds = [...document.querySelectorAll("[id]")]
-      .map(element => element.id)
-      .filter((id, index, ids) => ids.indexOf(id) !== index);
-    const unnamedButtons = [...document.querySelectorAll("button")]
-      .filter(button => !(button.textContent.trim() || button.getAttribute("aria-label"))).length;
-    const emptyLinks = [...document.querySelectorAll("a")]
-      .filter(link => !link.getAttribute("href") || !(link.textContent.trim() || link.getAttribute("aria-label"))).length;
-    const unlabelledSections = [...document.querySelectorAll("main section")]
-      .filter(section => !section.getAttribute("aria-labelledby")).length;
-    const undersizedTargets = [...document.querySelectorAll(".site-header nav a, .site-header nav button, .button, .social-links a, .social-links button")]
-      .filter(element => element.getBoundingClientRect().height < 43.5 && getComputedStyle(element).display !== "none").length;
-    return { duplicateIds, unnamedButtons, emptyLinks, unlabelledSections, undersizedTargets };
-  });
-
-  expect(audit).toEqual({ duplicateIds: [], unnamedButtons: 0, emptyLinks: 0, unlabelledSections: 0, undersizedTargets: 0 });
-});
 
 test("search and social metadata are complete and canonical", async ({ page }) => {
   await page.goto("/");
@@ -152,84 +125,205 @@ test("search and social metadata are complete and canonical", async ({ page }) =
   expect(llms).toContain("https://saurabh3333.github.io/index.md");
 });
 
-test("senior data engineer recruiter scan matches the production resume", async ({ page }) => {
+test("desktop layout matches reference measurements", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
-  await expect(page.locator(".hero-bio")).toContainText("7+ years");
-  await expect(page.locator("main")).toContainText(/Senior Data Engineer.*manufacturing data platforms.*Python.*SQL.*CDC.*observability/is);
-  await expect(page.locator("#projects .project-row")).toHaveCount(4);
-  await expect(page.locator("#crafts .craft-item")).toHaveCount(2);
-  await expect(page.locator("#experience .experience-row")).toHaveCount(3);
-  await expect(page.locator("#stack .stack-group")).toHaveCount(5);
-  await expect(page.locator(".availability-card")).toBeVisible();
-  await expect(page.locator("#projects")).toContainText(/Regulation Check.*FastAPI.*PostgreSQL.*Docker.*GitHub Actions/is);
-  await expect(page.locator("#experience")).toContainText(/production planning.*CDC.*Azure CI\/CD.*Prometheus.*Grafana.*Kubernetes.*Unleash/is);
-  await expect(page.locator("#experience")).toContainText(/consumer-goods sales data.*Google Cloud.*MySQL.*Java.*Spring.*Oracle/is);
-  await expect(page.locator(".recognition-pills")).toContainText(/Facebook PyTorch Scholar.*HackWithInfy.*Google Tech Intern Connect/is);
-
-  const copy = await page.locator("main").innerText();
-  for (const genericPhrase of ["Retail Demand MLOps Demo", "MLflow", "model registry", "model serving", "model drift", "agentic AI", "Claude Code", "Looper", "Pasin", "agent orchestration", "AWS", "MongoDB", "JavaScript", "C++"]) {
-    expect(copy.toLowerCase()).not.toContain(genericPhrase);
-  }
+  const main = await page.locator("main").boundingBox();
+  const name = await page.locator("h1").boundingBox();
+  const timeline = await page.locator(".timeline").boundingBox();
+  expect(main.x).toBe(430);
+  expect(main.width).toBe(580);
+  expect(name.y).toBe(162);
+  expect(timeline.y).toBe(250);
+  await expect(page.locator("body")).toHaveCSS("font-family", 'Inter, Arial, sans-serif');
+  await expect(page.locator("body")).toHaveCSS("font-size", "14px");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+  await expect(page.locator(".timeline a").first()).toHaveCSS("color", "rgb(0, 0, 255)");
 });
 
-test("keyboard navigation, skip link, and visible focus", async ({ page }) => {
+test("timeline uses verified personal history and working contact links", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".occupation")).toHaveText("senior data engineer");
+  await expect(page.locator(".timeline")).toContainText(/2022.*data engineering at gropyus.*2021.*software development at sigmoid.*2019.*software engineering at amdocs.*2019.*graduated from bit mesra.*2019.*software development internship at finnov.*2018.*facebook pytorch challenge scholarship.*2017.*product development internship at hasura.*2017.*kharagpur winter of code.*2016.*web development internship at schooglink.*2015.*started computer science/is);
+  await expect(page.locator("[data-preview=acm]").locator("..")).toHaveText("vice president at acm uni chapter");
+  await expect(page.locator("[data-preview=ieee]").locator("..")).toHaveText("tech head at ieee uni chapter");
+  await expect(page.locator("[data-preview=schooglink]").locator("..")).toHaveText("web development internship at schooglink");
+  await expect(page.getByRole("link", { name: "saurabh.friday@gmail.com" })).toHaveAttribute("href", "mailto:saurabh.friday@gmail.com");
+  await expect(page.getByRole("link", { name: "on linkedin" })).toHaveAttribute("href", "https://www.linkedin.com/in/saurabh-shubham/");
+  await expect(page.getByRole("link", { name: "resume", exact: true })).toHaveAttribute("href", "./resume/");
+});
+
+test("keyboard navigation and accessible structure", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
   await expect(page.locator(".skip-link")).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
-
   await page.keyboard.press("Tab");
-  const focused = page.locator(":focus");
-  await expect(focused).toBeVisible();
-  expect(await focused.evaluate(element => getComputedStyle(element).outlineStyle)).not.toBe("none");
+  await expect(page.locator(".avatar")).toBeFocused();
+  expect(await page.locator(":focus").evaluate(el => getComputedStyle(el).outlineStyle)).toBe("solid");
+  const audit = await page.evaluate(() => ({
+    duplicateIds: [...document.querySelectorAll("[id]")].map(el => el.id).filter((id, i, ids) => ids.indexOf(id) !== i),
+    unnamedButtons: [...document.querySelectorAll("button")].filter(el => !el.textContent.trim() && !el.getAttribute("aria-label")).length,
+    emptyLinks: [...document.querySelectorAll("a")].filter(el => !el.textContent.trim() || !el.getAttribute("href")).length,
+    unsafeExternal: [...document.querySelectorAll('a[target="_blank"]')].filter(el => !el.rel.includes("noopener") || !el.rel.includes("noreferrer")).length,
+  }));
+  expect(audit).toEqual({ duplicateIds: [], unnamedButtons: 0, emptyLinks: 0, unsafeExternal: 0 });
 });
 
-test("primary navigation reaches work and contact", async ({ page }) => {
+test("avatar follows pointer and resets after repeated reactions", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("navigation", { name: "Primary navigation" }).getByRole("button", { name: "work" }).click();
-  await expect(page.locator(".nav-dropdown a[href='#projects']")).toBeVisible();
-  await page.locator(".nav-dropdown a[href='#projects']").click();
-  await expect(page).toHaveURL(/#projects$/);
-  await expect(page.locator("#projects")).toBeInViewport();
-
-  await page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "contact" }).click();
-  await expect(page).toHaveURL(/#contact$/);
-  await expect(page.locator("#contact")).toBeInViewport();
+  await page.mouse.move(100, 90);
+  await expect(page.locator(".avatar-sprite")).toHaveCSS("background-position", "0px 0px");
+  await page.mouse.move(1000, 90);
+  await expect(page.locator(".avatar-sprite")).toHaveCSS("background-position", "-144px 0px");
+  const avatar = page.getByRole("button", { name: "Make Saurabh look surprised" });
+  await avatar.click();
+  await avatar.click();
+  await expect(page.locator(".avatar-sprite")).toHaveCSS("background-position", "-144px -108px");
+  await expect(page.locator(".avatar-sprite")).toHaveCSS("background-position", "-72px 0px", { timeout: 3000 });
 });
 
-test("theme control toggles and persists", async ({ page }) => {
+test("work previews support hover, keyboard, dismissal, and viewport bounds", async ({ page }) => {
   await page.goto("/");
-  const toggle = page.locator(".theme-toggle");
-  await expect(toggle).toHaveAttribute("aria-label", "Switch to dark theme");
-  await toggle.click();
-  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
-  await expect(toggle).toHaveAttribute("aria-pressed", "true");
-  await expect(toggle).toHaveAttribute("aria-label", "Switch to light theme");
-  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0a0a0a");
-
-  await page.reload();
-  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
-  await page.getByRole("button", { name: "Switch to light theme" }).click();
-  await expect(page.locator("body")).toHaveAttribute("data-theme", "light");
-
-  await page.goto("/resume/");
-  await expect(page.getByRole("button", { name: "Switch to dark theme" })).toBeVisible();
-  await page.getByRole("button", { name: "Switch to dark theme" }).click();
-  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
-  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0a0a0a");
-
-  await page.goto("/");
-  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
+  const link = page.getByRole("link", { name: "regulation check", exact: true });
+  const preview = page.locator(".project-preview");
+  await link.hover();
+  await expect(preview).toHaveClass(/is-visible/);
+  await expect(preview).toContainText("EU AI Act readiness");
+  await page.keyboard.press("Escape");
+  await expect(preview).not.toHaveClass(/is-visible/);
+  await page.mouse.move(0, 0);
+  await page.keyboard.press("Tab");
+  await link.focus();
+  await expect(preview).toHaveClass(/is-visible/);
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 844 });
+    await link.focus();
+    const bounds = await preview.boundingBox();
+    expect(bounds.x).toBeGreaterThanOrEqual(16);
+    expect(bounds.x + bounds.width).toBeLessThanOrEqual(width - 16 + .5);
+    expect(bounds.y).toBeGreaterThanOrEqual(16);
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(844 - 16 + .5);
+  }
+  await page.mouse.wheel(0, 100);
+  await expect(preview).not.toHaveClass(/is-visible/);
 });
 
-test("copy-email interaction gives live feedback", async ({ page, context }) => {
-  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+test("touch links work without opening hover previews", async ({ browser }) => {
+  const context = await browser.newContext({ hasTouch: true, isMobile: true, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await page.goto("http://127.0.0.1:4173/");
+  const link = page.getByRole("link", { name: "regulation check", exact: true });
+  await link.dispatchEvent('pointerenter', { pointerType: 'touch' });
+  await expect(page.locator(".project-preview")).not.toHaveClass(/is-visible/);
+  await page.getByRole("link", { name: "resume", exact: true }).tap();
+  await expect(page).toHaveURL(/\/resume\/$/);
+  await context.close();
+});
+
+test("every work and place preview loads its local artwork", async ({ page }) => {
+  const errors = collectRuntimeErrors(page);
+  const missingAssets = [];
+  page.on("response", response => {
+    if (response.url().includes("/public/images/") && !response.ok()) missingAssets.push(response.url());
+  });
   await page.goto("/");
-  await page.locator(".copy-email-btn").click();
-  await expect(page.getByRole("status")).toHaveText("Email copied.");
-  await expect(page.locator(".copy-email-btn")).toContainText("Copied!");
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("saurabh.friday@gmail.com");
+  const triggers = page.locator("[data-preview]");
+  for (let i = 0; i < await triggers.count(); i++) {
+    const trigger = triggers.nth(i);
+    // Scrolling intentionally dismisses previews; hover after the row is in view.
+    await trigger.scrollIntoViewIfNeeded();
+    await page.mouse.move(0, 0);
+    await trigger.hover();
+    const preview = page.locator(".project-preview");
+    await expect(preview).toHaveClass(/is-visible/);
+    const key = await trigger.getAttribute("data-preview");
+    await expect(preview.locator(".preview-cover")).toHaveClass(new RegExp(`preview-${key}`));
+    const images = preview.locator("img");
+    expect(await images.count()).toBeGreaterThan(0);
+    await expect.poll(() => images.evaluateAll(elements => elements.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+    for (const image of await images.all()) {
+      await expect(image).toHaveAttribute("src", /^\.\/public\/images\//);
+    }
+    const artwork = await preview.locator(".preview-scene").boundingBox();
+    const copy = await preview.locator(".preview-copy").boundingBox();
+    expect(artwork.y + artwork.height).toBeLessThanOrEqual(copy.y + .5);
+  }
+  expect(missingAssets).toEqual([]);
+  expect(errors).toEqual([]);
+});
+
+test("all details expand on touch, load logos, and keep one card open", async ({ browser }) => {
+  const context = await browser.newContext({ hasTouch: true, isMobile: true, viewport: { width: 320, height: 568 } });
+  const page = await context.newPage();
+  const errors = collectRuntimeErrors(page);
+  await page.goto("http://127.0.0.1:4173/");
+  await expect(page.locator(".detail-toggle")).toHaveCount(0);
+  const buttons = page.locator("[data-preview]");
+  await expect(buttons).toHaveCount(17);
+  for (let i = 0; i < await buttons.count(); i++) {
+    const button = buttons.nth(i);
+    await button.tap();
+    await expect(button).toHaveAttribute("aria-expanded", "true");
+    const panel = page.locator(`#${await button.getAttribute("aria-controls")}`);
+    await expect(panel).toBeVisible();
+    await expect(page.locator(".expanded-details:visible")).toHaveCount(1);
+    await expect(panel.locator(".details-story")).not.toBeEmpty();
+    if (await button.evaluate(el => el.tagName === "A")) {
+      await expect(panel.getByRole("link", { name: "visit website", exact: true })).toHaveAttribute("href", await button.getAttribute("href"));
+      await expect(panel.getByRole("link", { name: "visit website", exact: true })).toHaveAttribute("target", "_blank");
+    }
+    await expect.poll(() => panel.locator("img").evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+    const geometry = await panel.evaluate(el => {
+      const bounds = el.getBoundingClientRect();
+      const cover = el.querySelector(".preview-cover").getBoundingClientRect();
+      const scene = el.querySelector(".preview-scene").getBoundingClientRect();
+      const copy = el.querySelector(".preview-copy").getBoundingClientRect();
+      const story = el.querySelector(".details-story").getBoundingClientRect();
+      const logo = el.querySelector(".preview-logo")?.getBoundingClientRect();
+      const contents = [...el.querySelectorAll(".preview-caption, .preview-copy, .preview-logo, .details-story, .city-route, .details-website")];
+      const clipped = contents.some(content => {
+        const box = content.getBoundingClientRect();
+        return box.left < bounds.left - .5 || box.right > bounds.right + .5 || box.top < bounds.top - .5 || box.bottom > bounds.bottom + .5;
+      });
+      return { width: document.documentElement.scrollWidth, viewport: innerWidth, overlaps: scene.bottom > copy.top + .5, logoOverlapsCopy: Boolean(logo && logo.bottom > copy.top + .5), clipped, storyBelowCover: story.top >= cover.bottom - .5, sceneHeight: scene.height };
+    });
+    expect(geometry.width).toBeLessThanOrEqual(geometry.viewport);
+    expect(geometry.overlaps).toBe(false);
+    expect(geometry.logoOverlapsCopy).toBe(false);
+    expect(geometry.clipped).toBe(false);
+    expect(geometry.storyBelowCover).toBe(true);
+    expect(geometry.sceneHeight).toBeGreaterThan(30);
+    await expect(page.locator(".project-preview")).not.toHaveClass(/is-visible/);
+  }
+  const last = buttons.last();
+  await last.tap();
+  await expect(last).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".expanded-details:visible")).toHaveCount(0);
+  expect(errors).toEqual([]);
+  await context.close();
+});
+
+test("city journey and internship details support keyboard dismissal", async ({ page }) => {
+  await page.goto("/");
+  const berlin = page.getByRole("button", { name: "Show berlin details", exact: true });
+  await berlin.focus();
+  await page.keyboard.press("Enter");
+  await expect(berlin).toHaveAttribute("aria-expanded", "true");
+  const journey = page.getByRole("list", { name: "Work journey" });
+  await expect(journey).toContainText(/2019.*Pune.*2021.*Bengaluru.*2022.*Berlin/s);
+  await page.keyboard.press("Escape");
+  await expect(berlin).toBeFocused();
+  await expect(berlin).toHaveAttribute("aria-expanded", "false");
+  await expect(journey).toBeHidden();
+  const hasura = page.getByRole("link", { name: "hasura", exact: true });
+  await hasura.focus();
+  await page.keyboard.press("Enter");
+  const panel = page.locator(`#${await hasura.getAttribute("aria-controls")}`);
+  await expect(panel).toContainText("dec 2017 — feb 2018");
+  await expect(panel).toContainText("Alexa skill");
+  await expect(page.locator(".timeline")).not.toContainText("google tech intern connect");
 });
 
 test("local routes, resume assets, and external project link", async ({ page }) => {
@@ -240,14 +334,16 @@ test("local routes, resume assets, and external project link", async ({ page }) 
     }
   });
   await page.goto("/");
-  await expect(page.getByRole("link", { name: /Regulation Check/ })).toHaveAttribute("href", "https://regulationcheck.com/");
+  await expect(page.getByRole("link", { name: /regulation check/i })).toHaveAttribute("href", "https://regulationcheck.com/");
   await page.goto("/resume/");
   await expect(page.locator("h1")).toHaveText("Saurabh Shubham");
   await expect(page).toHaveTitle("Senior Data Engineer Resume — Saurabh Shubham");
-  await expect(page.locator(".hero-copy")).toHaveText(/Senior Data Engineer.*Data Platforms.*Backend Systems/);
+  await expect(page.locator(".occupation")).toHaveText("senior data engineer · berlin, germany");
   await expect(page.locator("body")).toHaveClass("resume-page");
-  await expect(page.locator(".resume-status-card > div")).toHaveCount(3);
-  await expect(page.getByRole("heading", { name: /preview/i })).toBeVisible();
+  await expect(page.locator(".resume-section")).toHaveCount(6);
+  await expect(page.locator(".resume-entry")).toHaveCount(5);
+  await expect(page.getByRole("heading", { name: "experience", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "download PDF", exact: true })).toHaveAttribute("download", "");
 
   const [pdf, text] = await Promise.all([
     page.request.get("/resume/saurabh-shubham-data-engineer.pdf"),
@@ -259,6 +355,7 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   const ats = (await text.text()).replace(/\s+/g, " ");
   expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected Project"));
   expect(ats).toContain("Senior Data Engineer");
+  expect(ats).toMatch(/GROPYUS.*Senior Data Engineer.*Sigmoid/s);
   expect(ats).toContain("Prometheus");
   expect(ats).toContain("Grafana");
   expect(ats).toContain("Kubernetes");
@@ -271,49 +368,48 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   expect(localFailures).toEqual([]);
 });
 
-test("reduced motion removes transitions and reveals content", async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
-  expect(await page.locator("html").evaluate(element => getComputedStyle(element).scrollBehavior)).toBe("auto");
-  await expect(page.locator("#projects")).toHaveCSS("opacity", "1");
-  await expect(page.locator("#projects")).toHaveCSS("transform", "none");
+test("complete resume opens from homepage and works without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await page.goto("http://127.0.0.1:4173/");
+  await page.getByRole("link", { name: "resume", exact: true }).click();
+  await expect(page).toHaveURL(/\/resume\/$/);
+  await expect(page.locator("h2")).toHaveText(["summary", "experience", "selected project", "technical skills", "education", "recognition"]);
+  await expect(page.locator("main")).toContainText("Senior Data Engineer with 7+ years");
+  await expect(page.locator("main")).toContainText("Birla Institute of Technology Mesra");
+  await expect(page.locator("main")).toContainText("Facebook PyTorch Scholar (2018)");
+  await page.getByRole("link", { name: "back to portfolio", exact: true }).click();
+  await expect(page).toHaveURL("http://127.0.0.1:4173/");
+  await context.close();
 });
 
-test("light and dark themes keep readable base contrast", async ({ page }) => {
+test("reduced motion disables tracking and animation while preserving reactions", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "dark" });
   await page.goto("/");
-  const ratios = [];
-  for (const theme of ["light", "dark"]) {
-    if (theme === "dark") await page.getByRole("button", { name: "Switch to dark theme" }).click();
-    ratios.push(await page.evaluate(() => {
-      const parse = value => value.match(/[\d.]+/g).slice(0, 3).map(Number);
-      const luminance = rgb => {
-        const values = rgb.map(channel => {
-          const value = channel / 255;
-          return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
-        });
-        return 0.2126 * values[0] + 0.7152 * values[1] + 0.0722 * values[2];
-      };
-      const style = getComputedStyle(document.body);
-      const a = luminance(parse(style.color));
-      const b = luminance(parse(style.backgroundColor));
-      return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
-    }));
-  }
-  ratios.forEach(ratio => expect(ratio).toBeGreaterThanOrEqual(7));
+  await page.mouse.move(1000, 90);
+  await expect(page.locator(".avatar-sprite")).toHaveCSS("background-position", "-72px 0px");
+  await page.locator(".avatar").click();
+  await expect(page.locator(".avatar-sprite")).toHaveCSS("background-position", "-144px -108px");
+  expect(await page.locator(".avatar-sprite").evaluate(el => el.getAnimations().length)).toBe(0);
+  await expect(page.locator(".project-preview")).toHaveCSS("transition-duration", "0s");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
 });
 
-test("@performance static page budget", async ({ page }) => {
+test("@performance local static page budget", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
   const metrics = await page.evaluate(() => {
     const navigation = performance.getEntriesByType("navigation")[0];
+    const resources = performance.getEntriesByType("resource");
     return {
-      transfer: navigation.transferSize,
+      transfer: navigation.transferSize + resources.reduce((sum, resource) => sum + resource.transferSize, 0),
       domContentLoaded: navigation.domContentLoadedEventEnd - navigation.startTime,
-      resources: performance.getEntriesByType("resource").length,
+      resources: resources.length,
+      external: resources.filter(resource => new URL(resource.name).origin !== location.origin).length,
     };
   });
-  expect(metrics.resources).toBeLessThanOrEqual(2);
-  expect(metrics.transfer).toBeLessThan(100_000);
+  expect(metrics.resources).toBeLessThanOrEqual(5);
+  expect(metrics.transfer).toBeLessThan(500_000);
   expect(metrics.domContentLoaded).toBeLessThan(1_500);
+  expect(metrics.external).toBe(0);
 });

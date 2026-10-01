@@ -62,13 +62,26 @@ def main() -> None:
         raise SystemExit("production runtime assets must be repository-local:\n" + "\n".join(remote_runtime_assets))
     homepage = (root / "index.html").read_text()
     resume_page = (root / "resume/index.html").read_text()
-    stylesheet = (root / "public/css/styles.css").read_text()
+    stylesheets = list((root / "public/css").glob("*.css"))
+    stylesheet = "\n".join(path.read_text() for path in stylesheets)
     if re.search(r'(?:@import\s+|url\([\'\"]?)https?://', stylesheet, re.IGNORECASE):
         raise SystemExit("production stylesheet must not load remote assets")
-    stylesheet_version = hashlib.sha256(stylesheet.encode()).hexdigest()[:12]
+    for path in stylesheets:
+        for value in re.findall(r'url\([\'\"]?([^\)\'\"]+)', path.read_text()):
+            if value.startswith("data:"):
+                continue
+            if not (path.parent / unquote(urlparse(value).path)).is_file():
+                raise SystemExit(f"missing stylesheet asset: {path.relative_to(root)}: {value}")
     for page_name, source in (("homepage", homepage), ("resume", resume_page)):
-        if f"public/css/styles.css?v={stylesheet_version}" not in source:
-            raise SystemExit(f"{page_name} stylesheet cache version is stale")
+        css_links = re.findall(r'<link\s+rel="stylesheet"\s+href="([^"]+)"', source)
+        if not css_links:
+            raise SystemExit(f"{page_name} needs a stylesheet")
+        for link in css_links:
+            parsed = urlparse(link)
+            css_path = root / parsed.path.lstrip("./")
+            stylesheet_version = hashlib.sha256(css_path.read_bytes()).hexdigest()[:12]
+            if parsed.query != f"v={stylesheet_version}":
+                raise SystemExit(f"{page_name} stylesheet cache version is stale")
     for token in ('rel="canonical"', "og:title", "application/ld+json", "prefers-reduced-motion", "focus-visible"):
         source = homepage + stylesheet
         if token not in source:

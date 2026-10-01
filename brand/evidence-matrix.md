@@ -1,7 +1,7 @@
 # Evidence Matrix — Saurabh Shubham Portfolio Audit
 
 **Created:** 2026-07-13
-**Reviewed:** 2026-08-13 by Codex
+**Reviewed:** 2026-10-01 by Codex
 **Repository:** `https://github.com/Saurabh3333/saurabh3333.github.io`
 **Unit:** Audit repository and establish evidence authority
 
@@ -18,6 +18,22 @@
 ---
 
 ## Reviewed Sources
+
+### S21 — Operator confirmation: student leadership titles
+- **Classification:** `candidate fact`
+- **Source:** Direct operator instruction in the 2026-10-01 Codex session: add Vice President for ACM and Tech Head for IEEE.
+- **Retrieved:** 2026-10-01
+- **Status:** ✅ confirmed and publication-authorized
+- **Key facts:** ACM Vice President and IEEE Tech Head at BIT Mesra. Dates and activities follow S20: ACM October 2017–September 2018, university coding-contest problem setting and maintenance; IEEE September 2017–September 2018, technical needs and club website development.
+- **Boundary:** These are student chapter roles at BIT Mesra. The operator-confirmed IEEE title supersedes the export’s technical committee wording; no global organization leadership is claimed.
+
+### S20 — Operator-provided LinkedIn profile export
+- **Classification:** `candidate fact`
+- **Source:** Saurabh's LinkedIn PDF export, supplied privately in the 2026-10-01 Codex session (not published).
+- **Retrieved:** 2026-10-01
+- **Status:** ✅ read and publication-authorized for the portfolio timeline
+- **Key facts:** GROPYUS Senior Data Engineer, Berlin, August 2022–present; Sigmoid Software Development Engineer, Bengaluru, June 2021–July 2022; Amdocs Associate Software Engineer, Pune, June 2019–December 2020, then Software Engineer January–June 2021; Finnov Softwares Services Private Limited Software Development Intern, Gurgaon, February–April 2019; Hasura Product Development Intern December 2017–February 2018; online Kharagpur Winter of Code contributor December 2017–January 2018; Schooglink Web Development Intern, Patna, December 2016–January 2017; BIT Mesra BE Computer Science 2015–2019; Patna Central School. Hasura work included an IPL-query Alexa skill using Node.js, Express, PostgreSQL, and REST APIs. Schooglink work included Education 360 and school/parent search using Ember.js, Node.js, and Express. ACM student coordinator/vice president and IEEE technical committee membership are also listed.
+- **Boundary:** Internship titles and dates follow this export rather than inferring employment dates from older blog posts. Kharagpur Winter of Code is an online open-source program, not an employment or degree claim. Do not publish the PDF, phone number, client names, or unsupported impact figures. Senior GROPYUS title is confirmed here; no promotion date is inferred. Facebook scholarship and degree distinction remain corroborated by S04/C26 and the public LinkedIn profile respectively.
 
 ### S18 — Retail Demand MLOps Demo repository
 - **Classification:** `candidate fact`
@@ -169,7 +185,7 @@ Each row maps a specific claim from sources S01–S10 to its evidence status and
 | C06 | Portfolio: `https://saurabh3333.github.io` | S01, S04, S05 | CF + ER | HIGH | ✅ yes | Live confirmed |
 | C07 | Location: Berlin, Germany | S01 (GROPYUS role), S06 (GitHub profile) | CF + ER | HIGH | ✅ yes | Independent corroboration from GitHub public profile |
 | C08 | Current employer: GROPYUS, Berlin | S01, S04, S05, S08 | CF | HIGH | ✅ yes | Consistent across resume and portfolio; "present" role start Aug 2022 per S01 |
-| C09 | GROPYUS role title: Data Engineer | S01 | CF | HIGH | ✅ yes | Self-reported; use as-is (employer-issued title must not be renamed) |
+| C09 | GROPYUS role title: Senior Data Engineer | S20 | CF | HIGH | ✅ yes | Confirmed by the latest operator-provided LinkedIn export; supersedes the older Data Engineer title in S01. No promotion date is inferred. |
 | C10 | GROPYUS dates: Aug 2022 – present | S01, S08 (git log shows "Company update" commits ~2022) | CF | HIGH | ✅ yes | Start date consistent with history |
 | C11 | GROPYUS location: Berlin, Germany | S01, S04, S06 | CF + ER | HIGH | ✅ yes | Multiple independent sources |
 | C12 | GROPYUS work: data pipelines for KUKA robots, production insights | S01 | CF | MEDIUM | ✅ yes (with caution) | Self-reported; "KUKA robots" is a specific named claim — no independent public confirmation found; treat as self-reported candidate fact; do not embellish with metrics |
@@ -263,7 +279,7 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 
 | Claim on current site | Evidence | Disposition |
 |-----------------------|----------|-------------|
-| AI Platform · Data Engineering positioning | C08–C23, C30–C35, C50–C55, S14 ✅ | Keep as role-fit narrative; exact employer title remains Data Engineer |
+| AI Platform · Data Engineering positioning | C08–C23, C30–C35, C50–C55, S14, S20 ✅ | Keep as role-fit narrative; exact current employer title is Senior Data Engineer per S20 |
 | 7+ years production engineering | C30 ✅ | Keep; duration derives from Jun 2019 to present |
 | Controlled agentic workflows | S14, C51–C55 ✅ | Keep with bounded execution, structured outputs, deterministic checks, review, and recovery specifics |
 | GROPYUS production data work | C08, C11–C13, C50 ✅ | Keep without confidential architecture, scale, or outcome metrics |
@@ -318,6 +334,8 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 | S17 | Direct operator statement: Regulation Check MCP workflow | candidate fact |
 | S18 | Retail Demand MLOps Demo repository and verified lifecycle | candidate fact |
 | S19 | Direct operator confirmation: audited resume scope | candidate fact |
+| S20 | Operator-provided LinkedIn profile export | candidate fact |
+| S21 | Direct operator confirmation: student leadership titles | candidate fact |
 
 ---
 

@@ -10,7 +10,7 @@ code, feature flags, and production observability.
 Experience
 GROPYUS
 Berlin, Germany
-Data Engineer
+Senior Data Engineer
 Aug 2022 - Present
 • Build Python and SQL ETL/ELT pipelines for production planning, element lifecycle tracking,
 manufacturing reporting, and operational monitoring.
