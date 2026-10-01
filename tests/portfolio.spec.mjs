@@ -48,14 +48,31 @@ for (const viewport of viewports) {
     expect(layout.mainLeft).toBeCloseTo((viewport.width - layout.mainWidth) / 2, 1);
     expect(layout.clipped).toBe(0);
     expect(layout.overlaps).toBe(false);
+    const homepageStyle = await page.evaluate(() => ({
+      nameTop: document.querySelector("h1").getBoundingClientRect().top,
+      portrait: getComputedStyle(document.querySelector(".avatar-sprite")).backgroundImage,
+      yearOffset: document.querySelector(".timeline li > p").getBoundingClientRect().left - document.querySelector(".timeline .year").getBoundingClientRect().left,
+    }));
     await page.goto("/resume/", { waitUntil: "networkidle" });
+    const resumeStyle = await page.evaluate(() => ({
+      nameTop: document.querySelector("h1").getBoundingClientRect().top,
+      portrait: getComputedStyle(document.querySelector(".avatar-sprite")).backgroundImage,
+      yearOffsets: [...document.querySelectorAll(".resume-entry")].map(entry => entry.querySelector("h3").getBoundingClientRect().left - entry.querySelector(".year").getBoundingClientRect().left),
+    }));
+    expect(resumeStyle.nameTop).toBe(homepageStyle.nameTop);
+    expect(resumeStyle.portrait).toBe(homepageStyle.portrait);
+    expect(resumeStyle.portrait).not.toBe("none");
+    for (const offset of resumeStyle.yearOffsets) expect(offset).toBe(homepageStyle.yearOffset);
+    await expect(page.locator(".resume-entry h3 a").first()).toHaveCSS("color", "rgb(0, 0, 255)");
+    await expect(page.locator(".resume-section").first()).toHaveCSS("border-top-width", "0px");
+    await expect(page.locator(".resume-entry ul").first()).toHaveCSS("list-style-type", "none");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Saurabh Shubham");
     await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
     await expect(page.locator("body")).toHaveCSS("font-family", "Inter, Arial, sans-serif");
     await expect(page.locator("object, iframe")).toHaveCount(0);
     await expect(page.getByRole("link", { name: "open full PDF", exact: true })).toHaveAttribute("target", "_blank");
     const resumeLayout = await page.evaluate(() => {
-      const groups = [".resume-formats > *", ".resume-section", ".resume-entry", ".resume-entry > *", ".resume-skills > *"];
+      const groups = [".resume-formats > *", ".resume-section", ".resume-entry", ".resume-entry > *", ".resume-entry-copy > *", ".resume-skills > *"];
       const overlaps = groups.flatMap(selector => {
         const elements = [...document.querySelectorAll(selector)];
         return elements.flatMap((element, index) => elements.slice(index + 1).filter(other => {
