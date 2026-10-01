@@ -128,8 +128,8 @@ test("timeline uses verified personal history and working contact links", async 
   await page.goto("/");
   await expect(page.locator(".occupation")).toHaveText("senior data engineer");
   await expect(page.locator(".timeline")).toContainText(/2022.*data engineering at gropyus.*2021.*software development at sigmoid.*2019.*software engineering at amdocs.*2019.*graduated from bit mesra.*2019.*software development internship at finnov.*2018.*facebook pytorch challenge scholarship.*2017.*product development internship at hasura.*2017.*kharagpur winter of code.*2016.*web development internship at schooglink.*2015.*started computer science/is);
-  await expect(page.locator("[data-preview=acm]").locator("..")).toHaveText("vice president at acm");
-  await expect(page.locator("[data-preview=ieee]").locator("..")).toHaveText("tech head at ieee");
+  await expect(page.locator("[data-preview=acm]").locator("..")).toHaveText("vice president at acm uni chapter");
+  await expect(page.locator("[data-preview=ieee]").locator("..")).toHaveText("tech head at ieee uni chapter");
   await expect(page.locator("[data-preview=schooglink]").locator("..")).toHaveText("web development internship at schooglink");
   await expect(page.getByRole("link", { name: "saurabh.friday@gmail.com" })).toHaveAttribute("href", "mailto:saurabh.friday@gmail.com");
   await expect(page.getByRole("link", { name: "on linkedin" })).toHaveAttribute("href", "https://www.linkedin.com/in/saurabh-shubham/");
