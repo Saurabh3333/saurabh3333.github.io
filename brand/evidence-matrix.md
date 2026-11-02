@@ -340,3 +340,11 @@ These claims appear in the goal specification as "evidence themes to verify." Ea
 ---
 
 *This matrix is a living document. Subsequent units must update or append rows as new evidence is collected. All numeric claims (percentages, scale, latency, revenue, team size) remain unpublished until supported by candidate-fact sources with specific evidence IDs.*
+
+
+### S22 — Current CV and confirmed GROPYUS contributions (2026-11-02)
+- Source: supplied CV and direct confirmation of shared GROPYUS work and its quantified results.
+- Graph ingestion with PostgreSQL metadata and checksums: approximately 50% faster; GraphDB alerts: 300 to 5 per half-year; Dagster pipeline failure rate: 10% to below 1% after run-volume and Linkerd timeout fixes. Graph changes trigger Dagster pipelines.
+- Confirmed additions: Kubernetes, Helm, Azure DevOps, Unleash, Claude Code and agentic coding workflows. Existing CV includes MLflow forecasting at Sigmoid, robotics and LLM digital-twin prototyping at GROPYUS, AWS, MongoDB, and the Colgate, Walmart and Comcast client references.
+- These facts supersede earlier exclusions of those technologies, client references and quantified outcomes. Formal CV employment titles remain as supplied. No sole ownership, hiring or incident-process leadership is inferred.
+- German permanent residency and no visa sponsorship required: directly confirmed for the CV header.

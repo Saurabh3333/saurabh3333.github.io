@@ -14,7 +14,7 @@
   <link rel="me" href="https://github.com/Saurabh3333">
   <link rel="me" href="https://www.linkedin.com/in/saurabh-shubham/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./public/css/timeline.css?v=bdf2df5dbbf4">
+  <link rel="stylesheet" href="./public/css/timeline.css?v=396b986439e7">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Saurabh Shubham | Senior Data Engineer">
   <meta property="og:description" content="Production data platforms, Python and SQL pipelines, backend systems, observability, and cloud delivery.">
@@ -32,11 +32,11 @@
   <meta name="twitter:image" content="https://saurabh3333.github.io/public/images/saurabh-shubham-og.png">
   <meta name="twitter:image:alt" content="Saurabh Shubham — Senior Data Engineer">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://saurabh3333.github.io/#person", "name": "Saurabh Shubham", "alternateName": "Saurabh3333", "identifier": "Saurabh3333", "url": "https://saurabh3333.github.io/", "jobTitle": "Senior Data Engineer", "description": "Berlin Senior Data Engineer with 7+ years across manufacturing data platforms, sales-data pipelines, backend services, and production observability.", "homeLocation": {"@type": "Place", "name": "Berlin, Germany"}, "worksFor": {"@type": "Organization", "name": "GROPYUS"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Birla Institute of Technology, Mesra"}, "knowsAbout": ["Data engineering", "Python", "SQL", "CDC", "ETL", "ELT", "Data orchestration", "Dagster", "Apache Airflow", "dbt", "DLT", "PySpark", "PostgreSQL", "Lakehouse architecture", "Graph databases", "Prometheus", "Grafana", "Terraform", "Docker", "Kubernetes", "Azure", "Google Cloud", "Java", "Spring", "CI/CD"], "sameAs": ["https://github.com/Saurabh3333", "https://www.linkedin.com/in/saurabh-shubham/"]}, {"@type": "ProfilePage", "@id": "https://saurabh3333.github.io/#profile", "url": "https://saurabh3333.github.io/", "name": "Saurabh Shubham | Senior Data Engineer", "description": "Data platform and backend engineering portfolio of Saurabh Shubham.", "inLanguage": "en", "dateModified": "2026-10-01", "mainEntity": {"@id": "https://saurabh3333.github.io/#person"}}, {"@type": "WebSite", "@id": "https://saurabh3333.github.io/#website", "url": "https://saurabh3333.github.io/", "name": "Saurabh Shubham", "inLanguage": "en", "author": {"@id": "https://saurabh3333.github.io/#person"}}]}
+  {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://saurabh3333.github.io/#person", "name": "Saurabh Shubham", "alternateName": "Saurabh3333", "identifier": "Saurabh3333", "url": "https://saurabh3333.github.io/", "jobTitle": "Senior Data Engineer", "description": "Berlin Senior Data Engineer with 7+ years across manufacturing data platforms, sales-data pipelines, backend services, and production observability.", "homeLocation": {"@type": "Place", "name": "Berlin, Germany"}, "worksFor": {"@type": "Organization", "name": "GROPYUS"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Birla Institute of Technology, Mesra"}, "knowsAbout": ["Data engineering", "Python", "SQL", "CDC", "ETL", "ELT", "Data orchestration", "Dagster", "Apache Airflow", "dbt", "DLT", "PySpark", "PostgreSQL", "Lakehouse architecture", "Graph databases", "Prometheus", "Grafana", "Terraform", "Docker", "Kubernetes", "Azure", "Google Cloud", "Java", "Spring", "CI/CD"], "sameAs": ["https://github.com/Saurabh3333", "https://www.linkedin.com/in/saurabh-shubham/"]}, {"@type": "ProfilePage", "@id": "https://saurabh3333.github.io/#profile", "url": "https://saurabh3333.github.io/", "name": "Saurabh Shubham | Senior Data Engineer", "description": "Data platform and backend engineering portfolio of Saurabh Shubham.", "inLanguage": "en", "dateModified": "2026-11-02", "mainEntity": {"@id": "https://saurabh3333.github.io/#person"}}, {"@type": "WebSite", "@id": "https://saurabh3333.github.io/#website", "url": "https://saurabh3333.github.io/", "name": "Saurabh Shubham", "inLanguage": "en", "author": {"@id": "https://saurabh3333.github.io/#person"}}]}
   </script>
   <meta name="color-scheme" content="light">
   <link rel="preload" href="./public/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <script src="./public/js/timeline.js?v=54a6f3092538" defer></script>
+  <script src="./public/js/timeline.js?v=82387356508b" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -67,12 +67,49 @@
       <li><time class="year" datetime="2015">2015</time><p>started computer science at <a href="https://www.bitmesra.ac.in/" data-preview="education" target="_blank" rel="noopener noreferrer">bit mesra</a></p></li>
     </ol>
 
+    <section class="work-notes" aria-labelledby="selected-work">
+      <h2 id="selected-work">selected engineering work</h2>
+      <p class="work-intro">Data platforms for building digital twins and robotic manufacturing at GROPYUS.</p>
+      <dl class="work-results">
+        <div><dt>~50%</dt><dd>faster graph ingestion</dd></div>
+        <div><dt>300 → 5</dt><dd>GraphDB alerts per half-year</dd></div>
+        <div><dt>10% → &lt;1%</dt><dd>Dagster pipeline failure rate</dd></div>
+      </dl>
+      <details>
+        <summary>Graph ingestion and event-driven pipelines</summary>
+        <p>Redesigned Python graph ingestion with PostgreSQL metadata and checksums to skip unchanged subgraphs. Avoiding redundant GraphDB writes improved ingestion speed by approximately 50%. Connected graph updates to Dagster so pipelines run automatically when a project graph changes.</p>
+        <p>Built and maintained fault-tolerant Python and SQL pipelines across CDC, lakehouse and GraphDB systems, linking manufacturing data to enterprise workflows. Used dlt, dbt, Dagster and Airflow for production planning, element lifecycle tracking and manufacturing reporting.</p>
+      </details>
+      <details>
+        <summary>Production reliability and platform delivery</summary>
+        <p>Improved graph ingestion, operations and monitoring, reducing GraphDB cluster alerts from 300 to 5 per half-year. Resolved Dagster failures caused by increased run volume and restrictive Linkerd timeouts when connecting to PostgreSQL, reducing the failure rate from 10% to below 1%.</p>
+        <p>Introduced dynamic buffers that select suitable inputs when data arrives late, keeping downstream outputs on schedule. Added anomaly detection, data lineage and custom alerts using Prometheus and Grafana. Released tested changes through Azure DevOps CI/CD, with Terraform, Docker, Kubernetes, Helm and Unleash feature flags supporting platform delivery.</p>
+      </details>
+      <details>
+        <summary>Robotics and AI-assisted engineering</summary>
+        <p>Developed task-sequencing and movement-path algorithms for factory robots performing insulation blowing and screw fastening, designed to minimise travel and mission time.</p>
+        <p>Prototyped natural-language querying and interpretation of building digital twins using LLMs. Use Claude Code and agentic coding workflows alongside agent orchestration and validation gates.</p>
+      </details>
+      <details>
+        <summary>Retail forecasting and backend services</summary>
+        <p>At Sigmoid, built Python, Apache Spark and Pandas pipelines for repeatable sales reporting and Colgate’s analysis and optimisation at Walmart. Implemented an MLflow pipeline to benchmark forecasting models against the previous algorithm and identify more accurate forecasts; received the Bravo Award. Automated Airflow workflows and provisioned Google Cloud/AWS infrastructure with Terraform.</p>
+        <p>At Amdocs, developed Java/Spring alternative-plan selection for Comcast’s customer-retention workflows. Delivered CRM features from requirements and wireframes through development and integration, validated selection behaviour with test-driven development, and built REST/SOAP integrations backed by Oracle. Received the Ninja Award for engineering performance.</p>
+      </details>
+      <details>
+        <summary>Regulation Check — independent product</summary>
+        <p>Built and deployed a FastAPI/Supabase PostgreSQL platform for AI-system inventories, rule-based EU AI Act readiness screening, auditable evidence and shareable reports, with tenant isolation.</p>
+        <p>Automated delivery with GitHub Actions and pinned Docker releases, deployment approvals, startup retries, health checks and automatic rollback to the last known good version.</p>
+        <p><a href="https://regulationcheck.com/" target="_blank" rel="noopener noreferrer">Explore Regulation Check</a></p>
+      </details>
+      <p class="work-more"><a href="./resume/">Full experience and technical skills</a></p>
+    </section>
+
     <hr>
 
     <footer>
       <nav aria-label="Contact and resume">
         <p>say hi <a href="https://www.linkedin.com/in/saurabh-shubham/" target="_blank" rel="noopener noreferrer">on linkedin</a> or <a href="mailto:saurabh.friday@gmail.com">saurabh.friday@gmail.com</a></p>
-        <p>updated <time datetime="2026-10-01">oct 1, 2026</time></p>
+        <p>updated <time datetime="2026-11-02">nov 2, 2026</time></p>
         <p class="colophon">based in berlin · <a href="./resume/">resume</a></p>
       </nav>
     </footer>

@@ -61,7 +61,7 @@
     gropyus: {
       caption: 'aug 2022 — present · berlin', title: 'GROPYUS', logo: 'gropyus.svg', city: 'berlin',
       detail: 'Senior Data Engineer · manufacturing data platforms',
-      story: 'Building data infrastructure for manufacturing in Berlin. Python, SQL, Dagster, dbt, DLT, and production observability.'
+      story: 'Building data infrastructure for manufacturing in Berlin. Python, SQL, Dagster, dbt, DLT, and production observability. Redesigned graph ingestion to run about 50% faster, reduced GraphDB alerts from 300 to 5 per half-year, and cut pipeline failures from 10% to below 1%.'
     },
     berlin: {
       caption: 'germany · chapter three', title: 'hello, berlin.', city: 'berlin',

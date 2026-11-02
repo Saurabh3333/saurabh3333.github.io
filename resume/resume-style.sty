@@ -1,0 +1,53 @@
+% Layout and fonts. Routine resume edits belong in saurabh-shubham-resume.tex.
+% Keep this file in the same Overleaf project as the main .tex file.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{resume-style}[2026/10/01 Original CV layout]
+
+\ifdefined\XeTeXversion
+  \DeclareFontEncoding{TU}{}{}
+  \DeclareFontFamily{TU}{cvlm}{}
+  \DeclareFontShape{TU}{cvlm}{m}{n}{<->"[lmroman10-regular.otf]/OT:script=latn;-liga;-clig"}{}
+  \DeclareFontShape{TU}{cvlm}{m}{it}{<->"[lmroman10-italic.otf]/OT:script=latn;-liga;-clig"}{}
+  \DeclareFontShape{TU}{cvlm}{b}{n}{<->"[lmroman10-bold.otf]/OT:script=latn;-liga;-clig"}{}
+  \DeclareFontShape{TU}{cvlm}{bx}{n}{<->"[lmroman10-bold.otf]/OT:script=latn;-liga;-clig"}{}
+  \DeclareFontFamily{TU}{cvname}{}
+  \DeclareFontShape{TU}{cvname}{b}{n}{<->"[lmroman12-bold.otf]/OT:script=latn;-liga;-clig"}{}
+  \DeclareFontShape{TU}{cvname}{bx}{n}{<->"[lmroman12-bold.otf]/OT:script=latn;-liga;-clig"}{}
+  \renewcommand{\encodingdefault}{TU}
+  \renewcommand{\rmdefault}{cvlm}
+  \newcommand{\namefont}{\fontfamily{cvname}\bfseries\LARGE}
+\else
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage{lmodern}
+  \newcommand{\namefont}{\bfseries\LARGE}
+\fi
+\RequirePackage[a4paper,left=0.62in,right=0.62in,top=0.50in,bottom=0.42in]{geometry}
+\RequirePackage{enumitem}
+\RequirePackage[unicode,hidelinks]{hyperref}
+\hypersetup{pdftitle={Saurabh Shubham - Senior Data Engineer},pdfauthor={Saurabh Shubham}}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1.5em}
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedright
+\raggedbottom
+
+\newcommand{\cvsection}[1]{%
+  \vspace{6pt}%
+  {\normalsize\bfseries\strut #1}\par
+  \vspace{-1pt}\hrule height 0.4pt\vspace{4pt}%
+}
+\newcommand{\cvrole}[4]{%
+  \textbf{#1}\hfill #2\par
+  \textit{#3}\hfill\textit{#4}\par
+}
+\newenvironment{cvitems}{%
+  \begin{itemize}[leftmargin=1.2em,label={\small\(\bullet\)},itemsep=1.5pt,topsep=3pt,parsep=0pt,partopsep=0pt]
+}{\end{itemize}}
+\newcommand{\rolespace}{\vspace{3pt}}
+
+\newcommand{\cvbodyfont}{\fontsize{10.5}{12.6}\selectfont}

@@ -7,9 +7,10 @@ source_file="$root/resume/$name.tex"
 output_pdf="$root/resume/$name.pdf"
 output_text="$root/resume/$name.txt"
 tmp=$(mktemp -d)
-trap 'rm -rf "$tmp"' EXIT
+echo "Build files retained in $tmp"
 
 cp "$source_file" "$tmp/$name.tex"
+cp "$root/resume/resume-style.sty" "$tmp/resume-style.sty"
 if [[ -n ${TECTONIC_BIN:-} ]]; then
   compiler=$TECTONIC_BIN
 elif command -v tectonic >/dev/null; then
@@ -22,7 +23,7 @@ else
 fi
 
 SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-0} TZ=${TZ:-UTC} \
-  "$compiler" --outdir "$tmp" "$tmp/$name.tex" >/dev/null
+  "$compiler" --keep-logs --keep-intermediates --outdir "$tmp" "$tmp/$name.tex" >/dev/null
 pdftotext "$tmp/$name.pdf" "$tmp/$name.txt"
 
 if [[ ${1:-} == --check ]]; then
