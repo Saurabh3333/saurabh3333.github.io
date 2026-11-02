@@ -19,7 +19,9 @@ python3 scripts/validate_resume.py \
 ```
 
 Run `bash scripts/build-resume.sh` without `--check` to update committed PDF and
-ATS text after editing LaTeX.
+plain text after editing `resume/saurabh-shubham-data-engineer.tex`. Typography
+and layout live in `resume/resume-style.sty`. Build intermediates are retained
+in the temporary directory printed by the script.
 
 ## Portfolio
 

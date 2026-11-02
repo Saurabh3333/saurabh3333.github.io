@@ -13,7 +13,7 @@
   <link rel="me" href="https://github.com/Saurabh3333">
   <link rel="me" href="https://www.linkedin.com/in/saurabh-shubham/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../public/css/timeline.css?v=bdf2df5dbbf4">
+  <link rel="stylesheet" href="../public/css/timeline.css?v=396b986439e7">
   <link rel="stylesheet" href="../public/css/resume.css?v=097d43a222a0">
   <link rel="preload" href="../public/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="theme-color" content="#ffffff">
@@ -25,7 +25,7 @@
   <meta property="og:image:alt" content="Saurabh Shubham — Senior Data Engineer in Berlin">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://saurabh3333.github.io/#person", "name": "Saurabh Shubham", "alternateName": "Saurabh3333", "url": "https://saurabh3333.github.io/", "jobTitle": "Senior Data Engineer", "homeLocation": {"@type": "Place", "name": "Berlin, Germany"}, "sameAs": ["https://github.com/Saurabh3333", "https://www.linkedin.com/in/saurabh-shubham/"]}, {"@type": "ProfilePage", "@id": "https://saurabh3333.github.io/resume/#profile", "url": "https://saurabh3333.github.io/resume/", "name": "Senior Data Engineer Resume \u2014 Saurabh Shubham", "description": "One-page resume of Saurabh Shubham, a Senior Data Engineer working on production data platforms and backend systems in Berlin.", "inLanguage": "en", "dateModified": "2026-10-01", "mainEntity": {"@id": "https://saurabh3333.github.io/#person"}}]}
+  {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://saurabh3333.github.io/#person", "name": "Saurabh Shubham", "alternateName": "Saurabh3333", "url": "https://saurabh3333.github.io/", "jobTitle": "Senior Data Engineer", "homeLocation": {"@type": "Place", "name": "Berlin, Germany"}, "sameAs": ["https://github.com/Saurabh3333", "https://www.linkedin.com/in/saurabh-shubham/"]}, {"@type": "ProfilePage", "@id": "https://saurabh3333.github.io/resume/#profile", "url": "https://saurabh3333.github.io/resume/", "name": "Senior Data Engineer Resume \u2014 Saurabh Shubham", "description": "One-page resume of Saurabh Shubham, a Senior Data Engineer working on production data platforms and backend systems in Berlin.", "inLanguage": "en", "dateModified": "2026-11-02", "mainEntity": {"@id": "https://saurabh3333.github.io/#person"}}]}
   </script>
 </head>
 <body class="resume-page">
@@ -62,6 +62,13 @@
             <li>Orchestrate CDC, PostgreSQL, lakehouse, and graph database workflows with Dagster, Airflow, dbt, and DLT; release tested changes through Azure CI/CD.</li>
             <li>Implement anomaly detection for data pipelines and monitor them with Prometheus, Grafana, and operational alerts, supporting improvements to robot and manufacturing efficiency.</li>
             <li>Use Terraform, Docker, Kubernetes, and Unleash feature flags to support platform delivery and controlled releases.</li>
+            <li>Redesigned Python graph ingestion using PostgreSQL metadata and checksums to skip unchanged subgraphs, improving ingestion speed by approximately 50%.</li>
+            <li>Improved GraphDB ingestion, operations and monitoring, reducing cluster alerts from 300 to 5 per half-year.</li>
+            <li>Resolved increased run volume and restrictive Linkerd timeouts to PostgreSQL, reducing Dagster pipeline failures from 10% to below 1%. Connected graph updates to automatic Dagster runs.</li>
+            <li>Introduced dynamic buffers to select suitable inputs when data arrives late, keeping downstream outputs on schedule; added data lineage and custom alerts.</li>
+            <li>Developed task-sequencing and movement-path algorithms for insulation-blowing and screw-fastening robots, designed to minimise travel and mission time.</li>
+            <li>Prototyped natural-language querying and interpretation of building digital twins using LLMs. Use Claude Code and agentic coding workflows.</li>
+            <li>Work with Helm and Azure DevOps alongside the existing platform delivery stack.</li>
           </ul>
         </div>
       </article>
@@ -73,6 +80,8 @@
           <ul>
             <li>Built Python, PySpark, and Pandas ETL pipelines that transformed consumer-goods sales data into reporting datasets.</li>
             <li>Orchestrated data workflows with Airflow on Google Cloud, managed infrastructure with Terraform, and worked with MySQL data stores.</li>
+            <li>Supported Colgate’s sales analysis and optimisation at Walmart. Implemented an MLflow pipeline to benchmark forecasting models against the previous algorithm and identify more accurate forecasts; received Sigmoid’s Bravo Award.</li>
+            <li>Provisioned Google Cloud and AWS infrastructure with Terraform.</li>
           </ul>
         </div>
       </article>
@@ -84,6 +93,8 @@
           <ul>
             <li>Developed CRM backend features in Java and Spring, taking requirements through implementation and integration.</li>
             <li>Built REST and SOAP service integrations backed by Oracle databases.</li>
+            <li>Developed alternative-plan selection for Comcast’s customer-retention representatives handling cancellation requests; validated selection behaviour with test-driven development.</li>
+            <li>Worked from requirements and wireframes through development and integration; received the Amdocs Ninja Award for engineering performance.</li>
           </ul>
         </div>
       </article>
@@ -96,7 +107,9 @@
         <div class="resume-entry-copy">
           <h3><a href="https://regulationcheck.com/" target="_blank" rel="noopener noreferrer">regulation check</a></h3>
           <p class="resume-role">EU AI Act readiness application · independent project</p>
-          <ul><li>Built a FastAPI and PostgreSQL application, packaged it with Docker, and automated testing and deployment with GitHub Actions.</li></ul>
+          <ul><li>Built a FastAPI and PostgreSQL application, packaged it with Docker, and automated testing and deployment with GitHub Actions.</li>
+            <li>Built AI-system inventories, rule-based EU AI Act readiness screening, auditable evidence and shareable reports using Supabase PostgreSQL with tenant isolation.</li>
+            <li>Used pinned Docker releases, deployment approvals, startup retries, health checks and automatic rollback to the last known good version.</li></ul>
         </div>
       </article>
     </section>
@@ -104,11 +117,12 @@
     <section class="resume-section" aria-labelledby="skills">
       <h2 id="skills">technical skills</h2>
       <dl class="resume-skills">
-        <div><dt>languages and frameworks</dt><dd>Python, SQL, Java, Spring, FastAPI</dd></div>
-        <div><dt>data engineering</dt><dd>ETL/ELT, CDC, Dagster, Airflow, dbt, DLT, PySpark, Pandas, lakehouse</dd></div>
-        <div><dt>cloud and delivery</dt><dd>Microsoft Azure, Google Cloud, Terraform, Docker, Kubernetes, GitHub Actions, CI/CD, Git</dd></div>
-        <div><dt>observability and controls</dt><dd>Prometheus, Grafana, alerting, Unleash feature flags</dd></div>
-        <div><dt>storage and interfaces</dt><dd>PostgreSQL, MySQL, Oracle, graph databases, REST APIs, SOAP APIs</dd></div>
+        <div><dt>languages and frameworks</dt><dd>Python, SQL, Java, JavaScript, Spring, FastAPI</dd></div>
+        <div><dt>data engineering</dt><dd>ETL/ELT, CDC, Dagster, Airflow, dbt, dlt (DLT), Apache Spark / PySpark, Pandas, lakehouse</dd></div>
+        <div><dt>cloud and delivery</dt><dd>Microsoft Azure, AWS, Google Cloud, Terraform, Docker, Kubernetes, Helm, Azure DevOps, GitHub Actions, CI/CD, Git</dd></div>
+        <div><dt>observability and controls</dt><dd>Prometheus, Grafana, alerting, anomaly detection, data lineage, fault tolerance, Unleash feature flags</dd></div>
+        <div><dt>storage and interfaces</dt><dd>PostgreSQL / Supabase, MySQL, MongoDB, Oracle, GraphDB and graph databases, digital twins, REST APIs, SOAP APIs</dd></div>
+        <div><dt>ML and AI</dt><dd>MLflow, experiment tracking, model registry, model serving, drift checks, LLM prototyping, agent orchestration, validation gates, Claude Code, agentic coding workflows</dd></div>
       </dl>
     </section>
 
@@ -118,7 +132,7 @@
         <time class="year" datetime="2015">2015</time>
         <div class="resume-entry-copy">
           <h3><a href="https://www.bitmesra.ac.in/" target="_blank" rel="noopener noreferrer">Birla Institute of Technology Mesra</a> <span>india</span></h3>
-          <p>Bachelor of Engineering in Computer Science</p>
+          <p>Bachelor of Engineering in Computer Science · First Class with Distinction</p>
           <p class="resume-role">aug 2015 — jun 2019</p>
         </div>
       </article>
@@ -130,6 +144,8 @@
         <li>Facebook PyTorch Scholar (2018)</li>
         <li>Infosys HackWithInfy Top 200</li>
         <li>Google Tech Intern Connect invitee (2018)</li>
+        <li>Sigmoid Bravo Award</li>
+        <li>Amdocs Ninja Award</li>
       </ul>
     </section>
 
@@ -139,7 +155,7 @@
         <p><a href="mailto:saurabh.friday@gmail.com">saurabh.friday@gmail.com</a></p>
         <p><a href="https://www.linkedin.com/in/saurabh-shubham/" target="_blank" rel="noopener noreferrer">linkedin</a> · <a href="https://github.com/Saurabh3333" target="_blank" rel="noopener noreferrer">github</a> · <a href="../">portfolio</a></p>
       </nav>
-      <p class="colophon">updated oct 1, 2026 · based in berlin</p>
+      <p class="colophon">updated nov 2, 2026 · based in berlin</p>
     </footer>
   </main>
 </body>

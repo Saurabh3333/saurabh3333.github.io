@@ -28,7 +28,7 @@ def main() -> None:
     forbidden = (
         "Machine Learning Engineer", "ML Ops Engineer", "MLOps Engineer",
         "AI System Engineer", "AI Systems Builder", "tinyurl.com",
-        "Lorem ipsum", "TBD", "TODO", "FIXME", "Colgate", "Walmart", "Comcast",
+        "Lorem ipsum", "TBD", "TODO", "FIXME",
     )
     found = [value for value in forbidden if value.lower() in text.lower()]
     if found:

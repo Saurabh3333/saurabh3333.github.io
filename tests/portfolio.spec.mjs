@@ -353,16 +353,18 @@ test("local routes, resume assets, and external project link", async ({ page }) 
   expect(pdf.headers()["content-type"]).toContain("application/pdf");
   expect(text.ok()).toBeTruthy();
   const ats = (await text.text()).replace(/\s+/g, " ");
-  expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected Project"));
-  expect(ats).toContain("Senior Data Engineer");
-  expect(ats).toMatch(/GROPYUS.*Senior Data Engineer.*Sigmoid/s);
+  expect(ats.indexOf("Experience")).toBeLessThan(ats.indexOf("Selected AI and Platform Work"));
+  expect(ats).toContain("SENIOR DATA ENGINEER");
+  expect(ats).toMatch(/GROPYUS.*Data Engineer.*Sigmoid/s);
   expect(ats).toContain("Prometheus");
   expect(ats).toContain("Grafana");
   expect(ats).toContain("Kubernetes");
   expect(ats).toContain("Unleash feature flags");
-  expect(ats).toContain("Oracle databases");
+  expect(ats).toContain("GraphDB");
   expect(ats).toContain("Recognition");
-  for (const excluded of ["Retail Demand MLOps Demo", "MLflow", "Vercel AI Gateway", "Model Context Protocol", "Claude Code", "AWS", "MongoDB"]) {
+  for (const added of ["MLflow", "Claude Code", "AWS", "MongoDB", "Helm", "Azure DevOps", "German permanent resident", "300 to 5 per half-year", "10% to below 1%"])
+    expect(ats).toContain(added);
+  for (const excluded of ["Retail Demand MLOps Demo", "Vercel AI Gateway", "Model Context Protocol"]) {
     expect(ats).not.toContain(excluded);
   }
   expect(localFailures).toEqual([]);

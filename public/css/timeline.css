@@ -152,3 +152,26 @@ footer a { overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: reduce) {
   .project-preview { transition: none; transform: none; }
 }
+
+.work-notes { margin-top: 48px; }
+.work-notes h2 { margin: 0 0 12px; color: #808080; font: inherit; }
+.work-intro { color: #555; }
+.work-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 24px 0; }
+.work-results dt { font-size: 22px; line-height: 30px; }
+.work-results dd { margin: 4px 0 0; color: #808080; font-size: 12px; line-height: 19px; }
+.work-notes details { padding: 16px 0; border-top: 1px solid #eee; }
+.work-notes summary { cursor: pointer; }
+.work-notes summary:focus-visible { outline: 1px solid #00f; outline-offset: 4px; }
+.work-notes details p { margin-top: 12px; color: #555; }
+.work-more { margin-top: 16px; }
+@media (max-width: 359px) {
+  .work-results { gap: 12px; }
+  .work-results dt { font-size: 19px; }
+}
+
+@media (max-width: 480px) {
+  .work-results { grid-template-columns: 1fr; gap: 14px; }
+  .work-results > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+  .work-results dt { font-size: 20px; white-space: nowrap; }
+  .work-results dd { margin: 0; }
+}
