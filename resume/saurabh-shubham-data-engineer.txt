@@ -4,57 +4,55 @@ German permanent resident · No visa sponsorship required
 Berlin, Germany | saurabh.friday@gmail.com
 linkedin.com/in/saurabh-shubham | github.com/Saurabh3333
 Summary
-Data engineer with 7+ years in pipelines and backend services across robotic manufacturing, retail forecasting,
-finance and telecom software.
+Data engineer with 7+ years building data platforms that other teams rely on. At GROPYUS I own the data
+fabric behind a robotic building factory, from ingestion and data contracts to knowledge graphs.
 Experience
 GROPYUS
 Berlin, Germany
 Data Engineer
 Aug 2022 – Present
-• Redesigned Python graph ingestion with PostgreSQL metadata and checksums to skip unchanged
-subgraphs, improving ingestion speed by about 50%; cut GraphDB alerts from 300 to 5 per half-year.
-• Fixed run-volume and Linkerd timeout issues, reducing Dagster pipeline failures from 10% to below 1%;
-triggered pipelines automatically when project graphs changed.
-• Built fault-tolerant CDC/lakehouse/GraphDB pipelines linking robotic manufacturing to enterprise
-workflows with dlt, dbt, Dagster and Airflow; shipped tested releases through Azure CI/CD.
-• Optimised pipelines with dynamic late-data buffers to keep outputs on schedule; added anomaly detection,
-lineage and custom alerts with Prometheus/Grafana monitoring.
+• Own the data fabric for planning and manufacturing teams: dlt/Dagster ingestion from SAP, Wrike,
+PostgreSQL (CDC) and Excel into dbt bronze/silver/gold models, served to Power BI via Microsoft Fabric.
+• Introduced ODCS data contracts for every source, checked ahead of time and on each load; built monitoring
+end to end (Prometheus, Grafana alerts to Teams, anomaly detection on run counts and volumes).
+• Built the ingestion API that turns TTL building models into project knowledge graphs in GraphDB;
+checksums skip unchanged subgraphs (about 50% faster), and graphs are enriched from skeleton to LOD
+300/400. Cut GraphDB alerts from 300 to 5 per half-year.
+• Cut Dagster failures from 10% to below 1% by fixing run volume and Linkerd timeouts to PostgreSQL.
 • Developed robot task-sequencing and movement-path algorithms for insulation blowing and screw fastening
-to minimise travel and mission time; prototyped LLM querying and interpretation of building digital twins.
+to cut travel and mission time; prototyped LLM querying of building digital twins.
 Sigmoid
 Bengaluru, India
 Software Development Engineer
 Jun 2021 – Jul 2022
-• Built Python/Apache Spark pipelines for repeatable sales reporting and Colgate's analysis and optimisation
-at Walmart.
-• Benchmarked forecasting models against the prior algorithm with MLflow to identify more accurate
-forecasts; received the Bravo Award. Automated Airflow workflows and provisioned Google Cloud/AWS
-with Terraform.
+• Built PySpark and Airflow pipelines on Google Cloud for the sales reporting behind Colgate's optimisation
+at Walmart; provisioned Google Cloud/AWS with Terraform.
+• Built an MLflow benchmarking pipeline that found forecasting models 68% more accurate than the
+previous forecast; received the Bravo Award.
 Amdocs
 Pune, India
 Software Engineer
 Jun 2019 – Jun 2021
-• Built Java/Spring alternative-plan selection for Comcast retention agents handling cancellations.
-• Delivered CRM features from requirements and wireframes to integration; validated selection with TDD,
-built REST/SOAP integrations and received the Ninja Award for engineering performance.
+• Built the Java/Spring plan-selection algorithm Comcast retention agents used to offer alternatives to
+cancelling customers; test-first, logarithmic time, Ninja Award.
+• Delivered CRM features from requirements and wireframes through to REST/SOAP integration.
 
 Selected AI and Platform Work
 Regulation Check | EU AI Act readiness platform
 Independent product
-• Built and deployed a tenant-isolated FastAPI/Supabase PostgreSQL platform for AI-system inventories,
-rule-based EU AI Act readiness screening, auditable evidence and shareable reports.
-• Automated GitHub Actions delivery with pinned Docker releases, approvals, startup retries, health checks
-and rollback to the last known good version.
+• EU AI Act readiness platform for teams that build or use AI: a nightly LLM pipeline sorts new regulations
+from 5 official sources into a reviewed knowledge graph; at onboarding an LLM extracts product facts with
+quotes the user confirms, and rules assign the obligations that apply.
+• FastAPI, Supabase PostgreSQL, tenant isolation, 210 tests; CI/CD with health checks and rollback.
 Technical Skills
 Languages: Python, SQL, Java, JavaScript
-Data & pipelines: Apache Spark / PySpark, Pandas, Dagster, Airflow, dbt, dlt, ETL/ELT, CDC, lakehouses
-Databases & modelling: PostgreSQL / Supabase, MySQL, MongoDB, GraphDB, digital twins
-Cloud & delivery: Microsoft Azure, AWS, Google Cloud, Terraform, Docker, Git, GitHub Actions, CI/CD,
-Kubernetes, Helm, Azure DevOps
-Backend & APIs: FastAPI, Spring, REST, SOAP
-ML & AI: MLflow, experiment tracking, model registry, model serving, drift checks, LLM prototyping,
-agent orchestration, validation gates, Claude Code, agentic coding workflows
-Reliability: Prometheus, Grafana, anomaly detection, data lineage, fault tolerance, Unleash feature flags
+Data & pipelines: ETL/ELT, CDC, Spark/PySpark, Pandas, Databricks, Kafka, Dagster, Airflow, dbt, dlt, data
+contracts, lakehouse
+Databases & graphs: PostgreSQL / Supabase, MySQL, MongoDB, GraphDB, RDF graphs, digital twins
+Cloud & delivery: Azure, Microsoft Fabric, AWS, Google Cloud, Kubernetes, Helm, Terraform, Docker, GitHub
+Actions, Azure DevOps, CI/CD
+Backend & AI: FastAPI, Spring, REST, MLflow, LLM extraction and validation, Claude Code
+Reliability & BI: Prometheus, Grafana, anomaly detection, data lineage, Power BI
 
 Education and Recognition
 Birla Institute of Technology Mesra

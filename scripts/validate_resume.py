@@ -36,11 +36,11 @@ def main() -> None:
         "Regulation Check", "ETL/ELT", "CDC", "Dagster", "Airflow", "dbt", "dlt",
         "PySpark", "Pandas", "lakehouse", "PostgreSQL", "GraphDB", "Supabase",
         "Prometheus", "Grafana", "anomaly detection", "CI/CD", "Terraform",
-        "Google Cloud", "MySQL", "Docker", "Kubernetes", "Helm", "Unleash",
-        "feature flags", "GitHub Actions", "Azure DevOps", "Claude Code",
-        "agentic coding workflows", "MLflow", "AWS", "MongoDB",
+        "Google Cloud", "MySQL", "Docker", "Kubernetes", "Helm",
+        "GitHub Actions", "Azure DevOps", "Claude Code",
+        "MLflow", "AWS", "MongoDB",
         "German permanent resident", "No visa sponsorship required",
-        "50%", "300 to 5 per half-year", "10% to below 1%", "Linkerd",
+        "50%", "300 to 5 per half-year", "10% to below 1%", "data contracts", "Databricks", "Kafka", "Linkerd",
         "insulation", "screw", "digital twins", "Bravo Award", "Ninja Award",
     )
     missing = [value for value in required if value.casefold() not in searchable.casefold()]
