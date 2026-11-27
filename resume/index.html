@@ -47,7 +47,7 @@
 
     <section class="resume-section" aria-labelledby="summary">
       <h2 id="summary">summary</h2>
-      <p>Senior Data Engineer with 7+ years of experience across manufacturing data platforms, sales-data pipelines, and backend services. Build Python and SQL ETL/ELT pipelines with Dagster, Airflow, dbt, and DLT. Work spans CDC, lakehouse and graph database systems, cloud delivery, infrastructure as code, feature flags, and production observability.</p>
+      <p>Data engineer with 7+ years building data platforms that other teams rely on. At GROPYUS I own the data fabric behind a robotic building factory, from source ingestion and data contracts to knowledge graphs and monitoring. Earlier work covers sales-data pipelines and forecasting at Sigmoid and backend services at Amdocs; Regulation Check adds production LLM pipelines.</p>
     </section>
 
     <section class="resume-section" aria-labelledby="experience">
@@ -56,19 +56,16 @@
         <time class="year" datetime="2022">2022</time>
         <div class="resume-entry-copy">
           <h3><a href="https://www.gropyus.com/" target="_blank" rel="noopener noreferrer">GROPYUS</a> <span>berlin, germany</span></h3>
-          <p class="resume-role">Senior Data Engineer <span>aug 2022 — present</span></p>
+          <p class="resume-role">Data Engineer <span>aug 2022 — present</span></p>
           <ul>
-            <li>Build Python and SQL ETL/ELT pipelines for production planning, element lifecycle tracking, manufacturing reporting, and operational monitoring.</li>
-            <li>Orchestrate CDC, PostgreSQL, lakehouse, and graph database workflows with Dagster, Airflow, dbt, and DLT; release tested changes through Azure CI/CD.</li>
-            <li>Implement anomaly detection for data pipelines and monitor them with Prometheus, Grafana, and operational alerts, supporting improvements to robot and manufacturing efficiency.</li>
-            <li>Use Terraform, Docker, Kubernetes, and Unleash feature flags to support platform delivery and controlled releases.</li>
-            <li>Redesigned Python graph ingestion using PostgreSQL metadata and checksums to skip unchanged subgraphs, improving ingestion speed by approximately 50%.</li>
+            <li>Own the data fabric for planning and manufacturing teams: dlt and Dagster ingestion from SAP, Wrike, PostgreSQL (log-based CDC) and Excel into dbt bronze, silver and gold models in PostgreSQL, served to Power BI through Microsoft Fabric.</li>
+            <li>Introduced ODCS data contracts for every source, as a document for people and YAML in code, checked ahead of time and validated on each load so schema drift stops at ingestion.</li>
+            <li>Built monitoring end to end: Prometheus Pushgateway, Grafana alerts to Teams, and anomaly detection on run counts and data volumes, with alert backoff.</li>
+            <li>Built the ingestion API that turns TTL building models into project knowledge graphs in GraphDB; PostgreSQL metadata and checksums skip unchanged subgraphs, improving ingestion speed by about 50%. Graphs are enriched from skeleton to LOD 300/400.</li>
             <li>Improved GraphDB ingestion, operations and monitoring, reducing cluster alerts from 300 to 5 per half-year.</li>
-            <li>Resolved increased run volume and restrictive Linkerd timeouts to PostgreSQL, reducing Dagster pipeline failures from 10% to below 1%. Connected graph updates to automatic Dagster runs.</li>
-            <li>Introduced dynamic buffers to select suitable inputs when data arrives late, keeping downstream outputs on schedule; added data lineage and custom alerts.</li>
+            <li>Resolved increased run volume and Linkerd timeouts to PostgreSQL, reducing Dagster pipeline failures from 10% to below 1%. Dagster runs on Kubernetes; releases go through Azure CI/CD.</li>
             <li>Developed task-sequencing and movement-path algorithms for insulation-blowing and screw-fastening robots, designed to minimise travel and mission time.</li>
-            <li>Prototyped natural-language querying and interpretation of building digital twins using LLMs. Use Claude Code and agentic coding workflows.</li>
-            <li>Work with Helm and Azure DevOps alongside the existing platform delivery stack.</li>
+            <li>Prototyped natural-language querying of building digital twins with LLMs. Use Claude Code daily for drafting code and tests, with every change reviewed by hand.</li>
           </ul>
         </div>
       </article>
@@ -80,7 +77,7 @@
           <ul>
             <li>Built Python, PySpark, and Pandas ETL pipelines that transformed consumer-goods sales data into reporting datasets.</li>
             <li>Orchestrated data workflows with Airflow on Google Cloud, managed infrastructure with Terraform, and worked with MySQL data stores.</li>
-            <li>Supported Colgate’s sales analysis and optimisation at Walmart. Implemented an MLflow pipeline to benchmark forecasting models against the previous algorithm and identify more accurate forecasts; received Sigmoid’s Bravo Award.</li>
+            <li>Supported Colgate’s sales analysis and optimisation at Walmart. Built an MLflow benchmarking pipeline that found forecasting models 68% more accurate than the previous forecast; received Sigmoid’s Bravo Award.</li>
             <li>Provisioned Google Cloud and AWS infrastructure with Terraform.</li>
           </ul>
         </div>
@@ -107,9 +104,9 @@
         <div class="resume-entry-copy">
           <h3><a href="https://regulationcheck.com/" target="_blank" rel="noopener noreferrer">regulation check</a></h3>
           <p class="resume-role">EU AI Act readiness application · independent project</p>
-          <ul><li>Built a FastAPI and PostgreSQL application, packaged it with Docker, and automated testing and deployment with GitHub Actions.</li>
-            <li>Built AI-system inventories, rule-based EU AI Act readiness screening, auditable evidence and shareable reports using Supabase PostgreSQL with tenant isolation.</li>
-            <li>Used pinned Docker releases, deployment approvals, startup retries, health checks and automatic rollback to the last known good version.</li></ul>
+          <ul><li>EU AI Act readiness platform for teams that build or use AI. A nightly LLM pipeline sorts new regulations from 5 official sources into a reviewed knowledge graph: regex and hash filters first, then typed LLM classification with validated confidence and human approval.</li>
+            <li>During onboarding an LLM extracts product facts, each tied to a quote from the user’s text; the user confirms them, rules decide which obligations apply, and each obligation gets an owner and due date.</li>
+            <li>FastAPI and Supabase PostgreSQL with tenant isolation and 210 tests; GitHub Actions releases with pinned Docker images, health checks and automatic rollback.</li></ul>
         </div>
       </article>
     </section>
@@ -118,11 +115,11 @@
       <h2 id="skills">technical skills</h2>
       <dl class="resume-skills">
         <div><dt>languages and frameworks</dt><dd>Python, SQL, Java, JavaScript, Spring, FastAPI</dd></div>
-        <div><dt>data engineering</dt><dd>ETL/ELT, CDC, Dagster, Airflow, dbt, dlt (DLT), Apache Spark / PySpark, Pandas, lakehouse</dd></div>
-        <div><dt>cloud and delivery</dt><dd>Microsoft Azure, AWS, Google Cloud, Terraform, Docker, Kubernetes, Helm, Azure DevOps, GitHub Actions, CI/CD, Git</dd></div>
-        <div><dt>observability and controls</dt><dd>Prometheus, Grafana, alerting, anomaly detection, data lineage, fault tolerance, Unleash feature flags</dd></div>
-        <div><dt>storage and interfaces</dt><dd>PostgreSQL / Supabase, MySQL, MongoDB, Oracle, GraphDB and graph databases, digital twins, REST APIs, SOAP APIs</dd></div>
-        <div><dt>ML and AI</dt><dd>MLflow, experiment tracking, model registry, model serving, drift checks, LLM prototyping, agent orchestration, validation gates, Claude Code, agentic coding workflows</dd></div>
+        <div><dt>data engineering</dt><dd>ETL/ELT, CDC, Dagster, Airflow, dbt, dlt (DLT), Apache Spark / PySpark, Databricks, Kafka, Pandas, lakehouse, data contracts (ODCS)</dd></div>
+        <div><dt>cloud and delivery</dt><dd>Microsoft Azure, AWS, Google Cloud, Terraform, Docker, Kubernetes, Helm, Azure DevOps, GitHub Actions, CI/CD, Git, Microsoft Fabric</dd></div>
+        <div><dt>observability and controls</dt><dd>Prometheus, Grafana, alerting, anomaly detection, data lineage, fault tolerance, Unleash feature flags, Power BI</dd></div>
+        <div><dt>storage and interfaces</dt><dd>PostgreSQL / Supabase, MySQL, MongoDB, Oracle, GraphDB, RDF/TTL knowledge graphs, digital twins, REST APIs, SOAP APIs</dd></div>
+        <div><dt>ML and AI</dt><dd>MLflow, LLM extraction and classification with validation gates, agent orchestration, Claude Code</dd></div>
       </dl>
     </section>
 
@@ -155,7 +152,7 @@
         <p><a href="mailto:saurabh.friday@gmail.com">saurabh.friday@gmail.com</a></p>
         <p><a href="https://www.linkedin.com/in/saurabh-shubham/" target="_blank" rel="noopener noreferrer">linkedin</a> · <a href="https://github.com/Saurabh3333" target="_blank" rel="noopener noreferrer">github</a> · <a href="../">portfolio</a></p>
       </nav>
-      <p class="colophon">updated nov 2, 2026 · based in berlin</p>
+      <p class="colophon">updated nov 27, 2026 · based in berlin</p>
     </footer>
   </main>
 </body>
