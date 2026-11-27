@@ -17,7 +17,7 @@ with transferable backend engineering and data-platform observability experience
 
 ## Experience
 
-### GROPYUS - Data Engineer
+### GROPYUS - Senior Data Engineer
 
 Berlin, Germany · Aug 2022-Present
 <!-- C08-C13, C58-C60, C63 -->
