@@ -9,7 +9,7 @@ fabric behind a robotic building factory, from ingestion and data contracts to k
 Experience
 GROPYUS
 Berlin, Germany
-Data Engineer
+Senior Data Engineer
 Aug 2022 – Present
 • Own the data fabric for planning and manufacturing teams: dlt/Dagster ingestion from SAP, Wrike,
 PostgreSQL (CDC) and Excel into dbt bronze/silver/gold models, served to Power BI via Microsoft Fabric.

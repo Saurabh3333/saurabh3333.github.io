@@ -23,7 +23,7 @@ remote markets.
 
 ## Experience descriptions
 
-### GROPYUS — Data Engineer
+### GROPYUS — Senior Data Engineer
 
 Design and optimisation of data pipelines connecting robotic systems and
 enterprise data flows for production insight. Python, Dagster, Airflow, dbt,
